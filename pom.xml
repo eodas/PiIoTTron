@@ -4,13 +4,13 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.eospy</groupId>
-	<artifactId>EOSpy_AI-IoT</artifactId>
+	<groupId>com.piiottron</groupId>
+	<artifactId>Pi_IoT_Tron</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>EOSpy AI–IoT :: Internet of Things Drools-jBPM Expert System using EOSpy Arduino Tron AI-IoT</name>
-	<description>EOSpy AI-IoT :: AI-IoT Application using the jBPM and Drools Rules Engine for EOSpy Arduino Tron and AI-IoT Executive Order Corp</description>
+	<name>Pi IoT Tron :: Internet of Things Drools-jBPM Expert System using Pi IoT Tron AI-IoT</name>
+	<description>Pi IoT Tron :: AI-IoT Application using the jBPM and Drools Rules Engine for Pi IoT Tron Executive Order Corp</description>
 
 	<properties>
 		<runtime.version>7.23.0.Final</runtime.version>

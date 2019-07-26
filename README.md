@@ -1,8 +1,10 @@
-﻿# EOSpy AI-IoT :: Internet of Things Drools-jBPM Arduino Tron
+﻿# Raspberry Pi IoT Kiosk (Pi IoT Tron) - Kiosk - INTERNET OF THINGS (IoT) :: Internet of Things Drools-jBPM Expert System using Pi IoT Tron AI-IoTBPMServer
 
-![alt tag](http://iotbpm.com/wp-content/uploads/2018/05/Arduino_Logotype-e1527283874261.png "Arduino Tron")
+![alt tag](http://iotbpm.com/wp-content/uploads/2019/07/RaspberryPiArduino.3.png "Raspberry Pi IoT Tron")
 
-Executive Order Corp - Arduino Tron - Arduino ESP8266 MQTT Telemetry Transport Machine-to-Machine(M2M)/Internet of Things(IoT)
+### Raspberry Pi IoT Kiosk (Pi IoT Tron) - Kiosk - INTERNET OF THINGS (IoT)
+
+Raspberry Pi IoT Tron - Arduino Tron - Arduino ESP8266 MQTT Telemetry Transport Machine-to-Machine(M2M)/Internet of Things(IoT)
 Arduino Tron :: EOSPY-Executive Order Sensor Processor System - Arduino Tron MQTT AI-IoT Client using EOSpy AI-IoT Drools-jBPM
 
 The power of the IoT (Internet of Things) device increases greatly when business process (jBPM) can use them to provide information
@@ -97,26 +99,19 @@ you can automatically turn on lights, appliances, cameras, and open doors from t
 [] The EOSpy AI-IoT Drools-jBPM Expert System provides sophisticated jBPM and drools processing. i.e. On a monitoring application: take an action if the temperature 
 on the server room increases X degrees in Y minutes, where sensor readings are usually denoted by events example drools.drl file:
 
-declare TemperatureThreshold 
-        windowTime : String = "30s" 
-        max : long = 70 
-end 
 
-declare SensorReading 
-        @role( event ) 
-        temperature : String = "40" 
-end 
+### Raspberry Pi IoT Kiosk (Pi IoT Tron) - Kiosk - INTERNET OF THINGS (IoT)
 
-rule "Sound the alarm in case temperature rises above threshold" 
-when 
-   TemperatureThreshold( $max : max, $windowTime : windowTime ) 
-   Number( doubleValue > $max ) from accumulate( 
-   SensorReading( $temp : temperature ) over window:time( $windowTime ), 
-   average( $temp ) ) 
-then 
-   // sound the alarm 
-end 
+The power of the IoT (Internet of Things) device increases greatly when business process (jBPM) can use them to provide information
+about our real-world as well as execute IoT devices as part of our business process. The jBPM-BPMN modular allow us to define 
+both the business processes and IoT devices behavior at the same time using one diagram. With Raspberry Pi IoT Tron adding Drools-jBPM to IoT,
+we make the IoT devices "smart". Moving beyond just collecting IoT data and transitioning, to leveraging the new wealth of IoT data, 
+to improving the SMART decision making is the key. The Executive Order Raspberry Pi IoT Tron AI-IoTBPMServer will help these IoT devices, environments, 
+and products to self-monitor, self-diagnose and eventually, self-direct.
+
+Raspberry Pi IoT Tron allows you to send IoT sensor data and information directly to the AI-IoTBPMServer Drools-jBPM Expert System from the aspberry Pi device.
+This provides a very lite streamline IoT to Drools-jBPM (Business Process Management) application process with sensor and GPS positioning information.
+Executive Order Raspberry Pi IoT Tron - This quick guide will help you install and configure the Raspberry Pi IoT Tron - Executive Order Sensor Processor System components.
 
 - Executive Order Corporation
-- Copyright © 1978, 2019: Executive Order Corporation, All Rights Reserved
-- Thank You! -Executive Order Custom Software Development Team
+- Copyright - 1978, 2019: Executive Order Corporation, All Rights Reserved
