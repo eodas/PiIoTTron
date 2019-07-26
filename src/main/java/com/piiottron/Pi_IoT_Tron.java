@@ -1,4 +1,4 @@
-package com.eospy;
+package com.piiottron;
 
 import java.awt.EventQueue;
 import java.io.BufferedReader;
@@ -8,7 +8,6 @@ import java.net.InetAddress;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.Locale;
-import com.eospy.ui.EOSpyWindow;
 
 /**
  * Executive Order Corporation we make Things Smart
@@ -50,9 +49,9 @@ import com.eospy.ui.EOSpyWindow;
 /**
  * This is the main class for EOSpy AI-IoT Drools-jBPM Expert System
  */
-public class EOSpy_AI_IoT {
+public class Pi_IoT_Tron {
 
-	EOSpy_AI_IoT eospy_ai_iot;
+	Pi_IoT_Tron pi_iot_tron;
 
 	private String base_path = "";
 	private String appVer = "1.01A";
@@ -60,9 +59,9 @@ public class EOSpy_AI_IoT {
 	private boolean is64bitJMV = false;
 	private boolean knowledgeDebug = false;
 
-	public EOSpy_AI_IoT(String[] args) {
+	public Pi_IoT_Tron(String[] args) {
 
-		this.eospy_ai_iot = this;
+		this.pi_iot_tron = this;
 		System.out.println("EOSpy AI-IoT :: Internet of Things Drools-jBPM Expert System"
 				+ " using EOSpy Arduino Tron AI-IoT Processing -version: " + appVer + " (" + buildDate + ")");
 
@@ -98,8 +97,8 @@ public class EOSpy_AI_IoT {
 			@Override
 			public void run() {
 				try {
-					EOSpyWindow window = new EOSpyWindow(exitOnClose);
-					window.show(); // window.frmEo.setVisible(true);
+				//	EOSpyWindow window = new EOSpyWindow(exitOnClose);
+				//	window.show(); // window.frmEo.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -135,6 +134,6 @@ public class EOSpy_AI_IoT {
 		System.out.println("EOSpy AI-IoT :: Internet of Things Drools-jBPM Expert System"
 				+ " - Arduino Tron MQTT AI-IoT Client using EOSpy AI-IoT Drools-jBPM");
 
-		new EOSpy_AI_IoT(args).init(true);
+		new Pi_IoT_Tron(args).init(true);
 	}
 }
