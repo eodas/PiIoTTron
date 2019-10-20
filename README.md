@@ -43,7 +43,7 @@ You can have an unlimited number and combination of EOSPY Clients and/or GPS tra
 
 (1) EOSPY AI-IoT – To install the EOSPY AI-IoT program on your Windows computer, download and install the "Eclipse IDE for Java Developers."
 Use the Eclipse feature to Add new software, available on the Eclipse menu “Help -> Install New Software”. Select the “Add” option and install these packages:
-Drools + jBPM Update Site 7.23.0 - http://downloads.jboss.org/jbpm/release/7.23.0.Final/updatesite/
+Drools + jBPM Update Site 7.28.0 - http://downloads.jboss.org/jbpm/release/7.28.0.Final/updatesite/
 BPMN2-Modeler 1.5.1 - http://download.eclipse.org/bpmn2-modeler/updates/photon/1.5.1/
 GIT the EOSPY AI-IoT from the source code repository, and Import Existing Maven project.
 
