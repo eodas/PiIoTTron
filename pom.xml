@@ -9,33 +9,26 @@
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Pi IoT Tron :: Internet of Things Drools-jBPM Expert System using Pi IoT Tron AI-IoT</name>
-	<description>Pi IoT Tron :: AI-IoT Application using the jBPM and Drools Rules Engine for Pi IoT Tron Executive Order Corp</description>
+	<name>Raspberry Pi IoT Tron :: Internet of Things Drools-jBPM Expert System using Raspberry Pi Tron AI-IoTBPM Processing</name>
+	<description>Raspberry Pi IoT Tron Drools-jBPM :: Raspberry Pi IoT Tron Sensor Application AI-IoTBPM Client using AI-IoTBPM Drools-jBPM</description>
 
 	<properties>
-		<runtime.version>7.33.0.Final</runtime.version>
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	    <maven.compiler.target>1.7</maven.compiler.target>
+	    <maven.compiler.source>1.7</maven.compiler.source>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>jboss-public-repository-group</id>
-			<name>JBoss Public Repository Group</name>
-			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</snapshots>
-		</repository>
-	</repositories>
-
 	<dependencies>
+
+		<dependency>
+			<groupId>com.pi4j</groupId>
+			<artifactId>pi4j-device</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.pi4j</groupId>
+			<artifactId>pi4j-core</artifactId>
+			<version>1.2</version>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
