@@ -361,15 +361,16 @@ public class RPiTron {
 
 			if (timeCounter > 1) {
 				timeCounter++;
-				if (timeCounter > 10) {
-					timeCounter = 1;
-				}
 				keyinput = "";
 				switchState = 0;
+				if (timeCounter > 10) {
+					timeCounter = 0;
+				}
 			}
+
 			if (switchState != 0) {
-				raspberryPiTronSend(switchState);
 				timeCounter = 1;
+				raspberryPiTronSend(switchState);
 			}
 
 			keyinput = "";
@@ -389,19 +390,20 @@ public class RPiTron {
 			led1.blink(500, 5000);
 		}
 
-		String postMsg = "/?id=" + id;
 		java.util.Date date = new Date();
 		long fixtime = date.getTime();
 		fixtime = (long) (fixtime * 0.001);
+
+		String postMsg = "/?id=" + id;
 		postMsg = postMsg + "&timestamp=" + Long.toString(fixtime);
-		// postMsg = postMsg + "&lat=" + lat; <-- no GPS location needed in demo
+		// postMsg = postMsg + "&lat=" + lat; // <-- no GPS location needed in demo
 		// postMsg = postMsg + "&lon=" + lon;
-		// postMsg = postMsg + "&speed=" + speeds; // speed Km - Speed over ground, knots
-		// postMsg = postMsg + "&bearing=" + bearing; // track true - Track made good, degrees True as bearing
+		// postMsg = postMsg + "&speed=" + speed; // speed Km - Speed over ground, knots
+		// postMsg = postMsg + "&bearing=" + course; // track true - Track made good, degrees True as bearing
 		// postMsg = postMsg + "&altitude=" + altitude; // altitude Antenna altitude above/below mean sea level
 		// postMsg = postMsg + "&accuracy=" + accuracy; // GPS device accuracy
-		// postMsg = postMsg + "&batt=" + batt; // GPS device batteryLevel
 		// postMsg = postMsg + "&light=" + light; // photocell value
+		// postMsg = postMsg + "&batt=" + batt; // GPS device batteryLevel
 
 		switch (state) {
 		case 1: // switchState gpio pinMode()

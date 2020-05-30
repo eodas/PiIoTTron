@@ -1,10 +1,24 @@
-﻿# Raspberry Pi IoT Kiosk (Pi IoT Tron) - Kiosk - INTERNET OF THINGS (IoT) :: Internet of Things Drools-jBPM Expert System using Pi IoT Tron AI-IoTBPMServer
+﻿# Raspberry Pi IoT RPi (Pi IoT Tron) - INTERNET OF THINGS (IoT) :: Internet of Things Drools-jBPM Expert System using Pi IoT Tron AI-IoTBPMServer
 
 ![alt tag](http://iotbpm.com/wp-content/uploads/2019/07/RaspberryPiArduino.3.png "Raspberry Pi IoT Tron")
 
-### Raspberry Pi IoT Kiosk (Pi IoT Tron) - Kiosk - INTERNET OF THINGS (IoT)
+### Raspberry Pi IoT (Pi IoT Tron) - INTERNET OF THINGS (IoT)
 
-Raspberry Pi IoT Tron - Arduino Tron - Arduino ESP8266 MQTT Telemetry Transport Machine-to-Machine(M2M)/Internet of Things(IoT)
+Executive Order Corp - RPi Tron - MQTT Telemetry Transport Machine-to-Machine(M2M)/Internet of Things(IoT)
+Raspberry Pi IoT Tron :: EOSPY-Executive Order Sensor Processor System - Arduino Tron MQTT AI-IoT Client using EOSpy AI-IoT Drools-jBPM
+
+# Nvidia Tron AI-IoT :: Internet of Things Drools-jBPM NVidia Tron
+
+![alt tag](https://iotbpm.com/wp-content/uploads/2020/05/cms_13137-nvidia-tron.png "Nvidia Tron")
+
+Executive Order Corp - Nvidia Tron - MQTT Telemetry Transport Machine-to-Machine(M2M)/Internet of Things(IoT)
+Nvidia Tron AI-IoT :: EOSPY-Executive Order Sensor Processor System - Arduino Tron MQTT AI-IoT Client using EOSpy AI-IoT Drools-jBPM
+
+# EOSpy AI-IoT :: Internet of Things Drools-jBPM Arduino Tron
+
+![alt tag](http://iotbpm.com/wp-content/uploads/2018/05/Arduino_Logotype-e1527283874261.png "Arduino Tron")
+
+Executive Order Corp - Arduino Tron - Arduino ESP8266 MQTT Telemetry Transport Machine-to-Machine(M2M)/Internet of Things(IoT)
 Arduino Tron :: EOSPY-Executive Order Sensor Processor System - Arduino Tron MQTT AI-IoT Client using EOSpy AI-IoT Drools-jBPM
 
 The power of the IoT (Internet of Things) device increases greatly when business process (jBPM) can use them to provide information
@@ -14,9 +28,9 @@ we make the IoT devices “smart”. Moving beyond just collecting IoT data and 
 to improving the smart decision making is the key. Executive Order EOSpy Arduino Tron AI-IoT will help these IoT devices, environments 
 and products to self-monitor, self-diagnose and eventually, self-direct.
 
-EOSPY Java — Automation Alert Monitoring – A Java version of the EOSPY – Executive Order Sensor Processor System Client.
+RPi IoT Tron Java — Automation Alert Monitoring – A Java version of the RPi IoT Tron – Executive Order Sensor Processor System Client.
  
-The EOSPY Java Client application allows you to transmit automation and remote monitoring system information directly to the EOSPY Server 
+The RPi IoT Tron Java Client application allows you to transmit automation and remote monitoring system information directly to the EOSPY Server 
 from your own Java application. Monitor buildings, servers, vehicles and people from anywhere in the world and post there status and condition 
 directly to the EOSPY Server from your own application. Stay connected and informed to what’s important. The EOSPY Executive Order Spy Java Client
 is a GPS tracking automation and remote monitoring system that is a complete custom package for your business or office. Its wireless GPS tracking 
@@ -24,7 +38,7 @@ allows you to monitor your office, systems, personal property, and business from
 
 Receive information from any number of events like when an employee arrives on-site, where a vehicle is located and even receive remote ambient light intensity, 
 temperature, humidity and other information. An alarm is triggered if the SOS button is pressed or the vehicle has exceeded the speed you defined. 
-The EOSPY Java ties all location and environment monitoring information on one GPS Map Screen.
+The RPi IoT Tron Java ties all location and environment monitoring information on one GPS Map Screen.
 
 Monitor buildings, servers, vehicles and people from anywhere in the world and post there status and condition directly to the EOSPY Server from your own application. 
 Stay connected and informed to what’s important. The EOSPY Executive Order Spy Java Client is a GPS tracking automation and remote monitoring system that is a complete
@@ -41,21 +55,32 @@ Executive Order Spy has several components:
 You can have an unlimited number and combination of EOSPY Clients and/or GPS tracking devices in use with EOSPY Server.
 (Download EOSPY Server from our website http://www.eospy.com and Download EOSPY Client from the Google Store, standard or TI-SensorTag version)
 
-(1) EOSPY AI-IoT – To install the EOSPY AI-IoT program on your Windows computer, download and install the "Eclipse IDE for Java Developers."
-Use the Eclipse feature to Add new software, available on the Eclipse menu “Help -> Install New Software”. Select the “Add” option and install these packages:
-Drools + jBPM Update Site 7.33.0 - http://downloads.jboss.org/jbpm/release/7.33.0.Final/updatesite/
-BPMN2-Modeler 1.5.1 - http://download.eclipse.org/bpmn2-modeler/updates/photon/1.5.1/
-GIT the EOSPY AI-IoT from the source code repository, and Import Existing Maven project.
+(1) On the Raspberry Pi: Upgrade wiringPi to version 2.52 for the Raspberry Pi 4B.<br />
+To upgrade wiringPi on the Raspberry Pi 4B:<br />
+$ cd /tmp<br />
+$ wget https://project-downloads.drogon.net/wiringpi-latest.deb<br />
+$ sudo dpkg -i wiringpi-latest.deb<br />
+<br />
+Check wiringPi version with:<br />
+$ gpio -v<br />
+The wiringPi version 2.52 after the upgrade.<br />
 
-(2) EOSPY Server – To install the EOSPY Server program on your Windows computer, download the eospy.exe installation program and click on the eospy.exe install program.
+(2) EOSPY AI-IoT – To install the EOSPY AI-IoT program on your Windows computer, download and install the "Eclipse IDE for Java Developers."
+Use the Eclipse feature to Add new software, available on the Eclipse menu “Help -> Install New Software”. Select the “Add” option and install these packages:
+1. Drools + jBPM Update Site 7.33.0 - http://downloads.jboss.org/jbpm/release/7.33.0.Final/updatesite/
+2. BPMN2-Modeler 1.5.1 - http://download.eclipse.org/bpmn2-modeler/updates/photon/1.5.1/
+3. Eclipse Marketplace: Code RASPIde: IDE for Raspberry Pi GPIO - CodeRASPIde is our small contribution to the IoT and Java Eclipse Community.
+4. GIT the RPi IoT Tron AI-IoT from the source code repository, and Import Existing Maven project.
+
+(3) EOSPY Server – To install the EOSPY Server program on your Windows computer, download the eospy.exe installation program and click on the eospy.exe install program.
 EOSPY will by default install in the destination location: C:\Program Files\EOSpy Server and create a Start Menu folder: EOSPY on your desktop.
 To start the EOSPY Server, click on the Eagle icon on your desktop. The EOSPY login and map will appear in your browser. The default email and password are both: admin
 
-(3.A) EOSPY Client (Arduino Tron) – To install the EOSPY Arduino Tron application on your Arduino Device, download the EOSPY Arduino Tron Sensor application from GIT.
+(4.A) EOSPY Client (Arduino Tron) – To install the EOSPY Arduino Tron application on your Arduino Device, download the EOSPY Arduino Tron Sensor application from GIT.
 Update the with WiFi network values for network SSID (name) and network password. Update the EOSPY Server IP address and unique unit ID values and add in EOSPY Server.
 Also, you may use a DHT11 digital temperature and humidity sensor see the Arduino Tron Sensor sketch for more details and information.
 
-(3.B) EOSPY Client (Android) – To install the EOSPY Client application on your phone, download the EOSPY application from the Google App Store.
+(4.B) EOSPY Client (Android) – To install the EOSPY Client application on your phone, download the EOSPY application from the Google App Store.
 To start the EOSPY Client, click on the Eagle icon on your phone. The EOSPY Client screen will appear. You can also download the EOSPY TI-SensorTag Client version.
 
 To configure a new EOSPY Client you will need to enter the EOSPY Server address, Domain name, or IP address into the Server address.
@@ -66,7 +91,7 @@ The device will appear on the EOSPY Server map the next time the EOSPY Client se
 First, add the new device with a unique identifier into the EOSPY – Executive Order Sensor Processor System Server.
 Next, configure your device to use the appropriate EOSPY Server IP address and port number. If the device fails to report, check the IP Address and Device ID.
 
-Device Unique Identifier
+Device Unique Identifier<br />
 For most devices you should use an IMEI (International Mobile Equipment Identity) number as a unique identifier.
 However, some devices have vendor specific unique identifiers, for example TK-103 devices use 12-digit identifier.
 
@@ -74,7 +99,7 @@ If you don’t know your device identifier you can configure your device first a
 When the server receives a message from an unknown device it writes a record containing a unique identifier of a new device.
 Look for records like “Unknown device – 123456789012345”; “Unknown device” 123456789012345 is your new Device identifier.
 
-Address and Port
+Address and Port<br />
 To select the correct port, find your device in the list of supported devices. The Port column of the corresponding row contains default port numbers for your device.
 If you want to use variations from the default ports you can change them in the configuration file.
 
@@ -99,19 +124,5 @@ you can automatically turn on lights, appliances, cameras, and open doors from t
 [] The EOSpy AI-IoT Drools-jBPM Expert System provides sophisticated jBPM and drools processing. i.e. On a monitoring application: take an action if the temperature 
 on the server room increases X degrees in Y minutes, where sensor readings are usually denoted by events example drools.drl file:
 
-
-### Raspberry Pi IoT Kiosk (Pi IoT Tron) - Kiosk - INTERNET OF THINGS (IoT)
-
-The power of the IoT (Internet of Things) device increases greatly when business process (jBPM) can use them to provide information
-about our real-world as well as execute IoT devices as part of our business process. The jBPM-BPMN modular allow us to define 
-both the business processes and IoT devices behavior at the same time using one diagram. With Raspberry Pi IoT Tron adding Drools-jBPM to IoT,
-we make the IoT devices "smart". Moving beyond just collecting IoT data and transitioning, to leveraging the new wealth of IoT data, 
-to improving the SMART decision making is the key. The Executive Order Raspberry Pi IoT Tron AI-IoTBPMServer will help these IoT devices, environments, 
-and products to self-monitor, self-diagnose and eventually, self-direct.
-
-Raspberry Pi IoT Tron allows you to send IoT sensor data and information directly to the AI-IoTBPMServer Drools-jBPM Expert System from the aspberry Pi device.
-This provides a very lite streamline IoT to Drools-jBPM (Business Process Management) application process with sensor and GPS positioning information.
-Executive Order Raspberry Pi IoT Tron - This quick guide will help you install and configure the Raspberry Pi IoT Tron - Executive Order Sensor Processor System components.
-
 - Executive Order Corporation
-- Copyright - 1978, 2019: Executive Order Corporation, All Rights Reserved
+- Copyright - 1978, 2020: Executive Order Corporation, All Rights Reserved
