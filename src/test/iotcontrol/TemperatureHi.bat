@@ -1,0 +1,1 @@
+c:\curl\bin\curl -X GET "http://localhost:5055/?id=100111&event=allEvents&textMessage=Message_Sent&temp=78&humidity=48&alarm=Temp_Hi" -H "accept: application/xml"

@@ -1,4 +1,4 @@
-package com.piiottron;
+package com.piiottron.server;
 
 import java.io.IOException;
 import java.io.BufferedReader;
