@@ -34,7 +34,7 @@ import com.pi4j.io.gpio.RaspiPin;
 /**
  * This is the main class for Raspberry Pi Tron AI-IoTBPM Drools-jBPM Expert System
  */
-public class Pi_IoT_Tron {
+public class RPiTron {
 
 	// Update these with Raspberry Pi Tron service IP address and unique unit id values
 	private String URL = "http://10.0.0.2:5055/";  // Set EOSpy server IP address
@@ -227,7 +227,7 @@ public class Pi_IoT_Tron {
 	private Thread inputThread = null;
 	
 	// void setup(void)
-	public Pi_IoT_Tron(String[] args) {
+	public RPiTron(String[] args) {
 
 		System.out.println("Raspberry Pi IoT Tron :: Internet of Things Drools-jBPM Expert System"
 				+ " - Raspberry Pi IoT Tron AI-IoTBPM Processing -version: " + appVer + " (" + buildDate + ")");
@@ -287,6 +287,7 @@ public class Pi_IoT_Tron {
 
 	public void keyboardThread() {
 			inputThread = new Thread(new Runnable() {
+			@Override
 			public void run() {
 
 				@SuppressWarnings("resource")
@@ -301,8 +302,10 @@ public class Pi_IoT_Tron {
 	
 	// void loop(void)
 	public void init() {
-		// keep program running until user aborts (CTRL-C)
 		int switchState = 0;
+		int timeCounter = 0;
+
+		// keep program running until user aborts (CTRL-C)
 		while (alive) {
 
 			switch (keyinput) {
@@ -335,7 +338,8 @@ public class Pi_IoT_Tron {
 				inputThread.stop();
 				inputThread = null;
 				// stop all GPIO activity/threads
-				// (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks)
+				// (this method will forcefully shutdown all GPIO monitoring threads and
+				// scheduled tasks)
 				if (Init_GPIO == true) {
 					// Pi4J GPIO controller
 					gpio.shutdown(); // <--- implement this method call if you wish to terminate the
@@ -354,27 +358,37 @@ public class Pi_IoT_Tron {
 				}
 			}
 
+			if (timeCounter > 1) {
+				timeCounter++;
+				if (timeCounter > 10) {
+					timeCounter = 1;
+				}
+				keyinput = "";
+				switchState = 0;
+			}
 			if (switchState != 0) {
 				raspberryPiTronSend(switchState);
+				timeCounter = 1;
 			}
 
 			keyinput = "";
 			switchState = 0;
 			try {
-				Thread.sleep(100);
+				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
-			
+
 	public void raspberryPiTronSend(int state) {
 		// continuously blink the led every 1/2 second for 5 seconds
-		led1.blink(500, 5000);
+		if (Init_GPIO == true) {
+			led1.blink(500, 5000);
+		}
 
 		String postMsg = "/?id=" + id;
-
 		java.util.Date date = new Date();
 		long fixtime = date.getTime();
 		fixtime = (long) (fixtime * 0.001);
@@ -475,6 +489,6 @@ public class Pi_IoT_Tron {
 		System.out.println("Executive Order Corporation - Raspberry Pi Tron MQTT Telemetry Transport"
 				+ " - Raspberry Pi IoT Tron Machine-to-Machine(M2M)/Internet of Things(IoT)");
 		
-		new Pi_IoT_Tron(args).init();
+		new RPiTron(args).init();
 	}
 }
