@@ -1,5 +1,7 @@
 package com.piiottron;
 
+import java.awt.event.WindowEvent;
+
 /**
  * Executive Order Corporation we make Things Smart
  * Executive Order Corporation - Raspberry Pi Tron MQTT Telemetry Transport Machine-to-Machine(M2M)/Internet of Things(IoT)
@@ -288,6 +290,15 @@ public class RPiTron {
 		}
 	}
 
+	void gpioShutdown() {
+		// stop all GPIO activity/threads
+		// (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks)
+		if (Init_GPIO == true) {
+			// Pi4J GPIO controller
+			gpio.shutdown(); // implement this method call if you wish to terminate the Pi4J GPIO controller
+		}
+	}
+		
 	public void keyboardThread() {
 			inputThread = new Thread(new Runnable() {
 			@Override
@@ -340,13 +351,7 @@ public class RPiTron {
 				alive = false;
 				inputThread.stop();
 				inputThread = null;
-				// stop all GPIO activity/threads
-				// (this method will forcefully shutdown all GPIO monitoring threads and
-				// scheduled tasks)
-				if (Init_GPIO == true) {
-					// Pi4J GPIO controller
-					gpio.shutdown(); // <--- implement this method call if you wish to terminate the
-				}
+				gpioShutdown();
 				System.out.println("Press <enter> to exit.");
 				break;
 			}
@@ -430,6 +435,9 @@ public class RPiTron {
 			textMessage = "Illuminance_Alert_Message";
 			postMsg = postMsg + "&textMessage=" + textMessage;
 			postMsg = postMsg + "&keypress=" + TYPE_KEYPRESS_1;
+			if (Init_GPIO == true) {
+				led2.blink(500, 5000);
+			}
 			break;
 		case 6:
 			postMsg = postMsg + "&event=allEvents&protocol=osmand&outdated=false&valid=true&lat=38.85&lon=-84.35&altitude=27.0&speed=65.5&course=0.0";
