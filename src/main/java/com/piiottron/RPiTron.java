@@ -231,7 +231,6 @@ public class RPiTron {
 	private static String keyinput = "";
 	private Thread inputThread = null;
 	
-	// void setup(void)
 	public RPiTron(String[] args) {
 
 		System.out.println("Raspberry Pi IoT Tron :: Internet of Things Drools-jBPM Expert System"
@@ -261,8 +260,8 @@ public class RPiTron {
 			System.out.println("Local language: " + Locale.getDefault().getLanguage());
 		}
 
-		gpioController();
-		keyboardThread();
+		// void setup(void)
+		setup();
 	}
 
 	/**
@@ -314,8 +313,14 @@ public class RPiTron {
 		inputThread.start();
 	}
 	
+	// void setup(void)
+	public void setup() {
+		gpioController();
+		keyboardThread();
+	}
+	
 	// void loop(void)
-	public void init() {
+	public void loop() {
 		int switchState = 0;
 		int timeCounter = 0;
 
@@ -502,6 +507,7 @@ public class RPiTron {
 		System.out.println("Executive Order Corporation - Raspberry Pi Tron MQTT Telemetry Transport"
 				+ " - Raspberry Pi IoT Tron Machine-to-Machine(M2M)/Internet of Things(IoT)");
 		
-		new RPiTron(args).init();
+		// void loop(void)
+		new RPiTron(args).loop();
 	}
 }
