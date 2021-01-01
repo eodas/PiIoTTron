@@ -284,7 +284,7 @@ class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
                         <title>Raspberry Pi IoT Tron</title>\
                         <style type = ""text/css"">\
                         \
-                        body {background-image : url(""http://www.iotbpm.com/wp-content/uploads/2021/01/RaspberryPi_IoT_Tron-768x334.png""); background-repeat : no-repeat; background-color : powderblue;}\
+                        body {background-image : url(""http://www.iotbpm.com/wp-content/uploads/2020/01/RaspberryPi_IoT_Tron-768x334.png""); background-repeat : no-repeat; background-color : powderblue;}\
                         h1{color:black; font-family : arial;}\
                         p{color:black; font-family : verdana;}\
                         </style>\

@@ -10,7 +10,7 @@ import java.awt.event.WindowEvent;
  * Raspberry Pi IoT Tron Drools-jBPM :: Executive Order Raspberry Pi Tron Sensor AI-IoTBPM Client using AI-IoTBPM Drools-jBPM
  *
  * Executive Order Corporation
- * Copyright © 1978, 2021: Executive Order Corporation, All Rights Reserved
+ * Copyright (c) 1978, 2021: Executive Order Corporation, All Rights Reserved
  */
 
 import java.io.BufferedReader;
