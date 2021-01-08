@@ -1,1 +1,1 @@
-c:\curl\bin\curl -X GET "http://localhost:5055/?id=100888&event=allEvents&name=Arduino_Tron_IoT&textMessage=Message_Sent&temp=73&humidity=56&address=National_Air_Space_Museum&alarm=Temp_General" -H "accept: application/xml"
+\curl\bin\curl -X GET "http://localhost:5055/?id=100888&event=allEvents&name=Arduino_Tron_IoT&textMessage=Message_Sent&temp=73&humidity=56&address=National_Air_Space_Museum&alarm=Temp_General" -H "accept: application/xml"
