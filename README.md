@@ -67,7 +67,7 @@ The wiringPi version 2.52 after the upgrade.<br />
 
 (2) EOSPY AI-IoT – To install the EOSPY AI-IoT program on your Windows computer, download and install the "Eclipse IDE for Java Developers."
 Use the Eclipse feature to Add new software, available on the Eclipse menu “Help -> Install New Software”. Select the “Add” option and install these packages:
-1. Drools + jBPM Update Site 7.49.0 - http://downloads.jboss.org/jbpm/release/7.49.0.Final/updatesite/
+1. Drools + jBPM Update Site 7.48.0 - http://downloads.jboss.org/jbpm/release/7.48.0.Final/updatesite/
 2. BPMN2-Modeler 1.5.1 - http://download.eclipse.org/bpmn2-modeler/updates/photon/1.5.1/
 3. Eclipse Marketplace: Code RASPIde: IDE for Raspberry Pi GPIO - CodeRASPIde is our small contribution to the IoT and Java Eclipse Community.
 4. GIT the RPi IoT Tron AI-IoT from the source code repository, and Import Existing Maven project.
