@@ -15,6 +15,10 @@
 	<properties>
 	    <maven.compiler.target>1.7</maven.compiler.target>
 	    <maven.compiler.source>1.7</maven.compiler.source>
+	    
+	    <!-- DEPENDENCIES VERSIONS -->
+	    <slf4j.version>2.0.0-alpha0</slf4j.version>
+	    <pi4j.version>1.2</pi4j.version>
 	</properties>
 
 	<dependencies>
@@ -22,12 +26,12 @@
 		<dependency>
 			<groupId>com.pi4j</groupId>
 			<artifactId>pi4j-device</artifactId>
-			<version>1.2</version>
+	      	<version>${pi4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.pi4j</groupId>
 			<artifactId>pi4j-core</artifactId>
-			<version>1.2</version>
+      		<version>${pi4j.version}</version>
 		</dependency>
 
 		<dependency>
