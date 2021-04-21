@@ -5,17 +5,42 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.piiottron.model.AgentsList;
+
 import java.net.URL;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 
 public class AgentConnect {
 
+	private AgentsList agentsList;
 	private String knowledgeDebug = "none";
 	private final String USER_AGENT = "Mozilla/5.0";
+	private static AgentConnect AGENTCONNECT_INSTANCE = null;
+
+	private final Logger logger = LoggerFactory.getLogger(AgentConnect.class);
+
+	public AgentConnect(AgentsList agentsList, String knowledgeDebug) {
+		this.agentsList = agentsList;
+		this.knowledgeDebug = knowledgeDebug;
+		AgentConnect.AGENTCONNECT_INSTANCE = this;
+	}
+
+	public static AgentConnect getInstance() {
+		return AGENTCONNECT_INSTANCE;
+	}
 
 	// HTTP GET request
-	public void sendGet(String agentIP, String command) {
+	public void sendGet(String agentName, String command) {
+		String agentIP = agentsList.getAgent(agentName);
+		if ((agentIP == "") || (agentIP.indexOf("0.0.0.0") != -1)) {
+			agentNotDefined(agentName);
+			return;
+		}
+
 		String urlString = agentIP + command;
 		try {
 			URL url = new URL(urlString);
@@ -51,7 +76,13 @@ public class AgentConnect {
 	}
 
 	// HTTP Post request
-	public void sendPost(String agentIP, String command) {
+	public void sendPost(String agentName, String command) {
+		String agentIP = agentsList.getAgent(agentName);
+		if ((agentIP == "") || (agentIP.indexOf("0.0.0.0") != -1)) {
+			agentNotDefined(agentName);
+			return;
+		}
+
 		String url = agentIP + command;
 		try {
 			URL obj = new URL(url);
@@ -97,5 +128,19 @@ public class AgentConnect {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	// get Agent URL
+	public String agentURL(String agentName) {
+		String agentIP = agentsList.getAgent(agentName);
+		if ((agentIP == "") || (agentIP.indexOf("0.0.0.0") != -1)) {
+			agentNotDefined(agentName);
+		}
+		return agentIP;
+	}
+	
+	public void agentNotDefined(String agentName) {
+		System.err.println("Note: Send Arduino Command " + agentName
+				+ " in agentDevice=[AgentName,http://10.0.0.2,...] defined in iotbpm.properties file.");
 	}
 }

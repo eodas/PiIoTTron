@@ -1,25 +1,12 @@
-﻿# Raspberry Pi IoT RPi (Pi IoT Tron) - INTERNET OF THINGS (IoT) :: Internet of Things Drools-jBPM Expert System using Pi IoT Tron AI-IoTBPMServer
+﻿# Raspberry Pi IoT RPi (Pi IoT Tron) - Internet ofF Things (IoT) :: Internet of Things Drools-jBPM Expert System using Pi IoT Tron AI-IoTBPMServer
 
 ![alt tag](http://iotbpm.com/wp-content/uploads/2019/07/RaspberryPiArduino.3.png "Raspberry Pi IoT Tron")
 
-### Raspberry Pi IoT (Pi IoT Tron) - INTERNET OF THINGS (IoT)
+### Raspberry Pi IoT (Pi IoT Tron) - Internet of Things (IoT)
 
-Executive Order Corp - RPi Tron - MQTT Telemetry Transport Machine-to-Machine(M2M)/Internet of Things(IoT)
-Raspberry Pi IoT Tron :: EOSPY-Executive Order Sensor Processor System - Arduino Tron MQTT AI-IoT Client using EOSpy AI-IoT Drools-jBPM
-
-# Nvidia Tron AI-IoT :: Internet of Things Drools-jBPM NVidia Tron
-
-![alt tag](https://iotbpm.com/wp-content/uploads/2020/05/cms_13137-nvidia-tron.png "Nvidia Tron")
-
-Executive Order Corp - Nvidia Tron - MQTT Telemetry Transport Machine-to-Machine(M2M)/Internet of Things(IoT)
-Nvidia Tron AI-IoT :: EOSPY-Executive Order Sensor Processor System - Arduino Tron MQTT AI-IoT Client using EOSpy AI-IoT Drools-jBPM
-
-# EOSpy AI-IoT :: Internet of Things Drools-jBPM Arduino Tron
-
-![alt tag](http://iotbpm.com/wp-content/uploads/2018/05/Arduino_Logotype-e1527283874261.png "Arduino Tron")
-
-Executive Order Corp - Arduino Tron - Arduino ESP8266 MQTT Telemetry Transport Machine-to-Machine(M2M)/Internet of Things(IoT)
-Arduino Tron :: EOSPY-Executive Order Sensor Processor System - Arduino Tron MQTT AI-IoT Client using EOSpy AI-IoT Drools-jBPM
+Executive Order Corp – AI-IoTBPM Server is IoT Internet of Things Drools-BPM (Business Process Management) engine for IoT Device Orchestration and IoT device ontology (AI-IoT device awareness, state of being, knowledge of real-world objects, events, situations, and abstract concepts).
+Executive Order Corp - AI-IoTBPM MQTT Telemetry Transport Machine-to-Machine(M2M) / Internet of Things (IoT).
+AI-IoTBPM :: Executive Order AI-IoTBPM Tron Sensor Processor MQTT AI-IoTBPM Client using EOSpy AI-IoTBPM Drools-jBPM.
 
 The power of the IoT (Internet of Things) device increases greatly when business process (jBPM) can use them to provide information
 about our real-world as well as execute IoT (devices) as part of our business process. The jBPM-BPMN modular allow us to define 
@@ -28,9 +15,11 @@ we make the IoT devices “smart”. Moving beyond just collecting IoT data and 
 to improving the smart decision making is the key. Executive Order EOSpy Arduino Tron AI-IoT will help these IoT devices, environments 
 and products to self-monitor, self-diagnose and eventually, self-direct.
 
-RPi IoT Tron Java — Automation Alert Monitoring – A Java version of the RPi IoT Tron – Executive Order Sensor Processor System Client.
+AI-IoTBPM Tron allows you to send IoT sensor data and information directly to the AI-IoTBPMServer Drools-jBPM Expert System from the Arduino device.
+This provides a very lite streamline IoT to Drools-jBPM (Business Process Management) application process with sensor and GPS positioning information.
+Executive Order Arduino Tron - This quick guide will help you install and configure the Arduino Tron - Executive Order Sensor Processor System components.
  
-The RPi IoT Tron Java Client application allows you to transmit automation and remote monitoring system information directly to the EOSPY Server 
+The Raspberry Pi IoT Tron Java Client application allows you to transmit automation and remote monitoring system information directly to the EOSPY Server 
 from your own Java application. Monitor buildings, servers, vehicles and people from anywhere in the world and post there status and condition 
 directly to the EOSPY Server from your own application. Stay connected and informed to what’s important. The EOSPY Executive Order Spy Java Client
 is a GPS tracking automation and remote monitoring system that is a complete custom package for your business or office. Its wireless GPS tracking 
