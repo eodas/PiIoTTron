@@ -1,0 +1,27 @@
+package com_piiottron
+
+// list import classes
+import com.piiottron.model.StateList;
+import com.piiottron.model.DeviceEvent;
+
+// default dialect for the semantic code will be MVEL
+dialect "mvel"
+
+// processID rule for device ID: 100111 - Light Module IoT-GPIO
+
+rule "processID rule for device ID: 100111 - Light Module IoT-GPIO"
+	when
+		$event : DeviceEvent( $eventId : id, $eventId == "100111" )
+	then
+		com.piiottron.model.StateList.getInstance().putState("processID", "com.PiIoTTronLight");
+end
+
+rule "Rules for device ID: 100111 - Light Module IoT-GPIO"
+ 	no-loop
+    when
+    	// event used to change update Pi IoT Tron GPIO Light Module
+		$event : DeviceEvent( $eventId : id, $eventId == "100111" )
+    then
+    	String result = (com.piiottron.model.StateList.getInstance().getState("LightModule") == "On") ? "Off" : "On";
+    	com.piiottron.model.StateList.getInstance().putState("LightModule", result); 
+end

@@ -12,12 +12,12 @@ The power of the IoT (Internet of Things) device increases greatly when business
 about our real-world as well as execute IoT (devices) as part of our business process. The jBPM-BPMN modular allow us to define 
 both the Business Processes and IoT Devices Behavior at the same time using one diagram. With EOSpy adding Drools-jBPM to IoT,
 we make the IoT devices “smart”. Moving beyond just collecting IoT data and transitioning, to leveraging the new wealth of IoT data, 
-to improving the smart decision making is the key. Executive Order EOSpy Arduino Tron AI-IoT will help these IoT devices, environments 
+to improving the smart decision making is the key. Executive Order Pi AI-IoT Tron will help these IoT devices, environments 
 and products to self-monitor, self-diagnose and eventually, self-direct.
 
-AI-IoTBPM Tron allows you to send IoT sensor data and information directly to the AI-IoTBPMServer Drools-jBPM Expert System from the Arduino device.
+AI-IoTBPM Tron allows you to send IoT sensor data and information directly to the AI-IoTBPMServer Drools-jBPM Expert System from the RPi device.
 This provides a very lite streamline IoT to Drools-jBPM (Business Process Management) application process with sensor and GPS positioning information.
-Executive Order Arduino Tron - This quick guide will help you install and configure the Arduino Tron - Executive Order Sensor Processor System components.
+Executive Order Pi IoT Tron - This quick guide will help you install and configure the Pi IoT Tron - Executive Order Sensor Processor System components.
  
 The Raspberry Pi IoT Tron Java Client application allows you to transmit automation and remote monitoring system information directly to the EOSPY Server 
 from your own Java application. Monitor buildings, servers, vehicles and people from anywhere in the world and post there status and condition 
@@ -38,7 +38,7 @@ Executive Order Spy — This quick guide will help you install and configure the
 Executive Order Spy has several components:
 1. The EOSPY AI-IoT, the Internet of Things Drools-jBPM Expert System.
 2. The EOSPY Server, the live map GPS tracking Windows program.
-3. The EOSPY Client, the Arduino Tron or Android application you install on an Android phone.
+3. The EOSPY Client, the Pi IoT Tron or Android application you install on an Android phone.
 4. Configure GSM/GPRS/GPS Tracking Devices to use with EOSPY – Executive Order Sensor Processor System Server.
 
 You can have an unlimited number and combination of EOSPY Clients and/or GPS tracking devices in use with EOSPY Server.
@@ -65,9 +65,9 @@ Use the Eclipse feature to Add new software, available on the Eclipse menu “He
 EOSPY will by default install in the destination location: C:\Program Files\EOSpy Server and create a Start Menu folder: EOSPY on your desktop.
 To start the EOSPY Server, click on the Eagle icon on your desktop. The EOSPY login and map will appear in your browser. The default email and password are both: admin
 
-(4.A) EOSPY Client (Arduino Tron) – To install the EOSPY Arduino Tron application on your Arduino Device, download the EOSPY Arduino Tron Sensor application from GIT.
+(4.A) EOSPY Client (Pi IoT Tron) – To install the EOSPY Pi IoT Tron application on your RPi Device, download the EOSPY Pi IoT Tron Sensor application from GIT.
 Update the with WiFi network values for network SSID (name) and network password. Update the EOSPY Server IP address and unique unit ID values and add in EOSPY Server.
-Also, you may use a DHT11 digital temperature and humidity sensor see the Arduino Tron Sensor sketch for more details and information.
+Also, you may use a DHT11 digital temperature and humidity sensor see the Pi IoT Tron Sensor sketch for more details and information.
 
 (4.B) EOSPY Client (Android) – To install the EOSPY Client application on your phone, download the EOSPY application from the Google App Store.
 To start the EOSPY Client, click on the Eagle icon on your phone. The EOSPY Client screen will appear. You can also download the EOSPY TI-SensorTag Client version.
@@ -105,9 +105,9 @@ id=6&event=allEvents&protocol=osmand&servertime=<date>&timestamp=<date>&fixtime=
 &light=91.0&keypress=0.0&alarm=Temperature&distance=1.6&totalDistance=3.79&motion=false
 * You can add additional fields to the data model and transmit via any device for EOSpy AI-IoT Drools-jBPM processing.
 
-[] The EOSPY AI-IoT Arduino Tron Server software interface allows you to send commands with the EOSPY AI-IoT software to control external Arduino connected devices.
-The AI-IoT Arduino Tron Server software uses a WiFi Wireless Transceiver interface to control and interact with module sensors and remote controls devices. You can 
-control any device form the EOSpy AI-IoT Arduino Tron Server software or stream any interface over the WiFi internet. With the EOSpy AI-IoT Arduino Tron Server software
+[] The EOSPY AI-IoT Pi IoT Tron Server software interface allows you to send commands with the EOSPY AI-IoT software to control external RPi connected devices.
+The AI-IoT Pi IoT Tron Server software uses a WiFi Wireless Transceiver interface to control and interact with module sensors and remote controls devices. You can 
+control any device form the EOSpy AI-IoT Pi IoT Tron Server software or stream any interface over the WiFi internet. With the EOSpy AI-IoT Pi IoT Tron Server software
 you can automatically turn on lights, appliances, cameras, and open doors from the Drools-jBPM Expert System processing model.
 
 [] The EOSpy AI-IoT Drools-jBPM Expert System provides sophisticated jBPM and drools processing. i.e. On a monitoring application: take an action if the temperature 

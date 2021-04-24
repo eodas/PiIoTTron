@@ -33,7 +33,7 @@ import com.piiottron.util.SystemOutProcessEventListener;
 import com.piiottron.util.WorkingMemoryListener;
 
 /**
- * The Arduino Tron AI-IoTBPM Drools-jBPM application
+ * The Pi IoT Tron AI-IoTBPM Drools-jBPM application
  */
 public class jBPMRules {
 	private StateList stateList;

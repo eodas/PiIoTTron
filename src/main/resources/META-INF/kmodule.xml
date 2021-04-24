@@ -7,6 +7,12 @@
 		</ksession>
 	</kbase>
 
+	<kbase name="kbasepiiottron"
+		packages="com_piiottron, com.piiottron.process">
+		<ksession name="ksession-piiottron">
+		</ksession>
+	</kbase>
+
 	<kbase name="kbaseEnvironment"
 		packages="com_environment, com.environment.process">
 		<ksession name="ksession-environment">

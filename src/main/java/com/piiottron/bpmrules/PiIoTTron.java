@@ -117,15 +117,15 @@ public class PiIoTTron {
 
 		final jBPMRules jbpmRules = new jBPMRules(kSessionType, kSessionName, processID, stateList, knowledgeDebug); // devices,
 
+		pi4jgpio = new Pi4jGPIO(); // Implementation for the Raspberry Pi4j GPIO example
+
 		if ((gpio == "") || (gpio.indexOf("none") != -1)) {
 			System.err.println("Note: create gpio controller e.g. gpio=GPIO_01 not defined in iotbpm.properties file.");
 		} else {
-			pi4jgpio = new Pi4jGPIO();
 			pi4jgpio.gpioStartController();
 		}
 
 		startIoTServer(jbpmRules);
-
 		processConsole();
 	}
 
@@ -162,9 +162,8 @@ public class PiIoTTron {
 			}
 
 		} while (runServer);
-		if ((gpio == "") || (gpio.indexOf("none") != -1)) {
-			System.err.println("Note: create gpio controller e.g. gpio=GPIO_01 not defined in iotbpm.properties file.");
-		} else {
+		
+		if (pi4jgpio.isPi4jActive()) {
 			stopPi4jGPIO();
 		}
 		stopIoTServer();
@@ -251,7 +250,7 @@ public class PiIoTTron {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Arduino Tron :: Executive Order IoT Sensor Processor System"
+		System.out.println("Pi IoT Tron :: Executive Order IoT Sensor Processor System"
 				+ " - MQTT AI-IoTBPM Tron Server using AI-IoTBPM Drools-jBPM");
 
 		new PiIoTTron(args).init(true);

@@ -24,7 +24,7 @@ public class IoTServer extends Thread {
 	public IoTServer(jBPMRules jbpmRules, int port) {
 		this.port = port;
 		this.jbpmRules = jbpmRules;
-		System.out.println("Arduino Tron Drools-jBPM AI-IoTBPM Server, Started Port: " + port);
+		System.out.println("Pi IoT Tron Drools-jBPM AI-IoTBPM Server, Started Port: " + port);
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class IoTServer extends Thread {
 
 	public void killServer() {
 		alive = false;
-		System.out.println("Arduino Tron Drools-jBPM AI-IoTBPM Server Port, Stopped");
+		System.out.println("Pi IoT Tron Drools-jBPM AI-IoTBPM Server Port, Stopped");
 		try {
 			if (server != null) {
 				server.close();
