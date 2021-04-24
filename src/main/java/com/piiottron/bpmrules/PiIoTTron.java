@@ -162,7 +162,11 @@ public class PiIoTTron {
 			}
 
 		} while (runServer);
-		stopPi4jGPIO();
+		if ((gpio == "") || (gpio.indexOf("none") != -1)) {
+			System.err.println("Note: create gpio controller e.g. gpio=GPIO_01 not defined in iotbpm.properties file.");
+		} else {
+			stopPi4jGPIO();
+		}
 		stopIoTServer();
 	}
 
