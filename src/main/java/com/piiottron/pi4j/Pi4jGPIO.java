@@ -9,7 +9,7 @@ import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.io.gpio.PinPullResistance;
-// import com.pi4j.io.gpio.PinState;
+import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 // import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 // import com.pi4j.io.gpio.event.GpioPinListenerDigital;
@@ -101,24 +101,24 @@ import com.pi4j.io.gpio.RaspiPin;
  */
 public class Pi4jGPIO {
 	private static Pi4jGPIO PI4JGPIO_INSTANCE = null;
-	private boolean alive = false;
+	private boolean pi4jActive = false;
 
-    GpioController gpio;
+	GpioController gpio;
 
-    // provision led gpio pins as an output pins and blink
-    GpioPinDigitalOutput redled1; // LED GPIO pin GPIO.21
-    GpioPinDigitalOutput redled2; // LED GPIO pin GPIO.22
-    GpioPinDigitalOutput yellowled1; // LED GPIO pin GPIO.26
-    GpioPinDigitalOutput yellowled2; // LED GPIO pin GPIO.23
-    GpioPinDigitalOutput greenled1; // LED GPIO pin GPIO.27
-    GpioPinDigitalOutput greenled2; // LED GPIO pin GPIO.0
-    
-    // provision switch gpio pins as an input pin with its internal pull down resistor enabled
-    GpioPinDigitalInput button1; // Button GPIO pin GPIO.24
-    GpioPinDigitalInput button2; // Button GPIO pin GPIO.1
-    
-    // provision buzzer gpio pin as an output pins and buzz
-    GpioPinDigitalOutput buzzer1; // Buzzer GPIO pin GPIO.28
+	// provision led gpio pins as an output pins and blink
+	GpioPinDigitalOutput redled1; // LED GPIO pin GPIO.21
+	GpioPinDigitalOutput redled2; // LED GPIO pin GPIO.22
+	GpioPinDigitalOutput yellowled1; // LED GPIO pin GPIO.26
+	GpioPinDigitalOutput yellowled2; // LED GPIO pin GPIO.23
+	GpioPinDigitalOutput greenled1; // LED GPIO pin GPIO.27
+	GpioPinDigitalOutput greenled2; // LED GPIO pin GPIO.0
+
+	// provision switch gpio pins as an input pin with its internal pull down resistor enabled
+	GpioPinDigitalInput button1; // Button GPIO pin GPIO.24
+	GpioPinDigitalInput button2; // Button GPIO pin GPIO.1
+
+	// provision buzzer gpio pin as an output pins and buzz
+	GpioPinDigitalOutput buzzer1; // Buzzer GPIO pin GPIO.28
 
 	public Pi4jGPIO() {
 		Pi4jGPIO.PI4JGPIO_INSTANCE = this;
@@ -128,11 +128,34 @@ public class Pi4jGPIO {
 		return PI4JGPIO_INSTANCE;
 	}
 
+	public boolean isPi4jActive() {
+		return pi4jActive;
+	}
 
-	public void ledred1blink(long delay, long duration) {
-		redled1.blink(delay, duration); // LED GPIO pin GPIO.21
+	public void setPi4jActive(boolean pi4jActive) {
+		this.pi4jActive = pi4jActive;
 	}
 	
+	public void ledred1Blink(long delay, long duration) {
+		redled1.blink(delay, duration); // LED GPIO pin GPIO.21
+	}
+
+	public void ledred1On() {
+		if (pi4jActive) {
+			redled1.setState(PinState.HIGH); // LED GPIO pin GPIO.21
+		} else {
+			System.out.println("ledred1 GPIO pin GPIO.21 ON");
+		}
+	}
+
+	public void ledred1Off() {
+		if (pi4jActive) {
+			redled1.setState(PinState.LOW); // LED GPIO pin GPIO.21
+		} else {
+			System.out.println("ledred1 GPIO pin GPIO.21 OFF");
+		}
+	}
+
 	/*
 	if ((RPiIoTTiles.gpio == "") || (RPiIoTTiles.gpio.indexOf("none") != -1)) {
 		System.err.println(
@@ -207,7 +230,7 @@ public class Pi4jGPIO {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				while (alive) {
+				while (pi4jActive) {
 					if (button1.getState().isHigh()) {
 						System.out.println("button1.getState().isHigh()");
 					}
@@ -247,15 +270,12 @@ public class Pi4jGPIO {
 		buzzer1 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_28);
 		
 		gpioSwitchState(); // This interface is extension of GpioPin interface with operation to read digital states.
-		
-		alive = true;
-
+		pi4jActive = true;
 	}
 
 	public void gpioStopAction() {
-		alive = false;
-		// stop all GPIO activity/threads (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks)
-		// Pi4J GPIO controller
+		pi4jActive = false;
+		// stop all GPIO activity/threads (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks) Pi4J GPIO controller
 		gpio.shutdown(); // Implement this method call if you wish to terminate the Pi4J GPIO controller
 		// System.exit(0);
 	}
