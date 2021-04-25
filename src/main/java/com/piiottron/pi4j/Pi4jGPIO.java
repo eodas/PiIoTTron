@@ -70,7 +70,7 @@ import com.pi4j.io.gpio.RaspiPin;
  * Wiring Pi - GPIO Interface library for the Raspberry Pi
  * +-----+-----+---------+------+---+---Pi 4B--+---+------+---------+-----+-----+
  * | BCM | wPi |   Name  | Mode | V | Physical | V | Mode | Name    | wPi | BCM |
-	 * +-----+-----+---------+------+---+----++----+---+------+---------+-----+-----+
+ * +-----+-----+---------+------+---+----++----+---+------+---------+-----+-----+
  * |     |     |    3.3v |      |   |  1 || 2  |   |      | 5v      |     |     |
  * |   2 |   8 |   SDA.1 |   IN | 1 |  3 || 4  |   |      | 5v      |     |     |
  * |   3 |   9 |   SCL.1 |   IN | 1 |  5 || 6  |   |      | 0v      |     |     |
@@ -136,95 +136,120 @@ public class Pi4jGPIO {
 		this.pi4jActive = pi4jActive;
 	}
 	
-	public void ledred1Blink(long delay, long duration) {
-		redled1.blink(delay, duration); // LED GPIO pin GPIO.21
-	}
-
-	public void ledred1On() {
+	// LED GPIO pin GPIO.21
+	public void redled1On() {
 		if (pi4jActive) {
-			redled1.setState(PinState.HIGH); // LED GPIO pin GPIO.21
-		} else {
-			System.out.println("ledred1 GPIO pin GPIO.21 ON");
+			redled1.setState(PinState.HIGH); 
 		}
 	}
 
-	public void ledred1Off() {
+	public void redled1Off() {
 		if (pi4jActive) {
-			redled1.setState(PinState.LOW); // LED GPIO pin GPIO.21
-		} else {
-			System.out.println("ledred1 GPIO pin GPIO.21 OFF");
+			redled1.setState(PinState.LOW); 
 		}
 	}
 
-	/*
-	if ((RPiIoTTiles.gpio == "") || (RPiIoTTiles.gpio.indexOf("none") != -1)) {
-		System.err.println(
-				"Note: create gpio controller e.g. gpio=GPIO_01 not defined in iotbpm.properties file.");
-	} else {
-		gpioSwitchState();
-	}
-
-	return frame;
-	}
-
-
-
-	// Front Door Locked
-	public void panel_6Clicked(MouseEvent e) {
-		// continuously blink the led every 1/2 second for 5 seconds
-		if ((RPiIoTTiles.gpio == "") || (RPiIoTTiles.gpio.indexOf("none") != -1)) {
-			System.err.println(
-					"Note: create gpio controller e.g. gpio=GPIO_01 not defined in iotbpm.properties file.");
-		} else {
-			led1.blink(500, 5000);
+	public void redled1Blink(long delay, long duration) {
+		if (pi4jActive) {
+			redled1.blink(delay, duration); 
 		}
-		com.piiottiles.server.AgentConnect.getInstance().sendPost("TronIoT",
-				"&event=DoorLock");
 	}
 
-	public void panel_12Clicked(MouseEvent e) {
-		// continuously blink the led every 1/2 second for 5 seconds
-		if ((RPiIoTTiles.gpio == "") || (RPiIoTTiles.gpio.indexOf("none") != -1)) {
-			System.err.println(
-					"Note: create gpio controller e.g. gpio=GPIO_01 not defined in iotbpm.properties file.");
-		} else {
-			led1.blink(500, 5000);
+	// LED GPIO pin GPIO.22
+	public void redled2On() {
+		if (pi4jActive) {
+			redled2.setState(PinState.HIGH); 
 		}
+	}
 
-		// IoT Dash Button
-		public void panel_15Clicked(MouseEvent e) {
-			// continuously blink the led every 1/2 second for 5 seconds
-			if ((RPiIoTTiles.gpio == "") || (RPiIoTTiles.gpio.indexOf("none") != -1)) {
-				System.err.println(
-						"Note: create gpio controller e.g. gpio=GPIO_01 not defined in iotbpm.properties file.");
-			} else {
-				led2.blink(500, 5000);
-			}
-			JOptionPane.showMessageDialog(null,
+	public void redled2Off() {
+		if (pi4jActive) {
+			redled2.setState(PinState.LOW); 
+		}
+	}
 
-					public void panel_15DashButtonAlert(String alert) {
-				lblIconLabel_15.setText(alert);
-				panel_15Blink();
-				gpioController();
-			}
+	public void redled2Blink(long delay, long duration) {
+		if (pi4jActive) {
+			redled2.blink(delay, duration); 
+		}
+	}
 
+	// LED GPIO pin GPIO.26
+	public void yellowled1On() {
+		if (pi4jActive) {
+			yellowled1.setState(PinState.HIGH); 
+		}
+	}
 
-			// Dash Button
-			public void panel_17Clicked(MouseEvent e) {
-				if ((RPiIoTTiles.gpio == "") || (RPiIoTTiles.gpio.indexOf("none") != -1)) {
-					System.err.println(
-							"Note: create gpio controller e.g. gpio=GPIO_01 not defined in iotbpm.properties file.");
-				} else {
-					// continuously blink the led every 1/2 second for 15 seconds
-					led1.blink(500, 15000);
-					// continuously blink the led every 1 second
-					led2.blink(1000, 15000);
-				}
-				com.piiottiles.server.AgentConnect.getInstance().sendPost("TronIoT",
-						"&agentCount=0&alarm=IoTTiles&keypress=1.0");
-	*/
+	public void yellowled1Off() {
+		if (pi4jActive) {
+			yellowled1.setState(PinState.LOW); 
+		}
+	}
 
-	// Gpio digital pin interface. 
+	public void yellowled1Blink(long delay, long duration) {
+		if (pi4jActive) {
+			yellowled1.blink(delay, duration); 
+		}
+	}
+
+	// LED GPIO pin GPIO.23
+	public void yellowled2On() {
+		if (pi4jActive) {
+			yellowled2.setState(PinState.HIGH); 
+		}
+	}
+
+	public void yellowled2Off() {
+		if (pi4jActive) {
+			yellowled2.setState(PinState.LOW); 
+		}
+	}
+
+	public void yellowled2Blink(long delay, long duration) {
+		if (pi4jActive) {
+			yellowled2.blink(delay, duration); 
+		}
+	}
+
+	// LED GPIO pin GPIO.27
+	public void greenled1On() {
+		if (pi4jActive) {
+			greenled1.setState(PinState.HIGH); 
+		}
+	}
+
+	public void greenled1Off() {
+		if (pi4jActive) {
+			greenled1.setState(PinState.LOW); 
+		}
+	}
+
+	public void greenled1Blink(long delay, long duration) {
+		if (pi4jActive) {
+			greenled1.blink(delay, duration); 
+		}
+	}
+
+	// LED GPIO pin GPIO.0
+	public void greenled2On() {
+		if (pi4jActive) {
+			greenled2.setState(PinState.HIGH); 
+		}
+	}
+
+	public void greenled2Off() {
+		if (pi4jActive) {
+			greenled2.setState(PinState.LOW); 
+		}
+	}
+
+	public void greenled2Blink(long delay, long duration) {
+		if (pi4jActive) {
+			greenled2.blink(delay, duration); 
+		}
+	}
+
 	// This interface is extension of GpioPin interface with operation to read digital states.
 	public void gpioSwitchState() {
 		new Thread(new Runnable() {
@@ -273,7 +298,7 @@ public class Pi4jGPIO {
 		pi4jActive = true;
 	}
 
-	public void gpioStopAction() {
+	public void gpioShutdown() {
 		pi4jActive = false;
 		// stop all GPIO activity/threads (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks) Pi4J GPIO controller
 		gpio.shutdown(); // Implement this method call if you wish to terminate the Pi4J GPIO controller

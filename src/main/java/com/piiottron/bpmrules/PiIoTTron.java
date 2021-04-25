@@ -222,7 +222,7 @@ public class PiIoTTron {
 	}
 
 	public void stopPi4jGPIO() {
-		pi4jgpio.gpioStopAction();
+		pi4jgpio.gpioShutdown();
 	}
 	
 	public void getIPAddress() {
