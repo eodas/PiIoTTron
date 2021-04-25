@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- origin at X=0.0 Y=0.0 -->
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns="http://www.jboss.org/drools" xmlns:ns="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" id="_sfcLkIdtEDmz0-CyaZxXaA" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.5.2.SNAPSHOT-v20200602-1600-B1" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:itemDefinition id="_idItem" isCollection="false" structureRef="String"/>
+  <bpmn2:itemDefinition id="_nameItem" isCollection="false" structureRef="String"/>
+  <bpmn2:itemDefinition id="_eventItem" isCollection="false" structureRef="String"/>
+  <bpmn2:itemDefinition id="_addressItem" isCollection="false" structureRef="String"/>
+  <bpmn2:itemDefinition id="_textMessageItem" isCollection="false" structureRef="String"/>
+  <bpmn2:itemDefinition id="_tempItem" isCollection="false" structureRef="String"/>
+  <bpmn2:itemDefinition id="_lightItem" isCollection="false" structureRef="String"/>
+  <bpmn2:itemDefinition id="_keypressItem" isCollection="false" structureRef="String"/>
+  <bpmn2:itemDefinition id="_alarmItem" isCollection="false" structureRef="String"/>
+  <bpmn2:process id="com.PiIoTTronLight" drools:packageName="com.PiIoTTronLightPackage" drools:version="1.0" drools:adHoc="false" name="Light Module Pi IoT Tron" isExecutable="true" processType="Public">
+    <bpmn2:property id="id" itemSubjectRef="_idItem" name="id"/>
+    <bpmn2:property id="name" itemSubjectRef="_nameItem" name="name"/>
+    <bpmn2:property id="event" itemSubjectRef="_eventItem" name="event"/>
+    <bpmn2:property id="address" itemSubjectRef="_addressItem" name="address"/>
+    <bpmn2:property id="textMessage" itemSubjectRef="_textMessageItem" name="textMessage"/>
+    <bpmn2:property id="temp" itemSubjectRef="_tempItem" name="temp"/>
+    <bpmn2:property id="light" itemSubjectRef="_lightItem" name="light"/>
+    <bpmn2:property id="keypress" itemSubjectRef="_keypressItem" name="keypress"/>
+    <bpmn2:property id="alarm" itemSubjectRef="_alarmItem" name="alarm"/>
+    <bpmn2:sequenceFlow id="_5609F7B4-9798-42D2-A2CE-9BA3D977612C" sourceRef="_FA82218C-F117-424A-ACA6-7C41E6184885" targetRef="_ECA33CB8-A7CD-4A60-9BCC-E32B98DA7328"/>
+    <bpmn2:sequenceFlow id="_9E7951A8-233D-4FA3-B15A-80B7C88E8F8F" sourceRef="_BCC79340-0DDA-4C27-A68D-167253F06B18" targetRef="_FA82218C-F117-424A-ACA6-7C41E6184885"/>
+    <bpmn2:sequenceFlow id="_BA996FA0-DC38-4D00-A061-DFDDA12620D4" sourceRef="_BCC79340-0DDA-4C27-A68D-167253F06B18" targetRef="_5A6CF56D-51D6-4D59-9721-F1A7B76195F9">
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_1" language="http://www.java.com/java"><![CDATA[return KieFunctions.equalsTo(com.piiottron.model.StateList.getInstance().getState("LightModule"), "On");]]></bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_D1D76E33-449A-49BA-9DFA-BE8EA8137CA7" sourceRef="_5A6CF56D-51D6-4D59-9721-F1A7B76195F9" targetRef="_5B46FD94-E0F8-493E-A1E6-1EDCE9AEFF88"/>
+    <bpmn2:sequenceFlow id="_060DF5AB-31DF-4EC1-B47E-577DCECAC391" sourceRef="_D6DE1455-8D7F-4D23-BB9C-72A1828B8A50" targetRef="_BCC79340-0DDA-4C27-A68D-167253F06B18">
+      <bpmn2:extensionElements>
+        <drools:metaData name="isAutoConnection.target">
+          <drools:metaValue><![CDATA[true]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_1116E12C-55C3-480F-8F64-B76103E96D13" sourceRef="_B4691D87-F891-48D7-9F91-9141E114727A" targetRef="_D6DE1455-8D7F-4D23-BB9C-72A1828B8A50"/>
+    <bpmn2:endEvent id="_ECA33CB8-A7CD-4A60-9BCC-E32B98DA7328" name="Pi Light On">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Pi Light On]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_5609F7B4-9798-42D2-A2CE-9BA3D977612C</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:scriptTask id="_FA82218C-F117-424A-ACA6-7C41E6184885" name="Light On" scriptFormat="http://www.java.com/java">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Light On]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_9E7951A8-233D-4FA3-B15A-80B7C88E8F8F</bpmn2:incoming>
+      <bpmn2:outgoing>_5609F7B4-9798-42D2-A2CE-9BA3D977612C</bpmn2:outgoing>
+      <bpmn2:script>com.piiottron.pi4j.Pi4jGPIO.getInstance().ledred1On();</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:scriptTask id="_5A6CF56D-51D6-4D59-9721-F1A7B76195F9" name="Light Off" scriptFormat="http://www.java.com/java">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Light Off]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_BA996FA0-DC38-4D00-A061-DFDDA12620D4</bpmn2:incoming>
+      <bpmn2:outgoing>_D1D76E33-449A-49BA-9DFA-BE8EA8137CA7</bpmn2:outgoing>
+      <bpmn2:script>com.piiottron.pi4j.Pi4jGPIO.getInstance().ledred1Off();</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:exclusiveGateway id="_BCC79340-0DDA-4C27-A68D-167253F06B18" drools:dg="_9E7951A8-233D-4FA3-B15A-80B7C88E8F8F" name="Light Module Gateway" gatewayDirection="Diverging" default="_9E7951A8-233D-4FA3-B15A-80B7C88E8F8F">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Light Module Gateway]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_060DF5AB-31DF-4EC1-B47E-577DCECAC391</bpmn2:incoming>
+      <bpmn2:outgoing>_9E7951A8-233D-4FA3-B15A-80B7C88E8F8F</bpmn2:outgoing>
+      <bpmn2:outgoing>_BA996FA0-DC38-4D00-A061-DFDDA12620D4</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:endEvent id="_5B46FD94-E0F8-493E-A1E6-1EDCE9AEFF88" name="Pi Light  Off">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Pi Light  Off]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_D1D76E33-449A-49BA-9DFA-BE8EA8137CA7</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:scriptTask id="_D6DE1455-8D7F-4D23-BB9C-72A1828B8A50" name="Prepare Facts" scriptFormat="http://www.java.com/java">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Prepare Facts]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_1116E12C-55C3-480F-8F64-B76103E96D13</bpmn2:incoming>
+      <bpmn2:outgoing>_060DF5AB-31DF-4EC1-B47E-577DCECAC391</bpmn2:outgoing>
+      <bpmn2:script>kcontext.getKnowledgeRuntime().insert(kcontext.getProcessInstance());</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:startEvent id="_B4691D87-F891-48D7-9F91-9141E114727A" name="Start Event">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Start Event]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>_1116E12C-55C3-480F-8F64-B76103E96D13</bpmn2:outgoing>
+    </bpmn2:startEvent>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_Process_1" bpmnElement="com.PiIoTTronLight">
+      <bpmndi:BPMNShape id="shape__B4691D87-F891-48D7-9F91-9141E114727A" bpmnElement="_B4691D87-F891-48D7-9F91-9141E114727A">
+        <dc:Bounds height="56.0" width="56.0" x="182.0" y="171.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="15.0" width="58.0" x="181.0" y="227.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__D6DE1455-8D7F-4D23-BB9C-72A1828B8A50" bpmnElement="_D6DE1455-8D7F-4D23-BB9C-72A1828B8A50">
+        <dc:Bounds height="102.0" width="154.0" x="320.0" y="148.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="15.0" width="77.0" x="358.0" y="191.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__5B46FD94-E0F8-493E-A1E6-1EDCE9AEFF88" bpmnElement="_5B46FD94-E0F8-493E-A1E6-1EDCE9AEFF88">
+        <dc:Bounds height="56.0" width="56.0" x="719.0" y="40.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="15.0" width="62.0" x="716.0" y="96.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__BCC79340-0DDA-4C27-A68D-167253F06B18" bpmnElement="_BCC79340-0DDA-4C27-A68D-167253F06B18" isMarkerVisible="true">
+        <dc:Bounds height="56.0" width="56.0" x="541.0" y="171.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="30.0" width="79.0" x="530.0" y="227.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__5A6CF56D-51D6-4D59-9721-F1A7B76195F9" bpmnElement="_5A6CF56D-51D6-4D59-9721-F1A7B76195F9">
+        <dc:Bounds height="102.0" width="154.0" x="492.0" y="17.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="15.0" width="45.0" x="546.0" y="60.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__FA82218C-F117-424A-ACA6-7C41E6184885" bpmnElement="_FA82218C-F117-424A-ACA6-7C41E6184885">
+        <dc:Bounds height="102.0" width="154.0" x="492.0" y="279.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="15.0" width="46.0" x="546.0" y="322.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__ECA33CB8-A7CD-4A60-9BCC-E32B98DA7328" bpmnElement="_ECA33CB8-A7CD-4A60-9BCC-E32B98DA7328">
+        <dc:Bounds height="56.0" width="56.0" x="722.0" y="302.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="15.0" width="60.0" x="720.0" y="358.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_shape__B4691D87-F891-48D7-9F91-9141E114727A_to_shape__D6DE1455-8D7F-4D23-BB9C-72A1828B8A50" bpmnElement="_1116E12C-55C3-480F-8F64-B76103E96D13" sourceElement="shape__B4691D87-F891-48D7-9F91-9141E114727A" targetElement="shape__D6DE1455-8D7F-4D23-BB9C-72A1828B8A50">
+        <di:waypoint xsi:type="dc:Point" x="210.0" y="199.0"/>
+        <di:waypoint xsi:type="dc:Point" x="320.0" y="199.0"/>
+        <bpmndi:BPMNLabel/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__D6DE1455-8D7F-4D23-BB9C-72A1828B8A50_to_shape__BCC79340-0DDA-4C27-A68D-167253F06B18" bpmnElement="_060DF5AB-31DF-4EC1-B47E-577DCECAC391" sourceElement="shape__D6DE1455-8D7F-4D23-BB9C-72A1828B8A50" targetElement="shape__BCC79340-0DDA-4C27-A68D-167253F06B18">
+        <di:waypoint xsi:type="dc:Point" x="397.0" y="199.0"/>
+        <di:waypoint xsi:type="dc:Point" x="541.0" y="199.0"/>
+        <bpmndi:BPMNLabel/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__5A6CF56D-51D6-4D59-9721-F1A7B76195F9_to_shape__5B46FD94-E0F8-493E-A1E6-1EDCE9AEFF88" bpmnElement="_D1D76E33-449A-49BA-9DFA-BE8EA8137CA7" sourceElement="shape__5A6CF56D-51D6-4D59-9721-F1A7B76195F9" targetElement="shape__5B46FD94-E0F8-493E-A1E6-1EDCE9AEFF88">
+        <di:waypoint xsi:type="dc:Point" x="569.0" y="68.0"/>
+        <di:waypoint xsi:type="dc:Point" x="719.0" y="68.0"/>
+        <bpmndi:BPMNLabel/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__BCC79340-0DDA-4C27-A68D-167253F06B18_to_shape__5A6CF56D-51D6-4D59-9721-F1A7B76195F9" bpmnElement="_BA996FA0-DC38-4D00-A061-DFDDA12620D4" sourceElement="shape__BCC79340-0DDA-4C27-A68D-167253F06B18" targetElement="shape__5A6CF56D-51D6-4D59-9721-F1A7B76195F9">
+        <di:waypoint xsi:type="dc:Point" x="569.0" y="199.0"/>
+        <di:waypoint xsi:type="dc:Point" x="569.0" y="119.0"/>
+        <bpmndi:BPMNLabel/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__BCC79340-0DDA-4C27-A68D-167253F06B18_to_shape__FA82218C-F117-424A-ACA6-7C41E6184885" bpmnElement="_9E7951A8-233D-4FA3-B15A-80B7C88E8F8F" sourceElement="shape__BCC79340-0DDA-4C27-A68D-167253F06B18" targetElement="shape__FA82218C-F117-424A-ACA6-7C41E6184885">
+        <di:waypoint xsi:type="dc:Point" x="569.0" y="199.0"/>
+        <di:waypoint xsi:type="dc:Point" x="569.0" y="279.0"/>
+        <bpmndi:BPMNLabel/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__FA82218C-F117-424A-ACA6-7C41E6184885_to_shape__ECA33CB8-A7CD-4A60-9BCC-E32B98DA7328" bpmnElement="_5609F7B4-9798-42D2-A2CE-9BA3D977612C" sourceElement="shape__FA82218C-F117-424A-ACA6-7C41E6184885" targetElement="shape__ECA33CB8-A7CD-4A60-9BCC-E32B98DA7328">
+        <di:waypoint xsi:type="dc:Point" x="646.0" y="330.0"/>
+        <di:waypoint xsi:type="dc:Point" x="684.0" y="330.0"/>
+        <di:waypoint xsi:type="dc:Point" x="722.0" y="330.0"/>
+        <bpmndi:BPMNLabel/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
