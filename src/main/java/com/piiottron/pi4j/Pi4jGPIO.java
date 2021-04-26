@@ -113,7 +113,8 @@ public class Pi4jGPIO {
 	GpioPinDigitalOutput greenled1; // LED GPIO pin GPIO.27
 	GpioPinDigitalOutput greenled2; // LED GPIO pin GPIO.0
 
-	// provision switch gpio pins as an input pin with its internal pull down resistor enabled
+	// provision switch gpio pins as an input pin with its internal pull down
+	// resistor enabled
 	GpioPinDigitalInput button1; // Button GPIO pin GPIO.24
 	GpioPinDigitalInput button2; // Button GPIO pin GPIO.1
 
@@ -135,122 +136,123 @@ public class Pi4jGPIO {
 	public void setPi4jActive(boolean pi4jActive) {
 		this.pi4jActive = pi4jActive;
 	}
-	
+
 	// LED GPIO pin GPIO.21
 	public void redled1On() {
 		if (pi4jActive) {
-			redled1.setState(PinState.HIGH); 
+			redled1.setState(PinState.HIGH);
 		}
 	}
 
 	public void redled1Off() {
 		if (pi4jActive) {
-			redled1.setState(PinState.LOW); 
+			redled1.setState(PinState.LOW);
 		}
 	}
 
 	public void redled1Blink(long delay, long duration) {
 		if (pi4jActive) {
-			redled1.blink(delay, duration); 
+			redled1.blink(delay, duration);
 		}
 	}
 
 	// LED GPIO pin GPIO.22
 	public void redled2On() {
 		if (pi4jActive) {
-			redled2.setState(PinState.HIGH); 
+			redled2.setState(PinState.HIGH);
 		}
 	}
 
 	public void redled2Off() {
 		if (pi4jActive) {
-			redled2.setState(PinState.LOW); 
+			redled2.setState(PinState.LOW);
 		}
 	}
 
 	public void redled2Blink(long delay, long duration) {
 		if (pi4jActive) {
-			redled2.blink(delay, duration); 
+			redled2.blink(delay, duration);
 		}
 	}
 
 	// LED GPIO pin GPIO.26
 	public void yellowled1On() {
 		if (pi4jActive) {
-			yellowled1.setState(PinState.HIGH); 
+			yellowled1.setState(PinState.HIGH);
 		}
 	}
 
 	public void yellowled1Off() {
 		if (pi4jActive) {
-			yellowled1.setState(PinState.LOW); 
+			yellowled1.setState(PinState.LOW);
 		}
 	}
 
 	public void yellowled1Blink(long delay, long duration) {
 		if (pi4jActive) {
-			yellowled1.blink(delay, duration); 
+			yellowled1.blink(delay, duration);
 		}
 	}
 
 	// LED GPIO pin GPIO.23
 	public void yellowled2On() {
 		if (pi4jActive) {
-			yellowled2.setState(PinState.HIGH); 
+			yellowled2.setState(PinState.HIGH);
 		}
 	}
 
 	public void yellowled2Off() {
 		if (pi4jActive) {
-			yellowled2.setState(PinState.LOW); 
+			yellowled2.setState(PinState.LOW);
 		}
 	}
 
 	public void yellowled2Blink(long delay, long duration) {
 		if (pi4jActive) {
-			yellowled2.blink(delay, duration); 
+			yellowled2.blink(delay, duration);
 		}
 	}
 
 	// LED GPIO pin GPIO.27
 	public void greenled1On() {
 		if (pi4jActive) {
-			greenled1.setState(PinState.HIGH); 
+			greenled1.setState(PinState.HIGH);
 		}
 	}
 
 	public void greenled1Off() {
 		if (pi4jActive) {
-			greenled1.setState(PinState.LOW); 
+			greenled1.setState(PinState.LOW);
 		}
 	}
 
 	public void greenled1Blink(long delay, long duration) {
 		if (pi4jActive) {
-			greenled1.blink(delay, duration); 
+			greenled1.blink(delay, duration);
 		}
 	}
 
 	// LED GPIO pin GPIO.0
 	public void greenled2On() {
 		if (pi4jActive) {
-			greenled2.setState(PinState.HIGH); 
+			greenled2.setState(PinState.HIGH);
 		}
 	}
 
 	public void greenled2Off() {
 		if (pi4jActive) {
-			greenled2.setState(PinState.LOW); 
+			greenled2.setState(PinState.LOW);
 		}
 	}
 
 	public void greenled2Blink(long delay, long duration) {
 		if (pi4jActive) {
-			greenled2.blink(delay, duration); 
+			greenled2.blink(delay, duration);
 		}
 	}
 
-	// This interface is extension of GpioPin interface with operation to read digital states.
+	// This interface is extension of GpioPin interface with operation to read
+	// digital states.
 	public void gpioSwitchState() {
 		new Thread(new Runnable() {
 			@Override
@@ -270,10 +272,11 @@ public class Pi4jGPIO {
 				}
 			}
 		}).start();
-	}	
-  
+	}
+
 	/**
-	 * This code demonstrates how to perform simple blinking LED logic of a GPIO pin on the Raspberry Pi using the Pi4J library.
+	 * This code demonstrates how to perform simple blinking LED logic of a GPIO pin
+	 * on the Raspberry Pi using the Pi4J library.
 	 */
 	public void gpioStartController() {
 		// create gpio controller
@@ -287,20 +290,23 @@ public class Pi4jGPIO {
 		greenled1 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_27);
 		greenled2 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00);
 
-		// provision switch gpio pins as an input pin with its internal pull down resistor enabled
+		// provision switch gpio pins as an input pin with its internal pull down
+		// resistor enabled
 		button1 = gpio.provisionDigitalInputPin(RaspiPin.GPIO_24, PinPullResistance.PULL_DOWN);
 		button2 = gpio.provisionDigitalInputPin(RaspiPin.GPIO_01, PinPullResistance.PULL_DOWN);
 
 		// provision buzzer gpio pin as an output pins and buzz
 		buzzer1 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_28);
-		
-		gpioSwitchState(); // This interface is extension of GpioPin interface with operation to read digital states.
+
+		gpioSwitchState(); // This interface is extension of GpioPin interface with operation to read
+							// digital states.
 		pi4jActive = true;
 	}
 
 	public void gpioShutdown() {
 		pi4jActive = false;
-		// stop all GPIO activity/threads (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks) Pi4J GPIO controller
+		// stop all GPIO activity/threads (this method will forcefully shutdown all GPIO
+		// monitoring threads and scheduled tasks) Pi4J GPIO controller
 		gpio.shutdown(); // Implement this method call if you wish to terminate the Pi4J GPIO controller
 		// System.exit(0);
 	}
