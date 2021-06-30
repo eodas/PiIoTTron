@@ -1,0 +1,120 @@
+package com_automation
+
+// list import classes
+import com.piiottron.model.StateList;
+import com.piiottron.model.DeviceEvent;
+
+// default dialect for the semantic code will be JAVA
+dialect "java"
+
+// 100111 - Arduino Tron IoT
+
+rule "processID rule for device ID: 100222 - Temperature-Humidity"
+	when
+		$event : DeviceEvent( $eventId : id, $eventId == "100222" )
+	then
+		com.piiottron.model.StateList.getInstance().putState("processID", "com.Temperature");
+end
+
+rule "Rules for device ID: 100222 - Temperature-Humidity"
+ 	no-loop
+    when
+    	// event used to change update Temperature-Humidity
+		$event : DeviceEvent( $eventId : id, $eventId == "100222", $temp : temp, $humidity : humidity )
+	then
+		System.out.println($event.getName() + " Temp:" + $temp + "  Humidity:" + $humidity);
+end
+
+rule "processID rule for device ID: 100223 - Temperature-Humidity"
+	when
+		$event : DeviceEvent( $eventId : id, $eventId == "100223" )
+	then
+		com.piiottron.model.StateList.getInstance().putState("processID", "com.TemperatureOutside");
+end
+
+rule "processID rule for device ID: 100333 - Door Lock IoT-MCU"
+	when
+		$event : DeviceEvent( $eventId : id, $eventId == "100333" )
+	then
+		com.piiottron.model.StateList.getInstance().putState("processID", "com.DoorLock");
+end
+
+rule "Rules for device ID: 100333 - Door Lock IoT-MCU"
+ 	no-loop
+    when
+    	// event used to change update Arduino Door Lock/Unlock IoT-MCU ESP01
+		$event : DeviceEvent( $eventId : id, $eventId == "100333" )
+    then
+    	String result = (com.piiottron.model.StateList.getInstance().getState("DoorLock") == "Locked") ? "Unlocked" : "Locked";
+		com.piiottron.model.StateList.getInstance().putState("DoorLock", result); 
+		System.out.println($event.getName() + " is " + result);
+end
+
+// 100444 - Arduino IoT-SensorTag
+
+rule "processID rule for device ID: 100555 - Arduino Dash Button"
+	when
+		$event : DeviceEvent( $eventId : id, $eventId == "100555" )
+	then
+		com.piiottron.model.StateList.getInstance().putState("processID", "com.IoTDashButton");
+end
+
+rule "Rules for device ID: 100555 - Arduino Dash Button"
+ 	no-loop
+    when
+    	// event used to change update Arduino Dash Button ESP01
+    	$event : DeviceEvent( $eventId : id, $eventId == "100555", $alarm : alarm )
+    then
+		System.out.println("Dash Button > " + $event.getName());
+end
+
+rule "processID rule for device ID: 100666 - Door Open Sensor ESP01"
+	when
+		$event : DeviceEvent( $eventId : id, $eventId == "100666" )
+	then
+		com.piiottron.model.StateList.getInstance().putState("processID", "com.DoorOpenSensor");
+end
+
+rule "Rules for device ID: 100666 - Door Open Sensor ESP01"
+ 	no-loop
+    when
+    	// event used to change update Door Open Sensor ESP01
+		$event : DeviceEvent( $eventId : id, $eventId == "100666" )
+    then
+		System.out.println("Opened Sensor > " + $event.getName());
+end
+
+rule "processID rule for device ID: 100777 - Light Module IoT-MCU"
+	when
+		$event : DeviceEvent( $eventId : id, $eventId == "100777" )
+	then
+		com.piiottron.model.StateList.getInstance().putState("processID", "com.LightModule");
+end
+
+rule "Rules for device ID: 100777 - Light Module IoT-MCU"
+ 	no-loop
+    when
+    	// event used to change update Arduino Light Module IoT-MCU ESP01
+		$event : DeviceEvent( $eventId : id, $eventId == "100777" )
+    then
+    	String result = (com.piiottron.model.StateList.getInstance().getState("LightModule") == "On") ? "Off" : "On";
+    	com.piiottron.model.StateList.getInstance().putState("LightModule", result); 
+		System.out.println("Light Module > " + $event.getName() + " is " + result);
+end
+
+rule "processID rule for device ID: 100888 - Arduino Tron IoT Display"
+	when
+		$event : DeviceEvent( $eventId : id, $eventId == "100888" )
+	then
+		com.piiottron.model.StateList.getInstance().putState("processID", "com.TronIoTDisplay");
+end
+
+rule "Rules for device ID: 100888 - Arduino Tron IoT Display - Temperature-Humidity"
+ 	no-loop
+    when
+    	// event used to change update Temperature-Humidity
+		$event : DeviceEvent( $eventId : id, $eventId == "100888", $temp : temp, $humidity : humidity )
+	then
+		String results = "Tron IoT Temp > " + $event.getName() + " Temp:" + $temp + "  Humidity:" + $humidity;
+		System.out.println(results);
+end

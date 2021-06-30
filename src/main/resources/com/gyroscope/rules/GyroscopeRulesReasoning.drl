@@ -1,0 +1,44 @@
+package com_gyroscope
+
+// list import classes
+import com.piiottron.model.StateList;
+import com.piiottron.model.DeviceEvent;
+
+// default dialect for the semantic code will be JAVA
+dialect "java"
+
+rule "Device Gyroscope Readings"
+	when
+        $event : DeviceEvent( $eventId : id, $accel_x : accel_x, $accel_y : accel_y, $accel_z : accel_z, $gyro_x : gyro_x, $gyro_y : gyro_y, $gyro_z : gyro_z, $magnet_x : magnet_x, $magnet_y : magnet_y, $magnet_z : magnet_z )
+	then
+		System.out.println($event.getName() + "  accel " + $accel_x + " " + $accel_y + " " + $accel_z + " " + "  gyro " + $gyro_x + " " + $gyro_y + " " + $gyro_z + " " + "  magnet " + $magnet_x + " " + $magnet_y + " " + $magnet_z );
+end
+
+rule "Device Gyroscope Positive zBias"
+	when
+        $event : DeviceEvent( $eventId : id, $magnet_z : magnet_z, $magnet_z > 0 )
+	then
+		System.out.println($event.getName() + " Device <<Face Up>>");
+end
+
+rule "Device Gyroscope Negative zBias"
+	when
+        $event : DeviceEvent( $eventId : id, $magnet_z : magnet_z, $magnet_z < 0 )
+	then
+		System.out.println($event.getName() + " Device <<Face Down>>");
+end
+
+rule "Device Address Location"
+	when
+        $event : DeviceEvent( $eventId : id, $address : address, $address != "null" )
+	then
+		System.out.println($event.getName() + " location " + $address);
+end
+
+rule "Device is in Motion"
+	when
+        $event : DeviceEvent( $eventId : id, $gyro_x : gyro_x, $gyro_y : gyro_y, $gyro_z : gyro_z, gyro_x != 0, gyro_y != 0, gyro_z != 0 )
+	then
+		System.out.println("Device " + $event.getName() + " in Motion");
+end
+

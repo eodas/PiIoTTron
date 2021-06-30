@@ -1,0 +1,46 @@
+package com_piiottron
+
+// list import classes
+import com.piiottron.model.Event;
+
+// default dialect for the semantic code will be JAVA
+dialect "java"
+
+// 100111 - Jarvis Pi IoT Tron
+
+rule "processID: rule for device ID: 100111 - Pi IoT Tron Device Module IoT-Jarvis"
+	when
+		$event : Event( $eventId : id, $eventId == "100111" )
+	then
+	//	com.piiottron.model.StateList.getInstance().putState("processID", "com.JarvisPiIoTTron");
+		System.out.println("com.JarvisPiIoTTron");
+end
+
+rule "Module: rule for device ID: 100111 - Pi IoT Tron Device Module IoT-Jarvis"
+ 	no-loop
+    when
+    	// event used to change update Pi IoT Tron GPIO Light Module
+		$event : Event( $eventId : id, $eventId == "100111" )
+    then
+		System.out.println("Jarvis Pi IoT Tron Device Module > " + $event.getTextMessage());
+end
+
+// 100222 - Atom Pi IoT Tron
+
+rule "processID: rule for device ID: 100222 - Pi IoT Tron Device Module IoT-Atom"
+	when
+		$event : Event( $eventId : id, $eventId == "100222" )
+	then
+	//	com.piiottron.model.StateList.getInstance().putState("processID", "com.AtomPiIoTTron");
+		System.out.println("com.AtomPiIoTTron");
+		
+end
+
+rule "Module: rule for device ID: 100222 - Pi IoT Tron Device Module IoT-Atom"
+ 	no-loop
+    when
+    	// event used to change update Pi IoT Tron GPIO Light Module
+		$event : Event( $eventId : id, $eventId == "100222" )
+    then
+		System.out.println("Atom Pi IoT Tron Device Module > " + $event.getTextMessage());
+end

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
+
+	<kbase name="kbaseAutomation"
+		packages="com_automation, com.automation.process">
+		<ksession name="ksession-automation">
+		</ksession>
+	</kbase>
+
+	<kbase name="kbasepiiottron"
+		packages="com_piiottron, com.piiottron.process">
+		<ksession name="ksession-piiottron">
+		</ksession>
+	</kbase>
+
+	<kbase name="kbaseEnvironment"
+		packages="com_environment, com.environment.process">
+		<ksession name="ksession-environment">
+		</ksession>
+	</kbase>
+
+	<kbase name="kbaseGPSposition"
+		packages="com_gpsposition, com.gpsposition.process">
+		<ksession name="ksession-gpsposition">
+		</ksession>
+	</kbase>
+
+	<kbase name="kbaseGyroscope"
+		packages="com_gyroscope, com.gyroscope.process">
+		<ksession name="ksession-gyroscope">
+		</ksession>
+	</kbase>
+
+	<kbase name="kbaseLight"
+		packages="com_light, com.light.process">
+		<ksession name="ksession-light">
+		</ksession>
+	</kbase>
+
+	<kbase name="kbaseIoTControl"
+		packages="com_iotcontrol, com.iotcontrol.process">
+		<ksession name="ksession-iotcontrol">
+		</ksession>
+	</kbase>
+</kmodule>

@@ -1,0 +1,60 @@
+package com_light
+
+// list import classes
+import com.piiottron.model.StateList;
+import com.piiottron.model.DeviceEvent;
+
+// default dialect for the semantic code will be JAVA
+dialect "java"
+
+rule "event=allEvents Rule"
+    when
+        $event : DeviceEvent( $eventId : id, event == "allEvents" )
+    then
+		System.out.println("Rule event=allEvents: " + $event.getEvent() + " - " + $event.getName() + " - " + " Light Value: " + $event.getLight());
+end
+
+rule "keypress1.0 Rule"
+    when
+        $event : DeviceEvent( $eventId : id, event == "keypress1.0" )
+    then
+		System.out.println("Rule keypress1.0: " + $event.getEvent() + " - " + $event.getName() + " - " + " Light Value: " + $event.getLight());
+end
+
+rule "keypress2.0 Rule"
+    when
+        $event : DeviceEvent( $eventId : id, event == "keypress2.0" )
+    then
+		System.out.println("Rule keypress2.0: " + $event.getEvent() + " - " + $event.getName() + " - " + " Light Value: " + $event.getLight());
+end
+
+rule "keypress4.0 reedRelay"
+    when
+        $event : DeviceEvent( $eventId : id, event == "keypress4.0")
+    then
+		System.out.println("Rule keypress4.0 reedRelay: " + $event.getEvent() + " - " + $event.getName() + " - " + " Light Value: " + $event.getLight());
+end
+
+rule "keypress8.0 proximity"
+    when
+        $event : DeviceEvent( $eventId : id, event == "keypress8.0") 
+    then
+		System.out.println("Rule keypress8.0 proximity: " + $event.getEvent() + " - " + $event.getName() + " - " + " Light Value: " + $event.getLight());
+end
+
+//declare any ruleflow-group rules to fire in the jBPM com.Light process
+rule "Rule for device ID: 100111"
+	ruleflow-group "Light Rule Flow"
+	when
+		$event : DeviceEvent( $eventId : id, $eventId == "100111" )
+	then
+		System.out.println("ruleflow-group device ID: 100111 " + $event.getName() + " - " + $event.getEvent());
+end
+
+rule "Rule for device ID: 100222"
+	ruleflow-group "Light Rule Flow"
+	when
+		$event : DeviceEvent( $eventId : id, $eventId == "100222" )
+	then
+		System.out.println("ruleflow-group device ID: 100222 " + $event.getName() + " - " + $event.getEvent());
+end

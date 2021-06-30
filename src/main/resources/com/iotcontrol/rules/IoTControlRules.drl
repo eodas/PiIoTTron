@@ -1,0 +1,63 @@
+package com_iotcontrol
+
+// list import classes
+import com.piiottron.model.StateList;
+import com.piiottron.model.DeviceEvent;
+
+// default dialect for the semantic code will be JAVA
+dialect "java"
+
+//declare rule to fire when temp is over 73
+rule "temperature reading too warm"
+	when
+        $event : DeviceEvent( $eventId : id, $eventId == "100111", $temp : temp, $temp > "73" )
+	then
+    	com.piiottron.model.StateList.getInstance().putState("dht11", "on");
+    	com.piiottron.model.StateList.getInstance().putState("motor", "on");
+end
+
+//declare rule to fire when temp 73 or below
+rule "temperature reading temp normal"
+	when
+        $event : DeviceEvent( $eventId : id, $eventId == "100111", $temp : temp, $temp <= "73" )
+	then
+    	com.piiottron.model.StateList.getInstance().putState("dht11", "off");
+    	com.piiottron.model.StateList.getInstance().putState("motor", "off");
+end
+
+//declare rules to switch fan motor on/off
+rule "rule for manual control switch fan motor on"
+    when
+    	// event used to change update switch fan motor on
+    	$event : DeviceEvent( $eventId : id, $eventId == "100222", $switchEvent : event, $switchEvent == "on" )
+    then
+    	com.piiottron.model.StateList.getInstance().putState("switch", "on");
+    	com.piiottron.model.StateList.getInstance().putState("motor", "on");
+end
+
+rule "rule for manual control switch fan motor off"
+    when
+    	$event : DeviceEvent( $eventId : id, $eventId == "100222", $switchEvent : event, $switchEvent == "off" )
+    then
+    	com.piiottron.model.StateList.getInstance().putState("switch", "off");
+end
+
+rule "rule to overrides manual control switch fan motor off"
+    when
+    	$temp : String() from com.piiottron.model.StateList.getInstance().getState("dht11") 
+     	$switch : String() from com.piiottron.model.StateList.getInstance().getState("switch")
+        eval(($temp == "off") || ($temp == ""))
+        eval($switch == "off")
+	then
+    	com.piiottron.model.StateList.getInstance().putState("motor", "off");
+end	
+
+rule "rule to overrides manual control switch fan motor off message"
+    when
+    	$temp : String() from com.piiottron.model.StateList.getInstance().getState("dht11") 
+     	$switch : String() from com.piiottron.model.StateList.getInstance().getState("switch")
+        eval($temp == "on")
+        eval($switch == "off")
+	then
+		System.out.println(">>> Override manual control switch fan motor Off <<<");
+end	
