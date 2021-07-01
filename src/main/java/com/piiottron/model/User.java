@@ -13,12 +13,9 @@ public class User {
 	public String phone;
 	public String password;
 	public boolean readonly;
-	public boolean administrator;
 	public boolean disabled;
-	public int deviceLimit;
-	public int userLimit;
+	public boolean administrator;
 	public boolean deviceReadonly;
-	public boolean limitCommands;
 
 	public String getLogin() {
 		return login;
@@ -68,14 +65,6 @@ public class User {
 		this.readonly = readonly;
 	}
 
-	public boolean isAdministrator() {
-		return administrator;
-	}
-
-	public void setAdministrator(boolean administrator) {
-		this.administrator = administrator;
-	}
-
 	public boolean isDisabled() {
 		return disabled;
 	}
@@ -84,20 +73,12 @@ public class User {
 		this.disabled = disabled;
 	}
 
-	public int getDeviceLimit() {
-		return deviceLimit;
+	public boolean isAdministrator() {
+		return administrator;
 	}
 
-	public void setDeviceLimit(int deviceLimit) {
-		this.deviceLimit = deviceLimit;
-	}
-
-	public int getUserLimit() {
-		return userLimit;
-	}
-
-	public void setUserLimit(int userLimit) {
-		this.userLimit = userLimit;
+	public void setAdministrator(boolean administrator) {
+		this.administrator = administrator;
 	}
 
 	public boolean isDeviceReadonly() {
@@ -106,14 +87,6 @@ public class User {
 
 	public void setDeviceReadonly(boolean deviceReadonly) {
 		this.deviceReadonly = deviceReadonly;
-	}
-
-	public boolean isLimitCommands() {
-		return limitCommands;
-	}
-
-	public void setLimitCommands(boolean limitCommands) {
-		this.limitCommands = limitCommands;
 	}
 
 	public Logger getLogger() {

@@ -23,7 +23,7 @@ public class Device {
 	public String purpose;
 	public String description;
 	public String location;
-	public String typeArn;
+	public String ipAddress;
 	public String model;
 	public String process;
 	public String status;
@@ -81,12 +81,12 @@ public class Device {
 		this.location = location;
 	}
 
-	public String getTypeArn() {
-		return typeArn;
+	public String getIpAddress() {
+		return ipAddress;
 	}
 
-	public void setTypeArn(String typeArn) {
-		this.typeArn = typeArn;
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
 	}
 
 	public String getModel() {
@@ -184,8 +184,8 @@ public class Device {
 			case "location":
 				setLocation(value);
 				break;
-			case "typeArn":
-				setTypeArn(value);
+			case "ipAddress":
+				setIpAddress(value);
 				break;
 			case "model":
 				setModel(value);

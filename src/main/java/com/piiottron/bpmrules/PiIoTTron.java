@@ -2,16 +2,12 @@ package com.piiottron.bpmrules;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.URL;
 import java.net.UnknownHostException;
-import java.util.Enumeration;
 import java.util.Locale;
-import java.util.Properties;
 import java.util.Scanner;
 
 import org.slf4j.Logger;
@@ -19,8 +15,9 @@ import org.slf4j.LoggerFactory;
 
 import com.piiottron.config.Config;
 import com.piiottron.database.DataManager;
-import com.piiottron.server.IoTServer;
 import com.piiottron.pi4j.Pi4jGPIO;
+import com.piiottron.server.IoTServer;
+
 //import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 //import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 
@@ -28,9 +25,9 @@ import com.piiottron.pi4j.Pi4jGPIO;
  * Executive Order Corporation we make Things Smart
  *
  * Raspberry Pi IoT RPi (Pi IoT Tron) - Internet ofF Things (IoT) :: Internet of Things Drools-jBPM Expert System using Pi IoT Tron AI-IoTBPMServer
- * 
- * Executive Order Corp – AI-IoTBPM Server is IoT Internet of Things Drools-BPM (Business Process Management) engine for IoT Device Orchestration and 
- * IoT device ontology (AI-IoT device awareness, state of being, knowledge of real-world objects, events, situations, and abstract concepts). 
+ *
+ * Executive Order Corp – AI-IoTBPM Server is IoT Internet of Things Drools-BPM (Business Process Management) engine for IoT Device Orchestration and
+ * IoT device ontology (AI-IoT device awareness, state of being, knowledge of real-world objects, events, situations, and abstract concepts).
  * Executive Order Corp - AI-IoTBPM MQTT Telemetry Transport Machine-to-Machine(M2M) / Internet of Things (IoT). AI-IoTBPM
  * :: Executive Order AI-IoTBPM Tron Sensor Processor MQTT AI-IoTBPM Client using EOSpy AI-IoTBPM Drools-jBPM.
  *
@@ -62,7 +59,7 @@ public class PiIoTTron {
 	private String gpio = ""; // create gpio controller
 
 	private DataManager dataManager;
-	
+
 	private final Logger logger = LoggerFactory.getLogger(PiIoTTron.class);
 
 	public PiIoTTron(String configFile) {
@@ -104,7 +101,7 @@ public class PiIoTTron {
 			System.out.println("os.name: " + System.getProperty("os.name"));
 			System.out.println("os.arch: " + System.getProperty("os.arch"));
 			is64bitJMV = (System.getProperty("os.arch").indexOf("64") != -1);
-			String result = (is64bitJMV == true) ? "64bit" : "32bit";
+			String result = is64bitJMV ? "64bit" : "32bit";
 
 			System.out.println("java.home: " + System.getProperty("java.home"));
 			System.out.println("java.vendor: " + System.getProperty("java.vendor"));
@@ -156,7 +153,7 @@ public class PiIoTTron {
 			}
 
 		} while (runServer);
-		
+
 		stopPi4jGPIO();
 		stopIoTServer();
 		closeManager();
@@ -197,9 +194,9 @@ public class PiIoTTron {
 
 	public void closeManager() {
 		dataManager.closeDatabase();
-        System.out.println("Database Disconnected..."); 
+        System.out.println("Database Disconnected...");
 	}
-	
+
 	public void startIoTServer(jBPMRules jbpmRules, DataManager dataManager) {
 		iotServer = new IoTServer(jbpmRules, dataManager, port);
 		iotServer.start();
@@ -223,10 +220,10 @@ public class PiIoTTron {
 	public void stopPi4jGPIO() {
 		if (pi4jgpio.isPi4jActive()) {
 			pi4jgpio.gpioShutdown();
-			System.out.println("Stop all GPIO Activity / Threads"); 
+			System.out.println("Stop all GPIO Activity / Threads");
 		}
 	}
-	
+
 	public void getIPAddress() {
 		// Returns the instance of InetAddress containing local host name and address
 		InetAddress localhost = null;
@@ -254,7 +251,7 @@ public class PiIoTTron {
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.ENGLISH);
 		String configFile = "";
-		
+
 		System.out.println("Pi IoT Tron :: Executive Order IoT Sensor Processor System"
 				+ " - MQTT AI-IoTBPM Tron Server using AI-IoTBPM Drools-jBPM");
 
@@ -264,7 +261,7 @@ public class PiIoTTron {
 		} else {
 			configFile = args[args.length - 1];
 		}
-		
+
 		new PiIoTTron(configFile).init(true);
 	}
 }

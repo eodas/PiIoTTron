@@ -77,9 +77,16 @@ public class IoTServerThread extends Thread {
 						}
 					}
 					
+					if (dataManager.deviceExists(event.getId())) {
+						
+					} else {
+
+					}
+					
+					dataManager.insterEvent(event);
+
 					// Set response jBPM Global Variable List
 					// kcontext.getKnowledgeRuntime().setGlobal("response", "");
-					dataManager.insterEvent(event);
 					response = jbpmRules.receive(event);
 					if ((response != null) && (response.length() > 0)) {
 						out.println(response);

@@ -27,7 +27,7 @@ CREATE TABLE Device (
 	purpose	VARCHAR(25),
 	description VARCHAR(25),
 	location VARCHAR(25),
-	typeArn	VARCHAR(25),
+	ipaddress VARCHAR(25),
 	model	VARCHAR(25),
 	process	VARCHAR(25),
 	status	VARCHAR(25),
@@ -96,11 +96,8 @@ CREATE TABLE User (
 	phone	VARCHAR(25),
 	passwords VARCHAR(25),
 	readonly VARCHAR(1),
-	administrator VARCHAR(1),
 	disabled VARCHAR(1),
-	deviceLimit INT,
-	userLimit INT,
+	administrator VARCHAR(1),
 	deviceReadonly VARCHAR(1),
-	limitCommands VARCHAR(1),
 	PRIMARY KEY(login ASC)
 );

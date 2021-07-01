@@ -1,9 +1,5 @@
 package com.piiottron.pi4j;
 
-import java.awt.event.MouseEvent;
-
-import javax.swing.JOptionPane;
-
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
@@ -11,6 +7,7 @@ import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
+
 // import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 // import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 
@@ -55,7 +52,7 @@ import com.pi4j.io.gpio.RaspiPin;
  *
  * Jam HAT - 6 LED - 2 Switch - 1 Buzzer Board
  * The table below shows the pin numbers for BCM, Board and the matching GPIO Zero objects.
- * |Component |GPIO.BCM | BOARD  |GPIO Zero object |WiringPi | Notes 
+ * |Component |GPIO.BCM | BOARD  |GPIO Zero object |WiringPi | Notes
  * |----------|---------|--------|-----------------|---------|
  * | LED1     | GPIO 5  | Pin 29 | lights_1.red    | GPIO.21 |
  * | LED2     | GPIO 6  | Pin 31 | lights_2.red    | GPIO.22 |
@@ -63,8 +60,8 @@ import com.pi4j.io.gpio.RaspiPin;
  * | LED4     | GPIO 13 | Pin 33 | lights_2.yellow | GPIO.23 |
  * | LED5     | GPIO 16 | Pin 36 | lights_1.green  | GPIO.27 |
  * | LED6     | GPIO 17 | Pin 11 | lights_2.green  | GPIO. 0 |
- * | Button 1 | GPIO 19 | Pin 35 | button_1        | GPIO.24 | Connected to R8/R10 
- * | Button 2 | GPIO 18 | Pin 12 | button_2        | GPIO. 1 | Connected to R7/R9 
+ * | Button 1 | GPIO 19 | Pin 35 | button_1        | GPIO.24 | Connected to R8/R10
+ * | Button 2 | GPIO 18 | Pin 12 | button_2        | GPIO. 1 | Connected to R7/R9
  * | Buzzer   | GPIO 20 | Pin 38 | buzzer          | GPIO.28 |
  *
  * Wiring Pi - GPIO Interface library for the Raspberry Pi

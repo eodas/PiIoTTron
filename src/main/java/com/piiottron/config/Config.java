@@ -3,8 +3,8 @@ package com.piiottron.config;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
+import java.util.InvalidPropertiesFormatException;
 
 public class Config {
 

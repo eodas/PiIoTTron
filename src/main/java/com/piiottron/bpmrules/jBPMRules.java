@@ -5,25 +5,25 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.kie.api.KieServices;
+import org.kie.api.io.ResourceType;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
-import org.kie.api.runtime.process.ProcessInstance;
-import org.kie.api.task.TaskService;
-import org.kie.api.task.model.TaskSummary;
-import org.kie.api.io.ResourceType;
 import org.kie.api.runtime.manager.RuntimeEngine;
 import org.kie.api.runtime.manager.RuntimeEnvironment;
 import org.kie.api.runtime.manager.RuntimeEnvironmentBuilder;
 import org.kie.api.runtime.manager.RuntimeManager;
 import org.kie.api.runtime.manager.RuntimeManagerFactory;
+import org.kie.api.runtime.process.ProcessInstance;
+import org.kie.api.task.TaskService;
+import org.kie.api.task.model.TaskSummary;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.jbpm.process.instance.event.listeners.RuleAwareProcessEventLister;
 import org.jbpm.process.instance.event.listeners.TriggerRulesEventListener;
 
-import com.piiottron.model.Device;
 import com.piiottron.model.Event;
 
 import com.piiottron.util.AgendaListener;
@@ -53,7 +53,7 @@ public class jBPMRules {
 		this.kSessionType = kSessionType;
 		this.kSessionName = kSessionName;
 		this.processID = processID;
-	} 
+	}
 
 	public KieSession createKieSession(String kSessionName) {
 		if (kContainer == null) {
@@ -109,8 +109,8 @@ public class jBPMRules {
 			kSession = runtime.getKieSession();
 
 			// start a new process instance
-			Map<String, Object> params = new HashMap<String, Object>();
-			List<String> list = new ArrayList<String>();
+			Map<String, Object> params = new HashMap<>();
+			List<String> list = new ArrayList<>();
 			list.add("krisv");
 			list.add("john doe");
 			list.add("superman");
@@ -137,7 +137,7 @@ public class jBPMRules {
 	public String receive(Event event) {
 		String response = "";
 		ProcessInstance instance = null;
-		
+
 		try {
 			// load up the knowledge base
 			switch (this.kSessionType) {
@@ -174,7 +174,7 @@ public class jBPMRules {
 				System.out.println("> TRACE Number of facts in the session: " + kSession.getFactCount());
 			} */
 
-			Map<String, Object> params = new HashMap<String, Object>();
+			Map<String, Object> params = new HashMap<>();
 			for (String key : event.map.keySet()) {
 				params.put(key, event.map.get(key));
 			}
@@ -183,7 +183,7 @@ public class jBPMRules {
 			if ((event.getProcess() != null) && (!event.getProcess().isEmpty())) {
 				processID = event.getProcess();
 			}
-		
+
 			// go! - start jBPM processID
 			if ((processID != null) && (!processID.isEmpty())) {
 				// Start the process with knowledge session
