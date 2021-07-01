@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.piiottron.bpmrules.jBPMRules;
+import com.piiottron.database.DataManager;
 import com.piiottron.model.Event;
 
 public class IoTServerThread extends Thread {
@@ -20,13 +21,15 @@ public class IoTServerThread extends Thread {
 	String response = "";
 	IoTServer ws = null;
 	Socket socket = null;
+	DataManager dataManager = null;
 
 	private final Logger logger = LoggerFactory.getLogger(IoTServerThread.class);
 
-	public IoTServerThread(Socket socket, IoTServer ws, jBPMRules jbpmRules) {
+	public IoTServerThread(Socket socket, IoTServer ws, jBPMRules jbpmRules, DataManager dataManager) {
 		this.ws = ws;
 		this.socket = socket;
 		this.jbpmRules = jbpmRules;
+		this.dataManager = dataManager;
 		setName("IoT Server Thread");
 
 		start();
@@ -76,6 +79,7 @@ public class IoTServerThread extends Thread {
 					
 					// Set response jBPM Global Variable List
 					// kcontext.getKnowledgeRuntime().setGlobal("response", "");
+					dataManager.insterEvent(event);
 					response = jbpmRules.receive(event);
 					if ((response != null) && (response.length() > 0)) {
 						out.println(response);

@@ -95,7 +95,7 @@ public class PiIoTTron {
 
 		final jBPMRules jbpmRules = new jBPMRules(kSessionType, kSessionName, processID, knowledgeDebug); // devices,
 		startPi4jGPIO(); // Implementation for the Raspberry Pi4j GPIO example
-		startIoTServer(jbpmRules);
+		startIoTServer(jbpmRules, dataManager);
 		processConsole();
 	}
 
@@ -200,8 +200,8 @@ public class PiIoTTron {
         System.out.println("Database Disconnected..."); 
 	}
 	
-	public void startIoTServer(jBPMRules jbpmRules) {
-		iotServer = new IoTServer(jbpmRules, port);
+	public void startIoTServer(jBPMRules jbpmRules, DataManager dataManager) {
+		iotServer = new IoTServer(jbpmRules, dataManager, port);
 		iotServer.start();
 	}
 

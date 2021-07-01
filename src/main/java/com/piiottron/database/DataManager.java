@@ -16,6 +16,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.piiottron.config.Config;
+import com.piiottron.model.Device;
+import com.piiottron.model.Event;
 import com.piiottron.model.User;
 
 /**
@@ -112,9 +114,75 @@ public class DataManager {
         }
     }
 
-
-	
-	
+    /**
+     * Adds a newly created event to the database.
+     *
+     * @param vehicle   the newly created event
+     * @return          true if the transaction was successful, otherwise false.
+     */
+    
+    public boolean insterEvent(Event event) {
+    	String AddEvent = "INSERT INTO Event(id, name, events, description, process, protocol, serverTime, deviceTime, fixTime, outdated, "
+      			+ "valid, lat, lon, altitude, speed, course, address, accuracy, bearing, network, "
+      		    + "hdop, cell, wifi, battery, message, temps, ir_temp, humidity, mbar, "
+      		    + "accel_x, accel_y, accel_z, gyro_x, gyro_y, gyro_z, magnet_x, magnet_y, magnet_z, "
+      		    + "light, keypress, alarm, distance, totalDistance, agentCount, motion) "
+    			+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(AddEvent);
+                pstmt.setString(1, event.getId());
+                pstmt.setString(2, event.getName());
+                pstmt.setString(3, event.getEvent());
+                pstmt.setString(4, event.getDescription());
+                pstmt.setString(5, event.getProcess());
+                pstmt.setString(6, event.getProtocol());
+                pstmt.setString(7, event.getServerTime());
+                pstmt.setString(8, event.getDeviceTime());
+                pstmt.setString(9, event.getFixTime());
+                pstmt.setString(10, (event.isOutdated()) ? "T" : "F"); //result = testCondition ? trueValue : falseValue
+                pstmt.setString(11, (event.isValid()) ? "T" : "F"); 
+                pstmt.setDouble(12, event.getLat());
+                pstmt.setDouble(13, event.getLon());
+                pstmt.setDouble(14, event.getAltitude());
+                pstmt.setDouble(15, event.getSpeed());
+                pstmt.setDouble(16, event.getCourse());
+                pstmt.setString(17, event.getAddress());
+                pstmt.setDouble(18, event.getAccuracy());
+                pstmt.setDouble(19, event.getBearing());
+                pstmt.setString(20, event.getNetwork());
+                pstmt.setDouble(21, event.getHdop());
+                pstmt.setString(22, event.getCell());
+                pstmt.setString(23, event.getWifi());
+                pstmt.setDouble(24, event.getBatteryLevel());
+                pstmt.setString(25, event.getTextMessage());
+                pstmt.setDouble(26, event.getTemp());
+                pstmt.setDouble(27, event.getIr_temp());
+                pstmt.setDouble(28, event.getHumidity());
+                pstmt.setDouble(29, event.getMbar());
+                pstmt.setDouble(30, event.getAccel_x());
+                pstmt.setDouble(31, event.getAccel_y());
+                pstmt.setDouble(32, event.getAccel_z());
+                pstmt.setDouble(33, event.getGyro_x());
+                pstmt.setDouble(34, event.getGyro_y());
+                pstmt.setDouble(35, event.getGyro_z());
+                pstmt.setDouble(36, event.getMagnet_x());
+                pstmt.setDouble(37, event.getMagnet_y());
+                pstmt.setDouble(38, event.getMagnet_z());
+                pstmt.setDouble(39, event.getLight());
+                pstmt.setDouble(40, event.getKeypress());
+                pstmt.setString(41, event.getAlarm());
+                pstmt.setDouble(42, event.getDistance());
+                pstmt.setDouble(43, event.getTotalDistance());
+                pstmt.setDouble(44, event.getAgentCount());
+                pstmt.setString(45, (event.isMotion()) ? "T" : "F"); 
+                pstmt.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            error(e);
+        }
+        return false;
+    }
+    
     public String constructObjectQuery(String action, Class<?> clazz, boolean extended) {
         switch (action) {
             case ACTION_INSERT:
@@ -267,4 +335,15 @@ public class DataManager {
         String name = clazz.getSimpleName();
         return Introspector.decapitalize(name) + (!name.contains("Id") ? "Id" : "");
     }
- }
+ 
+/**
+ * Print an error message on exception thrown.
+ *
+ * @param e     the exception
+ */
+private void error(Exception e) {
+    System.err.println(e.getClass().getName() + ": " + e.getMessage());
+    e.printStackTrace(System.err);
+}
+
+}

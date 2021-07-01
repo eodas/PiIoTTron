@@ -730,6 +730,7 @@ public class Event {
 			case "batt":
 				setBatteryLevel(Double.parseDouble(value));
 				break;
+			case "message":
 			case "textMessage":
 				setTextMessage(value);
 				break;

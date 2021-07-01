@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.piiottron.bpmrules.jBPMRules;
+import com.piiottron.database.DataManager;
 
 public class IoTServer extends Thread {
 	private int currrentConnections = 0;
@@ -17,13 +18,15 @@ public class IoTServer extends Thread {
 	private int port;
 	private boolean alive = true;
 	private jBPMRules jbpmRules;
+	private DataManager dataManager;
 	private ServerSocket server = null;
 
 	private final Logger logger = LoggerFactory.getLogger(IoTServer.class);
 
-	public IoTServer(jBPMRules jbpmRules, int port) {
+	public IoTServer(jBPMRules jbpmRules, DataManager dataManager, int port) {
 		this.port = port;
 		this.jbpmRules = jbpmRules;
+		this.dataManager = dataManager;
 		System.out.println("Pi IoT Tron Drools-jBPM AI-IoTBPM Server, Started Port: " + port);
 	}
 
@@ -48,7 +51,7 @@ public class IoTServer extends Thread {
 			}
 			if ((alive) && (!server.isClosed())) {
 				try {
-					new IoTServerThread(server.accept(), this, jbpmRules);
+					new IoTServerThread(server.accept(), this, jbpmRules, dataManager);
 					incConnection();
 				} catch (SocketException localSocketException) {
 				} catch (IOException ioe) {

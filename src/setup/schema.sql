@@ -41,9 +41,10 @@ CREATE TABLE Device (
 );
 
 CREATE TABLE Event (
-    id   	VARCHAR(10)		NOT NULL,   -- maybe alphanumeric
+    pkId	INTEGER PRIMARY KEY AUTOINCREMENT, 
+    id   	VARCHAR(10),   -- maybe alphanumeric
 	name	VARCHAR(25),
-	event	VARCHAR(25),
+	events	VARCHAR(25),
 	description VARCHAR(25),
 	process	VARCHAR(25),
 	protocol VARCHAR(25),
@@ -66,7 +67,7 @@ CREATE TABLE Event (
 	wifi	VARCHAR(25),
 	battery	INT,
 	message	VARCHAR(25),
-	temp 	INT,
+	temps 	INT,
 	ir_temp	INT,
 	humidity INT,
 	mbar 	INT,
@@ -85,8 +86,7 @@ CREATE TABLE Event (
 	distance INT,
 	totalDistance INT,
 	agentCount INT,
-	motion	VARCHAR(1),
-	PRIMARY KEY(id ASC)
+	motion	VARCHAR(1)
 );
     
 CREATE TABLE User (
@@ -94,7 +94,7 @@ CREATE TABLE User (
 	name	VARCHAR(25),
 	email	VARCHAR(25),
 	phone	VARCHAR(25),
-	password VARCHAR(25),
+	passwords VARCHAR(25),
 	readonly VARCHAR(1),
 	administrator VARCHAR(1),
 	disabled VARCHAR(1),
