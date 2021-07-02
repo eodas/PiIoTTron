@@ -107,6 +107,7 @@ public class DataManager {
 		}
 	}
 
+	// Inserts
 	/**
 	 * Adds a newly created event to the database.
 	 *
@@ -114,7 +115,7 @@ public class DataManager {
 	 * @return true if the transaction was successful, otherwise false.
 	 */
 	public boolean insterEvent(Event event) {
-		String addEvent = "INSERT INTO Event(id, name, events, description, process, protocol, "
+		String insert_Event = "INSERT INTO Event(id, name, events, description, process, protocol, "
 				+ "serverTime, deviceTime, fixTime, outdated, valid, lat, lon, altitude, speed, "
 				+ "course, address, accuracy, bearing, network, hdop, cell, wifi, battery, message, "
 				+ "temps, ir_temp, humidity, mbar, accel_x, accel_y, accel_z, gyro_x, gyro_y, gyro_z, "
@@ -122,7 +123,7 @@ public class DataManager {
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
 				+ "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
-			PreparedStatement pstmt = connection.prepareStatement(addEvent);
+			PreparedStatement pstmt = connection.prepareStatement(insert_Event);
 			pstmt.setString(1, event.getId());
 			pstmt.setString(2, event.getName());
 			pstmt.setString(3, event.getEvent());
@@ -176,18 +177,39 @@ public class DataManager {
 		return false;
 	}
 
-	// QUERIES
-
+	// Updates
 	/**
-	 * Query if the user exists in the database.
+	 * Update device information in the database.
 	 *
-	 * @param id the employee ID to check
-	 * @return true if the user exists, otherwise false.
+	 * @args id the device ID and information
+	 * @return true if the transaction was successful, otherwise false.
 	 */
-	public boolean deviceExists(String id) {
-		String deviceSelect = "SELECT uid FROM Device WHERE id = ?";
+	public boolean updateDevice(String id, String ipAddress, String lastUpdate) {
+		String update_Device = "UPDATE Device SET ipAddress = ?, lastUpdate = ? WHERE id = ?";
 		try {
-			PreparedStatement pstmt = connection.prepareStatement(deviceSelect);
+			PreparedStatement pstmt = null;
+			pstmt = connection.prepareStatement(update_Device);
+			pstmt.setString(3, id);
+			pstmt.setString(1, ipAddress);
+			pstmt.setString(2, lastUpdate);
+			return pstmt.executeUpdate() == 1;
+		} catch (Exception e) {
+			error(e);
+		}
+		return false;
+	}
+
+	// Queries
+	/**
+	 * Query if the device exists in the database.
+	 *
+	 * @param id the device ID to check
+	 * @return true if the device exists, otherwise false.
+	 */
+	public boolean selectDevice(String id) {
+		String select_Device = "SELECT id FROM Device WHERE id = ?";
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(select_Device);
 			pstmt.setString(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			return rs.next();
@@ -198,6 +220,27 @@ public class DataManager {
 	}
 
 	/**
+	 * Query return the ipAddress if the device exists in the database.
+	 *
+	 * @param id the device ID to check
+	 * @return true if the device exists, otherwise false.
+	 */
+	public String selectDeviceIP(String id) {
+		String select_Device = "SELECT ipaddress FROM Device WHERE id = ?";
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(select_Device);
+			pstmt.setString(1, id);
+			ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("ipaddress");
+            }
+		} catch (Exception e) {
+			error(e);
+		}
+		return "";
+	}
+	
+	/**
 	 * Print an error message on exception thrown.
 	 *
 	 * @param e the exception
@@ -206,5 +249,4 @@ public class DataManager {
 		System.err.println(e.getClass().getName() + ": " + e.getMessage());
 		e.printStackTrace(System.err);
 	}
-
 }

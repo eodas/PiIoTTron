@@ -17,6 +17,7 @@ import com.piiottron.config.Config;
 import com.piiottron.database.DataManager;
 import com.piiottron.pi4j.Pi4jGPIO;
 import com.piiottron.server.IoTServer;
+import com.piiottron.server.IoTCommand;
 
 //import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 //import com.pi4j.io.gpio.event.GpioPinListenerDigital;
@@ -93,6 +94,8 @@ public class PiIoTTron {
 		final jBPMRules jbpmRules = new jBPMRules(kSessionType, kSessionName, processID, knowledgeDebug); // devices,
 		startPi4jGPIO(); // Implementation for the Raspberry Pi4j GPIO example
 		startIoTServer(jbpmRules, dataManager);
+		IoTCommand iotCommand = new IoTCommand(dataManager, knowledgeDebug);
+
 		processConsole();
 	}
 

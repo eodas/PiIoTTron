@@ -77,10 +77,10 @@ public class IoTServerThread extends Thread {
 						}
 					}
 					
-					if (dataManager.deviceExists(event.getId())) {
-						
+					if (dataManager.selectDevice(event.getId())) {
+						dataManager.updateDevice(event.getId(), ipAddress, event.getDeviceTime()); 
 					} else {
-
+						System.err.println("Error: Unknown Device id" + event.getId() + "  IP Address " + ipAddress);
 					}
 					
 					dataManager.insterEvent(event);
