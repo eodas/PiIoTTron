@@ -12,7 +12,6 @@ import java.net.URL;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 
-import com.piiottron.model.Device;
 import com.piiottron.database.DataManager;
 
 public class IoTCommand {
@@ -109,18 +108,12 @@ public class IoTCommand {
 			return;
 		}
 		String deviceIP = dataManager.selectDeviceIP(deviceID); 
-		if ((deviceID == null) || (deviceID.isEmpty()) || (deviceIP.indexOf("0.0.0.0") != -1)) {
+		if ((deviceIP == null) || (deviceIP.isEmpty()) || (deviceIP.indexOf("0.0.0.0") != -1)) {
 			System.err.println("Note: Send IoTCommand " + deviceID + " IP Address not defined for command.");
 			return;
 		}
 
-		System.out.println("Send IoTCommand " + deviceID);
-	}
-
-	
-/*		agentsList.getAgent(deviceId);
-		
-		String urlString = agentIP + command;
+		String urlString = deviceIP + command;
 		try {
 			URL url = new URL(urlString);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -154,16 +147,20 @@ public class IoTCommand {
 		}
 	}
 
-	/*
+	
 	// HTTP Post request
-	public void sendPost(String agentName, String command) {
-		String agentIP = agentsList.getAgent(agentName);
-		if ((agentIP == "") || (agentIP.indexOf("0.0.0.0") != -1)) {
-			agentNotDefined(agentName);
+	public void sendPost(String deviceID, String command) {
+		if ((deviceID == null) || (deviceID.isEmpty())) {
+			System.err.println("Note: Send IoTCommand " + deviceID + " not defined for command.");
+			return;
+		}
+		String deviceIP = dataManager.selectDeviceIP(deviceID); 
+		if ((deviceIP == null) || (deviceIP.isEmpty()) || (deviceIP.indexOf("0.0.0.0") != -1)) {
+			System.err.println("Note: Send IoTCommand " + deviceID + " IP Address not defined for command.");
 			return;
 		}
 
-		String url = agentIP + command;
+		String url = deviceIP + command;
 		try {
 			URL obj = new URL(url);
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -209,18 +206,4 @@ public class IoTCommand {
 			e.printStackTrace();
 		}
 	}
-
-	// get Agent URL
-	public String agentURL(String agentName) {
-		String agentIP = agentsList.getAgent(agentName);
-		if ((agentIP == "") || (agentIP.indexOf("0.0.0.0") != -1)) {
-			agentNotDefined(agentName);
-		}
-		return agentIP;
-	}
-	
-	public void agentNotDefined(String agentName) {
-		System.err.println("Note: Send Arduino Command " + agentName
-				+ " in agentDevice=[AgentName,http://10.0.0.2,...] defined in iotbpm.properties file.");
-	} */
 }
