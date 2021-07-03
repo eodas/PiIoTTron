@@ -56,8 +56,8 @@ public class PiIoTTron {
 	private String kSessionType = ""; // createKieSession
 	private String kSessionName = ""; // ksession-iotcontrol
 	private String processID = ""; // com.IoTControl
-	private long startTime = 0; // Time the server started
 	private String gpio = ""; // create gpio controller
+	private long startTime = 0; // Time the server started
 
 	private DataManager dataManager;
 
@@ -180,10 +180,11 @@ public class PiIoTTron {
 		String portStr = config.getString("server.port");
 		port = Integer.parseInt(portStr);
 
-		knowledgeDebug = config.getString("knowledge.debug");
+		gpio = config.getString("gpio");
+		processID = config.getString("process.id");
 		kSessionType = config.getString("kSession.type");
 		kSessionName = config.getString("kSession.name");
-		processID = config.getString("process.id");
+		knowledgeDebug = config.getString("knowledge.debug");
 	}
 
 	public void initDataManager() {
