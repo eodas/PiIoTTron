@@ -18,7 +18,7 @@
 
 	<!-- automation  -->
 	<entry key='kSession.name'>ksession-piiottron</entry>
-	<entry key='process.id'>com.JarvisPiIoTTron</entry>
+	<entry key='process.id'>com.PiIoTTronDevice</entry>
 	<entry key='kSession.type'>createKieSession</entry>   
 	
 	<!-- create gpio controller -->

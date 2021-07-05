@@ -4,15 +4,17 @@
 -- Populate the database with data.
 -- ---------------------------------------------------------------------------
 
-INSERT INTO Device(id, name) VALUES 
-	("100111", "Arduino Tron IoT"), 
-	("100222", "Temperature-Humidity"), 
-	("100333", "Door Lock IoT-MCU"), 
-	("100444", "Arduino IoT-SensorTag"), 
-	("100555", "Arduino Dash Button"), 
-	("100666", "Door Open Sensor ESP01"), 
-	("100777", "Light Module IoT-MCU"), 
-	("100888", "Arduino Tron IoT Display"); 
+INSERT INTO Device(id, name, process) VALUES 
+	("100111", "Arduino Tron IoT", ""), 
+	("100222", "Temperature-Humidity", ""), 
+	("100333", "Door Lock IoT-MCU", ""), 
+	("100444", "Arduino IoT-SensorTag", ""), 
+	("100555", "Arduino Dash Button", ""), 
+	("100666", "Door Open Sensor ESP01", ""), 
+	("100777", "Light Module IoT-MCU", ""), 
+	("100888", "Arduino Tron IoT Display", ""); 
+	("100910", "Jarvis Pi IoT Tron", "com.JarvisPiIoTTron"), 
+	("100920", "EOSpy IoT GPS Position", "com.GPSPositionTron");
 
 INSERT INTO User(login, name) VALUES
     ("1234", "Steven Woodward"),

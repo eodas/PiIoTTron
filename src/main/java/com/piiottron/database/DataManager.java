@@ -220,6 +220,27 @@ public class DataManager {
 	}
 
 	/**
+	 * Query return the process if the device exists in the database.
+	 *
+	 * @param id the device ID to check
+	 * @return true if the device exists, otherwise false.
+	 */
+	public String selectDeviceProcess(String id) {
+		String select_Device = "SELECT process FROM Device WHERE id = ?";
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(select_Device);
+			pstmt.setString(1, id);
+			ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("process");
+            }
+		} catch (Exception e) {
+			error(e);
+		}
+		return "";
+	}
+	
+	/**
 	 * Query return the ipAddress if the device exists in the database.
 	 *
 	 * @param id the device ID to check
@@ -239,7 +260,7 @@ public class DataManager {
 		}
 		return "";
 	}
-	
+
 	/**
 	 * Print an error message on exception thrown.
 	 *

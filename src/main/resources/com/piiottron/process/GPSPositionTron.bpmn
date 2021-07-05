@@ -1,0 +1,322 @@
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_dbKhcL9PEDmlZ_GXWEG3zQ" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:itemDefinition id="_idItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_nameItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_eventItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_addressItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_textMessageItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_tempItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_lightItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_keypressItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_alarmItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="__3987D19E-98BA-4157-8465-A49F9ACAEB8C_namespaceInputXItem" structureRef="java.lang.String"/>
+  <bpmn2:itemDefinition id="__3987D19E-98BA-4157-8465-A49F9ACAEB8C_modelInputXItem" structureRef="java.lang.String"/>
+  <bpmn2:itemDefinition id="__3987D19E-98BA-4157-8465-A49F9ACAEB8C_decisionInputXItem" structureRef="java.lang.String"/>
+  <bpmn2:process id="com.GPSPositionTron" drools:packageName="com.GPSPositionTronPackage" drools:version="1.0" drools:adHoc="false" name="GPS Position Pi IoT Tron" isExecutable="true" processType="Public">
+    <bpmn2:property id="id" itemSubjectRef="_idItem" name="id"/>
+    <bpmn2:property id="name" itemSubjectRef="_nameItem" name="name"/>
+    <bpmn2:property id="event" itemSubjectRef="_eventItem" name="event"/>
+    <bpmn2:property id="address" itemSubjectRef="_addressItem" name="address"/>
+    <bpmn2:property id="textMessage" itemSubjectRef="_textMessageItem" name="textMessage"/>
+    <bpmn2:property id="temp" itemSubjectRef="_tempItem" name="temp"/>
+    <bpmn2:property id="light" itemSubjectRef="_lightItem" name="light"/>
+    <bpmn2:property id="keypress" itemSubjectRef="_keypressItem" name="keypress"/>
+    <bpmn2:property id="alarm" itemSubjectRef="_alarmItem" name="alarm"/>
+    <bpmn2:laneSet>
+      <bpmn2:lane id="_0C9073D8-B644-403D-8F89-BB173A01AA62" name="GPS IoT Device Command">
+        <bpmn2:extensionElements>
+          <drools:metaData name="elementname">
+            <drools:metaValue><![CDATA[GPS IoT Device Command]]></drools:metaValue>
+          </drools:metaData>
+        </bpmn2:extensionElements>
+        <bpmn2:flowNodeRef>_4603DC72-716C-4B52-BE11-03C8EB03E16C</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>_10422CC6-1248-4FC6-944D-A522F5FE1CEB</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>_5BCFA22A-2BB3-4A03-A468-57CAE273CD5E</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>_DBC2E935-85BC-4778-8176-3B386F654C9C</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>_40E721DF-F894-4134-A735-722BBAEA1DF3</bpmn2:flowNodeRef>
+      </bpmn2:lane>
+      <bpmn2:lane id="_66495278-94BE-4E25-9672-BBA7625CFEF7" name="GPS Device BRMS Rules">
+        <bpmn2:extensionElements>
+          <drools:metaData name="elementname">
+            <drools:metaValue><![CDATA[GPS Device BRMS Rules]]></drools:metaValue>
+          </drools:metaData>
+        </bpmn2:extensionElements>
+        <bpmn2:flowNodeRef>_3987D19E-98BA-4157-8465-A49F9ACAEB8C</bpmn2:flowNodeRef>
+      </bpmn2:lane>
+      <bpmn2:lane id="_D14F5AEA-53DE-4F78-BA52-787D3DF41864" name="GPS IoT Sensor Device">
+        <bpmn2:extensionElements>
+          <drools:metaData name="elementname">
+            <drools:metaValue><![CDATA[GPS IoT Sensor Device]]></drools:metaValue>
+          </drools:metaData>
+        </bpmn2:extensionElements>
+        <bpmn2:flowNodeRef>_88EA5F9C-98F2-478F-BBAC-F8D785ECF07F</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>_4C38079B-9E4F-4E3C-A56A-BF9B373A16CA</bpmn2:flowNodeRef>
+      </bpmn2:lane>
+    </bpmn2:laneSet>
+    <bpmn2:sequenceFlow id="_76FCDCF8-2220-41EA-A4E3-7A4769AFEDAD" sourceRef="_4C38079B-9E4F-4E3C-A56A-BF9B373A16CA" targetRef="_3987D19E-98BA-4157-8465-A49F9ACAEB8C"/>
+    <bpmn2:sequenceFlow id="_53D545AD-E2A1-4A59-80E8-B3AF8B32B57F" sourceRef="_88EA5F9C-98F2-478F-BBAC-F8D785ECF07F" targetRef="_4C38079B-9E4F-4E3C-A56A-BF9B373A16CA"/>
+    <bpmn2:sequenceFlow id="_DFD0A7AD-F075-4B4C-B417-A47AE683DA0A" sourceRef="_5BCFA22A-2BB3-4A03-A468-57CAE273CD5E" targetRef="_40E721DF-F894-4134-A735-722BBAEA1DF3"/>
+    <bpmn2:sequenceFlow id="_1CE71639-9AAD-4F5B-BA3A-264C1FCAF4F5" sourceRef="_10422CC6-1248-4FC6-944D-A522F5FE1CEB" targetRef="_DBC2E935-85BC-4778-8176-3B386F654C9C"/>
+    <bpmn2:sequenceFlow id="_CD53FF13-7FE5-4A0D-9442-0F630859E8BC" name="Device has Street Event" sourceRef="_4603DC72-716C-4B52-BE11-03C8EB03E16C" targetRef="_5BCFA22A-2BB3-4A03-A468-57CAE273CD5E">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Device has Street Event]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_E55336D1-B24D-4954-A5DC-EB1492B4BB0B" name="Device Event is allEvents" sourceRef="_4603DC72-716C-4B52-BE11-03C8EB03E16C" targetRef="_10422CC6-1248-4FC6-944D-A522F5FE1CEB">
+      <bpmn2:documentation><![CDATA[//return KieFunctions.equalsTo(event, "Device_is_Off");
+//return KieFunctions.equalsTo(event, "allEvents");]]></bpmn2:documentation>
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Device Event is allEvents]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[return KieFunctions.isEmpty(address);
+]]></bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_96A8C167-9F63-4CBB-9C57-047909E1B852" sourceRef="_3987D19E-98BA-4157-8465-A49F9ACAEB8C" targetRef="_4603DC72-716C-4B52-BE11-03C8EB03E16C"/>
+    <bpmn2:businessRuleTask id="_3987D19E-98BA-4157-8465-A49F9ACAEB8C" drools:ruleFlowGroup="GPSDevicePosition" name="GPS Device Drools Tron" implementation="http://www.jboss.org/drools/rule">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[GPS Device Drools Tron]]></drools:metaValue>
+        </drools:metaData>
+        <drools:onEntry-script scriptFormat="http://www.java.com/java">
+          <drools:script><![CDATA[System.out.println("Entry GPS Device Position");]]></drools:script>
+        </drools:onEntry-script>
+        <drools:onExit-script scriptFormat="http://www.java.com/java">
+          <drools:script><![CDATA[System.out.println("Exit GPS Device Position");]]></drools:script>
+        </drools:onExit-script>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_76FCDCF8-2220-41EA-A4E3-7A4769AFEDAD</bpmn2:incoming>
+      <bpmn2:outgoing>_96A8C167-9F63-4CBB-9C57-047909E1B852</bpmn2:outgoing>
+    </bpmn2:businessRuleTask>
+    <bpmn2:scriptTask id="_4C38079B-9E4F-4E3C-A56A-BF9B373A16CA" name="GPS Prepare Facts" scriptFormat="http://www.java.com/java">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[GPS Prepare Facts]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_53D545AD-E2A1-4A59-80E8-B3AF8B32B57F</bpmn2:incoming>
+      <bpmn2:outgoing>_76FCDCF8-2220-41EA-A4E3-7A4769AFEDAD</bpmn2:outgoing>
+      <bpmn2:script>kcontext.getKnowledgeRuntime().insert(kcontext.getProcessInstance());
+</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:startEvent id="_88EA5F9C-98F2-478F-BBAC-F8D785ECF07F" name="Start Event">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Start Event]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>_53D545AD-E2A1-4A59-80E8-B3AF8B32B57F</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:endEvent id="_40E721DF-F894-4134-A735-722BBAEA1DF3" name="End GPS Device Other Event">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[End GPS Device Other Event]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_DFD0A7AD-F075-4B4C-B417-A47AE683DA0A</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:endEvent id="_DBC2E935-85BC-4778-8176-3B386F654C9C" name="IoT Device Command">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[IoT Device Command]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_1CE71639-9AAD-4F5B-BA3A-264C1FCAF4F5</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:scriptTask id="_5BCFA22A-2BB3-4A03-A468-57CAE273CD5E" name="GPS Device has Street Address" scriptFormat="http://www.java.com/java">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[GPS Device has Street Address]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_CD53FF13-7FE5-4A0D-9442-0F630859E8BC</bpmn2:incoming>
+      <bpmn2:outgoing>_DFD0A7AD-F075-4B4C-B417-A47AE683DA0A</bpmn2:outgoing>
+      <bpmn2:script>System.out.println("GPS Device " +  kcontext.getVariable("id") + " " +  kcontext.getVariable("alarm") + " " + kcontext.getNodeInstance().getNodeName() +  " is " + kcontext.getVariable("textMessage") +  " event is " + kcontext.getVariable("event"));</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:scriptTask id="_10422CC6-1248-4FC6-944D-A522F5FE1CEB" name="GPS Device allEvent" scriptFormat="http://www.java.com/java">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[GPS Device allEvent]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_E55336D1-B24D-4954-A5DC-EB1492B4BB0B</bpmn2:incoming>
+      <bpmn2:outgoing>_1CE71639-9AAD-4F5B-BA3A-264C1FCAF4F5</bpmn2:outgoing>
+      <bpmn2:script>System.out.println("GPS Device " +  kcontext.getVariable("id") + " " +  kcontext.getVariable("alarm") + " " + kcontext.getNodeInstance().getNodeName() +  " is " + kcontext.getVariable("textMessage") + " event is allEvents");</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:exclusiveGateway id="_4603DC72-716C-4B52-BE11-03C8EB03E16C" drools:dg="_CD53FF13-7FE5-4A0D-9442-0F630859E8BC" name="GPS Device Event" gatewayDirection="Diverging" default="_CD53FF13-7FE5-4A0D-9442-0F630859E8BC">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[GPS Device Event]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_96A8C167-9F63-4CBB-9C57-047909E1B852</bpmn2:incoming>
+      <bpmn2:outgoing>_E55336D1-B24D-4954-A5DC-EB1492B4BB0B</bpmn2:outgoing>
+      <bpmn2:outgoing>_CD53FF13-7FE5-4A0D-9442-0F630859E8BC</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="com.GPSPositionTron">
+      <bpmndi:BPMNShape id="shape__4603DC72-716C-4B52-BE11-03C8EB03E16C" bpmnElement="_4603DC72-716C-4B52-BE11-03C8EB03E16C">
+        <dc:Bounds height="56" width="56" x="599" y="601"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__10422CC6-1248-4FC6-944D-A522F5FE1CEB" bpmnElement="_10422CC6-1248-4FC6-944D-A522F5FE1CEB">
+        <dc:Bounds height="102" width="154" x="344" y="578"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__5BCFA22A-2BB3-4A03-A468-57CAE273CD5E" bpmnElement="_5BCFA22A-2BB3-4A03-A468-57CAE273CD5E">
+        <dc:Bounds height="102" width="154" x="736" y="578"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__DBC2E935-85BC-4778-8176-3B386F654C9C" bpmnElement="_DBC2E935-85BC-4778-8176-3B386F654C9C">
+        <dc:Bounds height="56" width="56" x="393" y="719"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__40E721DF-F894-4134-A735-722BBAEA1DF3" bpmnElement="_40E721DF-F894-4134-A735-722BBAEA1DF3">
+        <dc:Bounds height="56" width="56" x="785" y="712"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__88EA5F9C-98F2-478F-BBAC-F8D785ECF07F" bpmnElement="_88EA5F9C-98F2-478F-BBAC-F8D785ECF07F">
+        <dc:Bounds height="56" width="56" x="393" y="138"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__4C38079B-9E4F-4E3C-A56A-BF9B373A16CA" bpmnElement="_4C38079B-9E4F-4E3C-A56A-BF9B373A16CA">
+        <dc:Bounds height="102" width="154" x="550" y="115"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__3987D19E-98BA-4157-8465-A49F9ACAEB8C" bpmnElement="_3987D19E-98BA-4157-8465-A49F9ACAEB8C">
+        <dc:Bounds height="102" width="154" x="550" y="363"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__0C9073D8-B644-403D-8F89-BB173A01AA62" bpmnElement="_0C9073D8-B644-403D-8F89-BB173A01AA62">
+        <dc:Bounds height="293.1111111111111" width="650" x="302" y="545"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__66495278-94BE-4E25-9672-BBA7625CFEF7" bpmnElement="_66495278-94BE-4E25-9672-BBA7625CFEF7">
+        <dc:Bounds height="250" width="650" x="302" y="289"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__D14F5AEA-53DE-4F78-BA52-787D3DF41864" bpmnElement="_D14F5AEA-53DE-4F78-BA52-787D3DF41864">
+        <dc:Bounds height="250" width="650" x="302" y="33"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_shape__3987D19E-98BA-4157-8465-A49F9ACAEB8C_to_shape__4603DC72-716C-4B52-BE11-03C8EB03E16C" bpmnElement="_96A8C167-9F63-4CBB-9C57-047909E1B852">
+        <di:waypoint x="627" y="414"/>
+        <di:waypoint x="627" y="601"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__4603DC72-716C-4B52-BE11-03C8EB03E16C_to_shape__10422CC6-1248-4FC6-944D-A522F5FE1CEB" bpmnElement="_E55336D1-B24D-4954-A5DC-EB1492B4BB0B">
+        <di:waypoint x="627" y="629"/>
+        <di:waypoint x="498" y="629"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__4603DC72-716C-4B52-BE11-03C8EB03E16C_to_shape__5BCFA22A-2BB3-4A03-A468-57CAE273CD5E" bpmnElement="_CD53FF13-7FE5-4A0D-9442-0F630859E8BC">
+        <di:waypoint x="627" y="629"/>
+        <di:waypoint x="736" y="629"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__10422CC6-1248-4FC6-944D-A522F5FE1CEB_to_shape__DBC2E935-85BC-4778-8176-3B386F654C9C" bpmnElement="_1CE71639-9AAD-4F5B-BA3A-264C1FCAF4F5">
+        <di:waypoint x="421" y="629"/>
+        <di:waypoint x="421" y="719"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__5BCFA22A-2BB3-4A03-A468-57CAE273CD5E_to_shape__40E721DF-F894-4134-A735-722BBAEA1DF3" bpmnElement="_DFD0A7AD-F075-4B4C-B417-A47AE683DA0A">
+        <di:waypoint x="813" y="629"/>
+        <di:waypoint x="813" y="712"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__88EA5F9C-98F2-478F-BBAC-F8D785ECF07F_to_shape__4C38079B-9E4F-4E3C-A56A-BF9B373A16CA" bpmnElement="_53D545AD-E2A1-4A59-80E8-B3AF8B32B57F">
+        <di:waypoint x="421" y="166"/>
+        <di:waypoint x="550" y="166"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__4C38079B-9E4F-4E3C-A56A-BF9B373A16CA_to_shape__3987D19E-98BA-4157-8465-A49F9ACAEB8C" bpmnElement="_76FCDCF8-2220-41EA-A4E3-7A4769AFEDAD">
+        <di:waypoint x="627" y="166"/>
+        <di:waypoint x="627" y="363"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmn2:relationship type="BPSimData">
+    <bpmn2:extensionElements>
+      <bpsim:BPSimData>
+        <bpsim:Scenario id="default" name="Simulationscenario">
+          <bpsim:ScenarioParameters/>
+          <bpsim:ElementParameters elementRef="_10422CC6-1248-4FC6-944D-A522F5FE1CEB">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_5BCFA22A-2BB3-4A03-A468-57CAE273CD5E">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_88EA5F9C-98F2-478F-BBAC-F8D785ECF07F">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_4C38079B-9E4F-4E3C-A56A-BF9B373A16CA">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_3987D19E-98BA-4157-8465-A49F9ACAEB8C">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+        </bpsim:Scenario>
+      </bpsim:BPSimData>
+    </bpmn2:extensionElements>
+    <bpmn2:source>_dbKhcL9PEDmlZ_GXWEG3zQ</bpmn2:source>
+    <bpmn2:target>_dbKhcL9PEDmlZ_GXWEG3zQ</bpmn2:target>
+  </bpmn2:relationship>
+</bpmn2:definitions>

@@ -6,28 +6,96 @@ import com.piiottron.model.Event;
 // default dialect for the semantic code will be JAVA
 dialect "java"
 
-// 100111 - Jarvis Pi IoT Tron
-
-rule "processID: rule for device ID: 100111 - Pi IoT Tron Device Module IoT-Jarvis"
+// GPS Device Position ruleflow-group 
+rule "GPS Device Distance"
+	ruleflow-group "GPSDevicePosition"
 	when
-		$event : Event( $eventId : id, $eventId == "100111" )
+        $event : Event( $eventId : id, $lat : lat, $lon : lon, $altitude : altitude, $distance : distance, $totalDistance : totalDistance )
 	then
-	//	com.piiottron.model.StateList.getInstance().putState("processID", "com.JarvisPiIoTTron");
-		System.out.println("com.JarvisPiIoTTron");
+		System.out.println($event.getName() + " GPS Distance:" + $distance + " Total:" + $totalDistance + " Altitude:" + $altitude);
 end
 
-rule "Module: rule for device ID: 100111 - Pi IoT Tron Device Module IoT-Jarvis"
+//declare rule to fire when Device speed is over 60
+rule "GPS Device Speed Alert"
+	ruleflow-group "GPSDevicePosition"
+	when
+        $event : Event( $eventId : id, $lat : lat, $lon : lon, $altitude : altitude, $speed : speed, $speed > "60" )
+	then
+		System.out.println("!!! <<< " + $event.getName() + " GPS Device Speed Over 60.0 Alert lat:" + $lat + " lon:" + $lon + " speed:" + $speed + " >>> !!!");
+end
+
+rule "GPS Device Lat Lon Fix"
+	ruleflow-group "GPSDevicePosition"
+	when
+        $event : Event( $eventId : id, $lat : lat, $lon : lon, $altitude : altitude )
+	then
+		System.out.println($event.getName() + " GPS Device Lat Lon Fix:" + $lat + " lon:" + $lon + " Altitude:" + $altitude);
+end
+
+rule "GPS Device Fix Information"
+	ruleflow-group "GPSDevicePosition"
+	when
+        $event : Event( $eventId : id, $serverTime : serverTime, $deviceTime : deviceTime, $fixTime : fixTime, $outdated : outdated, $valid : valid ) 
+	then
+		System.out.println($event.getName() + " GPS Fix on " + $deviceTime);
+end
+
+rule "GPS Device Address Location"
+	ruleflow-group "GPSDevicePosition"
+	when
+        $event : Event( $eventId : id, $address : address, $address != "null" )
+	then
+		System.out.println($event.getName() + " location " + $address);
+end
+
+rule "GPS Device Sent Text Message"
+	ruleflow-group "GPSDevicePosition"
+	when
+        $event : Event( $eventId : id, $textMessage : textMessage, $textMessage != null )
+	then
+		System.out.println($event.getName() + " Text Message: " + $textMessage);
+end
+
+rule "GPS Device Sent Alarm"
+	ruleflow-group "GPSDevicePosition"
+	when
+        $event : Event( $eventId : id, $alarm : alarm, $alarm != null )
+	then
+		System.out.println($event.getName() + " Sent Alarm: " + $alarm);
+end
+
+//declare rule to fire when Device in Motion
+rule "GPS Device is in Motion"
+	ruleflow-group "GPSDevicePosition"
+    when
+        $event : Event( $eventId : id, $motion : motion, $motion == true )
+    then
+		System.out.println("GPS Device " + $event.getName() + " in Motion");
+end
+
+// 100910 - Jarvis Pi IoT Tron - Jarvis Pi IoT Tron
+rule "processID: rule for device ID: 100910 - Pi IoT Tron Device Module IoT-Jarvis"
+	ruleflow-group "JarvisPiIoTTron"
+	when
+		$event : Event( $eventId : id, $eventId == "100910" )
+	then
+	//	com.piiottron.model.StateList.getInstance().putState("processID", "com.JarvisPiIoTTron");
+		System.out.println("com.JarvisPiIoTTron - Pi IoT Tron Device Module IoT-Jarvis");
+end
+
+rule "Module: rule for device ID: 100910 - Pi IoT Tron Device Module IoT-Jarvis"
  	no-loop
+	ruleflow-group "JarvisPiIoTTron"
     when
     	// event used to change update Pi IoT Tron GPIO Light Module
-		$event : Event( $eventId : id, $eventId == "100111" )
+		$event : Event( $eventId : id, $eventId == "100910" )
     then
 		System.out.println("Jarvis Pi IoT Tron Device Module > " + $event.getTextMessage());
 end
 
 // 100222 - Atom Pi IoT Tron
-
 rule "processID: rule for device ID: 100222 - Pi IoT Tron Device Module IoT-Atom"
+	ruleflow-group "AtomPiIoTTron"
 	when
 		$event : Event( $eventId : id, $eventId == "100222" )
 	then
@@ -38,6 +106,7 @@ end
 
 rule "Module: rule for device ID: 100222 - Pi IoT Tron Device Module IoT-Atom"
  	no-loop
+	ruleflow-group "AtomPiIoTTron"
     when
     	// event used to change update Pi IoT Tron GPIO Light Module
 		$event : Event( $eventId : id, $eventId == "100222" )

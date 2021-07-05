@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -85,7 +86,7 @@ public class jBPMRules {
 
 	private KieSession getKieSession(String bpmn) throws Exception {
 		environment = RuntimeEnvironmentBuilder.Factory.get().newEmptyBuilder()
-				.addAsset(KieServices.Factory.get().getResources().newClassPathResource(bpmn), ResourceType.BPMN2)
+				.addAsset(KieServices.Factory.get().getResources().newClassPathResource(bpmn), ResourceType.DRL) // .BPMN2)
 				.get();
 		return RuntimeManagerFactory.Factory.get().newSingletonRuntimeManager(environment).getRuntimeEngine(null)
 				.getKieSession();
@@ -96,7 +97,7 @@ public class jBPMRules {
 		// JBPMHelper.startH2Server();
 		// JBPMHelper.setupDataSource();
 		environment = RuntimeEnvironmentBuilder.Factory.get().newDefaultBuilder()
-				.addAsset(KieServices.Factory.get().getResources().newClassPathResource(process), ResourceType.BPMN2)
+				.addAsset(KieServices.Factory.get().getResources().newClassPathResource(process), ResourceType.DRL) // .BPMN2)
 				.get();
 		return RuntimeManagerFactory.Factory.get().newSingletonRuntimeManager(environment);
 	}
@@ -168,11 +169,12 @@ public class jBPMRules {
 
 		try {
 			// go! - fire rules
-		 /* long noOfRulesFired = this.kSession.fireAllRules();
+			long noOfRulesFired = 0;
+			// noOfRulesFired = this.kSession.fireAllRules();
 			if (knowledgeDebug.indexOf("none") == -1) {
 				System.out.println("> TRACE kSession no of Rules Fired: " + noOfRulesFired);
 				System.out.println("> TRACE Number of facts in the session: " + kSession.getFactCount());
-			} */
+			}
 
 			Map<String, Object> params = new HashMap<>();
 			for (String key : event.map.keySet()) {
@@ -182,6 +184,12 @@ public class jBPMRules {
 			// processID from deviceEvent override startProcess
 			if ((event.getProcess() != null) && (!event.getProcess().isEmpty())) {
 				processID = event.getProcess();
+			}
+
+			if (knowledgeDebug.indexOf("none") == -1) {
+				System.out.println("kSession.startProcess" + processID + " " + params);
+				for (Entry<String, Object> entry : params.entrySet())
+					System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 			}
 
 			// go! - start jBPM processID
