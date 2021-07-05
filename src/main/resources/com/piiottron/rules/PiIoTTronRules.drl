@@ -22,7 +22,7 @@ rule "GPS Device Speed Alert"
 	when
         $event : Event( $eventId : id, $lat : lat, $lon : lon, $altitude : altitude, $speed : speed, $speed > "60" )
 	then
-		System.out.println("!!! <<< " + $event.getName() + " GPS Device Speed Over 60.0 Alert lat:" + $lat + " lon:" + $lon + " speed:" + $speed + " >>> !!!");
+		System.out.println("!!!! >>>> " + $event.getName() + " GPS Device Speed Over 60.0 Alert lat:" + $lat + " lon:" + $lon + " speed:" + $speed + " <<<< !!!!");
 end
 
 rule "GPS Device Lat Lon Fix"
@@ -124,7 +124,8 @@ rule "TISensorTag IoT Device Environment Conditions Readings"
 	when
         $event : Event( $eventId : id, $temp : temp, $ir_temp : ir_temp, $humidity : humidity, $mbar : mbar, $light : light )
 	then
-		String results = "TISensorTag Environment "; // $event.getName() + " Temp:" + $temp + "  IR_Temp:" + $ir_temp + "  Humidity:" + $humidity + "  Mbar:" + $mbar + "  Light:" + $light
+		String results = "TISensorTag Environment " + $event.getName() + " Temp:" + $temp + "  IR_Temp:" 
+						+ $ir_temp + "  Humidity:" + $humidity + "  Mbar:" + $mbar + "  Light:" + $light;
 		System.out.println(results);
 end
 
@@ -143,7 +144,7 @@ rule "TISensorTag Temp Raise alarm - Too Warm at Location"
 	when
         $event : Event( $eventId : id, $temp : temp, $temp > "75" )
 	then
-		System.out.println(">> TISensorTag Environment Raise Temp Alarm " + $event.getName() + " Temperature:" + $temp);
+		System.out.println("!!!! >>>> TISensorTag Environment Raise Temp Alarm " + $event.getName() + " Temperature:" + $temp + " <<<< !!!!");
 end
 
 rule "TISensorTag IoT Device Sent Text Message"
