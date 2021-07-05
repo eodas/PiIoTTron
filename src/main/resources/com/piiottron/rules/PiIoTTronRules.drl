@@ -6,13 +6,14 @@ import com.piiottron.model.Event;
 // default dialect for the semantic code will be JAVA
 dialect "java"
 
+
 // GPS Device Position ruleflow-group 
 rule "GPS Device Distance"
 	ruleflow-group "GPSDevicePosition"
 	when
         $event : Event( $eventId : id, $lat : lat, $lon : lon, $altitude : altitude, $distance : distance, $totalDistance : totalDistance )
 	then
-		System.out.println($event.getName() + " GPS Distance:" + $distance + " Total:" + $totalDistance + " Altitude:" + $altitude);
+		System.out.println($event.getName() + " GPS Device Distance:" + $distance + " Total:" + $totalDistance + " Altitude:" + $altitude);
 end
 
 //declare rule to fire when Device speed is over 60
@@ -37,7 +38,7 @@ rule "GPS Device Fix Information"
 	when
         $event : Event( $eventId : id, $serverTime : serverTime, $deviceTime : deviceTime, $fixTime : fixTime, $outdated : outdated, $valid : valid ) 
 	then
-		System.out.println($event.getName() + " GPS Fix on " + $deviceTime);
+		System.out.println($event.getName() + " GPS Device Fix on " + $deviceTime);
 end
 
 rule "GPS Device Address Location"
@@ -45,7 +46,7 @@ rule "GPS Device Address Location"
 	when
         $event : Event( $eventId : id, $address : address, $address != "null" )
 	then
-		System.out.println($event.getName() + " location " + $address);
+		System.out.println($event.getName() + " GPS Device location " + $address);
 end
 
 rule "GPS Device Sent Text Message"
@@ -53,7 +54,7 @@ rule "GPS Device Sent Text Message"
 	when
         $event : Event( $eventId : id, $textMessage : textMessage, $textMessage != null )
 	then
-		System.out.println($event.getName() + " Text Message: " + $textMessage);
+		System.out.println($event.getName() + " GPS Device Text Message: " + $textMessage);
 end
 
 rule "GPS Device Sent Alarm"
@@ -61,7 +62,7 @@ rule "GPS Device Sent Alarm"
 	when
         $event : Event( $eventId : id, $alarm : alarm, $alarm != null )
 	then
-		System.out.println($event.getName() + " Sent Alarm: " + $alarm);
+		System.out.println($event.getName() + " GPS Device Sent Alarm: " + $alarm);
 end
 
 //declare rule to fire when Device in Motion
@@ -72,6 +73,7 @@ rule "GPS Device is in Motion"
     then
 		System.out.println("GPS Device " + $event.getName() + " in Motion");
 end
+
 
 // 100910 - Jarvis Pi IoT Tron - Jarvis Pi IoT Tron
 rule "processID: rule for device ID: 100910 - Pi IoT Tron Device Module IoT-Jarvis"
@@ -93,7 +95,8 @@ rule "Module: rule for device ID: 100910 - Pi IoT Tron Device Module IoT-Jarvis"
 		System.out.println("Jarvis Pi IoT Tron Device Module > " + $event.getTextMessage());
 end
 
-// 100222 - Atom Pi IoT Tron
+
+// 100222 - Atom Pi IoT Tron ruleflow-group
 rule "processID: rule for device ID: 100222 - Pi IoT Tron Device Module IoT-Atom"
 	ruleflow-group "AtomPiIoTTron"
 	when
@@ -112,4 +115,49 @@ rule "Module: rule for device ID: 100222 - Pi IoT Tron Device Module IoT-Atom"
 		$event : Event( $eventId : id, $eventId == "100222" )
     then
 		System.out.println("Atom Pi IoT Tron Device Module > " + $event.getTextMessage());
+end
+
+
+// TISensorTag Environment GPS Position Pi IoT Tron ruleflow-group 
+rule "TISensorTag IoT Device Environment Conditions Readings"
+	ruleflow-group "TISensorTagEnvironment"
+	when
+        $event : Event( $eventId : id, $temp : temp, $ir_temp : ir_temp, $humidity : humidity, $mbar : mbar, $light : light )
+	then
+		String results = "TISensorTag Environment "; // $event.getName() + " Temp:" + $temp + "  IR_Temp:" + $ir_temp + "  Humidity:" + $humidity + "  Mbar:" + $mbar + "  Light:" + $light
+		System.out.println(results);
+end
+
+rule "TISensorTag IoT Device Event Readings"
+	ruleflow-group "TISensorTagEnvironment"
+	when
+        $event : Event( $eventId : id )
+	then
+		String results = "TISensorTag Environment " + $event.getName() + " Device Time " + $event.getDeviceTime() + " " + $event.getEvent();
+		System.out.println(results);
+end
+
+//declare rule to fire when Temp is over 75
+rule "TISensorTag Temp Raise alarm - Too Warm at Location"
+	ruleflow-group "TISensorTagEnvironment"
+	when
+        $event : Event( $eventId : id, $temp : temp, $temp > "75" )
+	then
+		System.out.println(">> TISensorTag Environment Raise Temp Alarm " + $event.getName() + " Temperature:" + $temp);
+end
+
+rule "TISensorTag IoT Device Sent Text Message"
+	ruleflow-group "TISensorTagEnvironment"
+	when
+        $event : Event( $eventId : id, $textMessage : textMessage, $textMessage != null )
+	then
+		System.out.println("TISensorTag Environment " + $event.getName() + " Text Message: " + $textMessage);
+end
+
+rule "TISensorTag IoT Device Sent Alarm"
+	ruleflow-group "TISensorTagEnvironment"
+	when
+        $event : Event( $eventId : id, $alarm : alarm, $alarm != null )
+	then
+		System.out.println("TISensorTag Environment " + $event.getName() + " Sent Alarm: " + $alarm);
 end

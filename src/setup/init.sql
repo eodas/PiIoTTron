@@ -15,6 +15,7 @@ INSERT INTO Device(id, name, process) VALUES
 	("100888", "Arduino Tron IoT Display", ""); 
 	("100910", "Jarvis Pi IoT Tron", "com.JarvisPiIoTTron"), 
 	("100920", "EOSpy IoT GPS Position", "com.GPSPositionTron");
+	("100930", "EOSpy TISensorTag GPS Environment", "com.TISensorTagEnvironment");
 
 INSERT INTO User(login, name) VALUES
     ("1234", "Steven Woodward"),

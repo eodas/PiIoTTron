@@ -214,7 +214,7 @@ public class PiIoTTron {
 		pi4jgpio = new Pi4jGPIO(); // Implementation for the Raspberry Pi4j GPIO example
 
 		if ((gpio == "") || (gpio.indexOf("none") != -1)) {
-			System.err.println("Note: create gpio controller e.g. gpio=GPIO_01 not defined in iotbpm.properties file.");
+			System.err.println("Note: create gpio controller e.g. gpio=GPIO_01 not defined in piiottron.xml file.");
 		} else {
 			pi4jgpio.gpioStartController();
 	        System.out.println("Create GPIO Controller...");
