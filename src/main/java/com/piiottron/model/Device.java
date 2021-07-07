@@ -18,6 +18,8 @@ public class Device {
 
 	private final Logger logger = LoggerFactory.getLogger(Device.class);
 
+	private final String DateFormat = "yyyy-MM-dd HH:mm:ss.ms"; // MM/dd/yyyy HH:mm:ss
+	
 	public String id;
 	public String name;
 	public String purpose;
@@ -226,7 +228,7 @@ public class Device {
 		String sdate = "";
 		try {
 			long ldate = Long.parseLong(date);
-			sdate = new java.text.SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new java.util.Date(ldate * 1000));
+			sdate = new java.text.SimpleDateFormat(DateFormat).format(new java.util.Date(ldate * 1000));
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}

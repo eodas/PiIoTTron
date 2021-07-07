@@ -1,5 +1,7 @@
 package com.piiottron.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +22,9 @@ import org.slf4j.LoggerFactory;
 public class Event {
 
 	private final Logger logger = LoggerFactory.getLogger(Event.class);
-
+	                                   
+	private final String DateFormat = "yyyy-MM-dd HH:mm:ss.ms"; // MM/dd/yyyy HH:mm:ss
+	
 	public Map<String, String> map = new HashMap<>();
 
 	public String id;
@@ -75,6 +79,7 @@ public class Event {
 	public boolean motion;
 
 	public Event() {
+		setServerTime(new SimpleDateFormat(DateFormat).format(new Date()));
 	}
 
 	public static final String ALL_EVENTS = "allEvents";
@@ -806,7 +811,7 @@ public class Event {
 		String sdate = "";
 		try {
 			long ldate = Long.parseLong(date);
-			sdate = new java.text.SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new java.util.Date(ldate * 1000));
+			sdate = new java.text.SimpleDateFormat(DateFormat).format(new java.util.Date(ldate * 1000));
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
