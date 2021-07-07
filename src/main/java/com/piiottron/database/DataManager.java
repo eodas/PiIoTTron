@@ -8,6 +8,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -115,7 +117,7 @@ public class DataManager {
 	 * @return true if the transaction was successful, otherwise false.
 	 */
 	public boolean insterEvent(Event event) {
-		String insert_Event = "INSERT INTO Event(id, name, events, description, process, protocol, "
+		String insert_Event = "INSERT INTO Event(id, name, events, description, process, protocols, "
 				+ "serverTime, deviceTime, fixTime, outdated, valid, lat, lon, altitude, speed, "
 				+ "course, address, accuracy, bearing, network, hdop, cell, wifi, battery, message, "
 				+ "temps, ir_temp, humidity, mbar, accel_x, accel_y, accel_z, gyro_x, gyro_y, gyro_z, "
@@ -231,15 +233,15 @@ public class DataManager {
 			PreparedStatement pstmt = connection.prepareStatement(select_Device);
 			pstmt.setString(1, id);
 			ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
-                return rs.getString("process");
-            }
+			if (rs.next()) {
+				return rs.getString("process");
+			}
 		} catch (Exception e) {
 			error(e);
 		}
 		return "";
 	}
-	
+
 	/**
 	 * Query return the ipAddress if the device exists in the database.
 	 *
@@ -252,15 +254,62 @@ public class DataManager {
 			PreparedStatement pstmt = connection.prepareStatement(select_Device);
 			pstmt.setString(1, id);
 			ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
-                return rs.getString("ipaddress");
-            }
+			if (rs.next()) {
+				return rs.getString("ipaddress");
+			}
 		} catch (Exception e) {
 			error(e);
 		}
 		return "";
 	}
 
+	/**
+	 * Retrieves all events by the given Primary Key Auto-increment from the
+	 * database. Returns a list of events.
+	 *
+	 * @param event the events of the pk Auto-increment
+	 * @return the list of events.
+	 */
+	public List<Event> getEventsServerTime(String serverTime) {
+		String select_Event = "SELECT id, name, events, description, process, protocols, serverTime, deviceTime, fixTime, outdated, valid, lat, lon, "
+				+ "altitude, speed, course, address, accuracy, bearing, network, hdop, cell, wifi, battery, message, "
+				+ "temps, ir_temp, humidity, mbar, accel_x, accel_y, accel_z, gyro_x, gyro_y, gyro_z, magnet_x, magnet_y, magnet_z, "
+				+ "light, keypress, alarm, distance, totalDistance, agentCount, motion FROM Event "
+				+ "WHERE serverTime > ?";
+		List<Event> events = new ArrayList<Event>();
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(select_Event);
+			pstmt.setString(1, serverTime);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				events.add(new Event(rs.getString("id"), rs.getString("name"), rs.getString("events"),
+						rs.getString("description"), rs.getString("process"),
+
+						rs.getString("protocols"), rs.getString("serverTime"), rs.getString("deviceTime"),
+						rs.getString("fixTime"), (rs.getString("outdated").equals("T") ? true : false),
+						(rs.getString("valid").equals("T") ? true : false),
+
+						rs.getInt("lat"), rs.getInt("lon"), rs.getInt("altitude"), rs.getInt("speed"),
+						rs.getInt("course"), rs.getString("address"), rs.getInt("accuracy"), rs.getInt("bearing"),
+						rs.getString("network"),
+
+						rs.getInt("hdop"), rs.getString("cell"), rs.getString("wifi"), rs.getInt("battery"),
+						rs.getString("message"),
+
+						rs.getInt("temps"), rs.getInt("ir_temp"), rs.getInt("humidity"), rs.getInt("mbar"),
+						rs.getInt("accel_x"), rs.getInt("accel_y"), rs.getInt("accel_z"), rs.getInt("gyro_x"),
+						rs.getInt("gyro_y"), rs.getInt("gyro_z"), rs.getInt("magnet_x"), rs.getInt("magnet_y"),
+						rs.getInt("magnet_z"),
+
+						rs.getInt("light"), rs.getInt("keypress"), rs.getString("alarm"), rs.getInt("distance"),
+						rs.getInt("totalDistance"), rs.getInt("agentCount"), (rs.getString("motion").equals("T") ? true : false)));
+			}
+		} catch (Exception e) {
+			error(e);
+		}
+		return events;
+	}
+	
 	/**
 	 * Print an error message on exception thrown.
 	 *

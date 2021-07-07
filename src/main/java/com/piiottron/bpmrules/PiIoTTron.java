@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -15,8 +18,10 @@ import org.slf4j.LoggerFactory;
 
 import com.piiottron.config.Config;
 import com.piiottron.database.DataManager;
+import com.piiottron.model.Event;
 import com.piiottron.pi4j.Pi4jGPIO;
 import com.piiottron.server.IoTServer;
+
 import com.piiottron.server.IoTCommand;
 
 //import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
@@ -58,6 +63,9 @@ public class PiIoTTron {
 	private String processID = ""; // com.IoTControl
 	private String gpio = ""; // create gpio controller
 	private long startTime = 0; // Time the server started
+
+	private final String DateFormat = "yyyy-MM-dd HH:mm:ss.ms"; // MM/dd/yyyy HH:mm:ss
+	private String listEventServerTime = "";
 
 	private DataManager dataManager;
 
@@ -137,6 +145,9 @@ public class PiIoTTron {
 				System.out.println("stat | info - display server status information");
 				System.out.println("exit | quit - terminates IoT BPM Server");
 				System.out.println();
+			}
+			if (command.equals("list") || command.equals("show")) {
+				listEvents();
 			}
 			if (command.equals("exit") || command.equals("quit")) {
 				runServer = false;
@@ -228,6 +239,30 @@ public class PiIoTTron {
 		}
 	}
 
+	public void listEvents() {
+		if ((listEventServerTime.equals(null)) || (listEventServerTime.equals(""))) {
+			listEventServerTime = new SimpleDateFormat(DateFormat).format(new Date());
+			System.out.println(
+					"List Event Server Time set to = " + listEventServerTime + " all events after will be list next.");
+		} else {
+			List<Event> events = dataManager.getEventsServerTime(listEventServerTime);
+			for (Event e : events) {
+				listEventServerTime = e.serverTime;
+				System.out.println(e.id + ",  " + e.name + ",  " + e.event + ",  " + e.description + ",  " + e.process
+						+ ",  " + e.protocol + ",  " + e.serverTime + ",  " + e.deviceTime + ",  " + e.fixTime + ",  "
+						+ e.outdated + ",  " + e.valid + ",  " + e.lat + ",  " + e.lon + ",  " + e.altitude + ",  " + e.speed + ",   "
+						+ e.course + ",  " + e.address + ",  " + e.accuracy + ",  " + e.bearing + ",  " + e.network + e.hdop + ",  "
+						+ e.cell + ",  " + e.wifi + ",  " + e.battery + ",  " + e.message + ",  " + e.temp + ",  "
+						+ e.ir_temp + ",  " + e.humidity + ",  " + e.mbar + ",  " + e.accel_x + ",  " + e.accel_y + ",  "
+						+ e.accel_z + ",  " + e.gyro_x + ",  " + e.gyro_y + ",  " + e.gyro_z + ",  " + e.magnet_x + ",  "
+						+ e.magnet_y + ",  " + e.magnet_z + ",  " + e.light + ",  " + e.keypress + ",  " + e.alarm + ",  "
+						+ e.distance + ",  " + e.totalDistance + ",  " + e.agentCount + ",  " + e.motion);
+			}
+			System.out.println(
+					"List Event Server Time set to = " + listEventServerTime + " all events after will be list next.");
+		}
+	}
+	
 	public void getIPAddress() {
 		// Returns the instance of InetAddress containing local host name and address
 		InetAddress localhost = null;

@@ -47,7 +47,7 @@ CREATE TABLE Event (
 	events	VARCHAR(25),
 	description VARCHAR(25),
 	process	VARCHAR(25),
-	protocol VARCHAR(25),
+	protocols VARCHAR(25),
 	serverTime VARCHAR(25),
 	deviceTime VARCHAR(25),
 	fixTime	VARCHAR(25),

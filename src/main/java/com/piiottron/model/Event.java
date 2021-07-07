@@ -78,10 +78,6 @@ public class Event {
 	public double agentCount;
 	public boolean motion;
 
-	public Event() {
-		setServerTime(new SimpleDateFormat(DateFormat).format(new Date()));
-	}
-
 	public static final String ALL_EVENTS = "allEvents";
 
 	public static final String TYPE_COMMAND_RESULT = "commandResult";
@@ -254,7 +250,70 @@ public class Event {
 
 	public static final String KEY_LIGHT = "light";
 	public static final String KEY_KEYPRESS = "keypress";
-	
+
+	public Event() {
+		setServerTime(new SimpleDateFormat(DateFormat).format(new Date()));
+	}
+
+    public Event(String id, String name, String event, String description, String process,
+    			 String protocol, String serverTime, String deviceTime, String fixTime, boolean outdated, boolean valid, double lat, double lon,
+    			 double altitude, double speed, double course, String address, double accuracy, double bearing, String network,
+    			 double hdop, String cell, String wifi, double battery, String message, double temp, double ir_temp, double humidity, double mbar,
+    			 double accel_x, double accel_y, double accel_z, double gyro_x, double gyro_y, double gyro_z, double magnet_x, double magnet_y, double magnet_z,
+    			 double light, double keypress, String alarm, double distance, double totalDistance, double agentCount, boolean motion) {
+
+    	this.id = id;
+    	this.name = name;
+    	this.event = event;
+    	this.description = description;
+    	this.process = process;
+    	
+    	this.protocol = protocol; 
+    	this.serverTime = serverTime; 
+    	this.deviceTime = deviceTime; 
+    	this.fixTime = fixTime; 
+    	this.outdated = outdated; 
+    	this.valid = valid;
+    	this.lat = lat;
+    	this.lon = lon;
+
+    	this.altitude = altitude;
+    	this.speed = speed;
+    	this.course = course;
+    	this.address = address;
+    	this.accuracy = accuracy;
+    	this.bearing = bearing;
+    	this.network = network;
+    	
+    	this.hdop = hdop;
+    	this.cell = cell;
+    	this.wifi = wifi;
+    	this.battery = battery;
+    	this.message = message;
+    	
+    	this.temp = temp;
+    	this.ir_temp = ir_temp;
+    	this.humidity = humidity;
+    	this.mbar = mbar;
+    	this.accel_x = accel_x;
+    	this.accel_y = accel_y;
+    	this.accel_z = accel_z;
+    	this.gyro_x = gyro_x;
+    	this.gyro_y = gyro_y;
+    	this.gyro_z = gyro_z;
+    	this.magnet_x = magnet_x;
+    	this.magnet_y = magnet_y;
+    	this.magnet_z = magnet_z;
+    	
+    	this.light = light;
+    	this.keypress = keypress;
+    	this.alarm = alarm;
+    	this.distance = distance;
+    	this.totalDistance = totalDistance;
+    	this.agentCount = agentCount;
+    	this.motion = motion;
+    }
+
 	public void add(String key, String value) {
 		map.put(key, value);
 		EventParser(key, value);
