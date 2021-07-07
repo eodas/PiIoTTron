@@ -9,8 +9,8 @@
 	<artifactId>Pi_IoT_Tron</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 
-	<name>Raspberry Pi IoT Tron :: Internet of Things Drools-jBPM Expert System using Raspberry Pi Tron AI-IoTBPM Processing</name>
-	<description>Raspberry Pi IoT Tron Drools-jBPM :: Raspberry Pi IoT Tron Sensor Application AI-IoTBPM Client using AI-IoTBPM Drools-jBPM</description>
+	<name>Pi AI-IoTBPM Tron :: Internet of Things Drools-jBPM Expert System using Pi AI-IoTBPM Tron AI-IoTBPM Processing</name>
+	<description>Pi AI-IoTBPM Tron Drools-jBPM :: Pi AI-IoTBPM Tron IoT Tron Sensor Application AI-IoTBPM Client using AI-IoTBPM Drools-jBPM</description>
 
 	<properties>
 	    <runtime.version>7.48.0.Final</runtime.version>
