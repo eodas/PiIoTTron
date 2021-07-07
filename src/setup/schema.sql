@@ -41,7 +41,7 @@ CREATE TABLE Device (
 );
 
 CREATE TABLE Event (
-    pkId	INTEGER PRIMARY KEY AUTOINCREMENT, 
+    pk		INTEGER PRIMARY KEY AUTOINCREMENT, 
     id   	VARCHAR(10),   -- maybe alphanumeric
 	name	VARCHAR(25),
 	events	VARCHAR(25),
