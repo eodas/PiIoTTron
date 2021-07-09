@@ -25,7 +25,8 @@
 	<entry key='gpio'>none</entry>
 	
     <entry key='database.driver'>org.sqlite.JDBC</entry>
-    <entry key='database.url'>jdbc:sqlite:piiottron.db</entry>
+    <entry key='database.url'>jdbc:sqlite:///D:\\database\\piiottron.db</entry>  
+    <!-- <entry key='database.url'>jdbc:sqlite:piiottron.db</entry> -->
     <entry key='database.user'>root</entry>
     <entry key='database.password'>root</entry>
 
