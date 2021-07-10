@@ -289,20 +289,20 @@ public class DataManager {
 						rs.getString("fixTime"), (rs.getString("outdated").equals("T") ? true : false),
 						(rs.getString("valid").equals("T") ? true : false),
 
-						rs.getInt("lat"), rs.getInt("lon"), rs.getInt("altitude"), rs.getInt("speed"),
-						rs.getInt("course"), rs.getString("address"), rs.getInt("accuracy"), rs.getInt("bearing"),
+						rs.getDouble("lat"), rs.getDouble("lon"), rs.getDouble("altitude"), rs.getDouble("speed"),
+						rs.getDouble("course"), rs.getString("address"), rs.getDouble("accuracy"), rs.getDouble("bearing"),
 						rs.getString("network"),
 
-						rs.getInt("hdop"), rs.getString("cell"), rs.getString("wifi"), rs.getInt("battery"),
+						rs.getDouble("hdop"), rs.getString("cell"), rs.getString("wifi"), rs.getDouble("battery"),
 						rs.getString("message"),
 
-						rs.getInt("temps"), rs.getInt("ir_temp"), rs.getInt("humidity"), rs.getInt("mbar"),
-						rs.getInt("accel_x"), rs.getInt("accel_y"), rs.getInt("accel_z"), rs.getInt("gyro_x"),
-						rs.getInt("gyro_y"), rs.getInt("gyro_z"), rs.getInt("magnet_x"), rs.getInt("magnet_y"),
-						rs.getInt("magnet_z"),
+						rs.getDouble("temps"), rs.getDouble("ir_temp"), rs.getDouble("humidity"), rs.getDouble("mbar"),
+						rs.getDouble("accel_x"), rs.getDouble("accel_y"), rs.getDouble("accel_z"), rs.getDouble("gyro_x"),
+						rs.getDouble("gyro_y"), rs.getDouble("gyro_z"), rs.getDouble("magnet_x"), rs.getDouble("magnet_y"),
+						rs.getDouble("magnet_z"),
 
-						rs.getInt("light"), rs.getInt("keypress"), rs.getString("alarm"), rs.getInt("distance"),
-						rs.getInt("totalDistance"), rs.getInt("agentCount"), (rs.getString("motion").equals("T") ? true : false)));
+						rs.getDouble("light"), rs.getDouble("keypress"), rs.getString("alarm"), rs.getDouble("distance"),
+						rs.getDouble("totalDistance"), rs.getDouble("agentCount"), (rs.getString("motion").equals("T") ? true : false)));
 			}
 		} catch (Exception e) {
 			error(e);

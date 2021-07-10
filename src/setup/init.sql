@@ -7,6 +7,7 @@
 INSERT INTO Device(id, name, process) VALUES 
 	("100111", "Arduino Tron IoT", ""),
 	("100222", "Temperature-Humidity", ""),
+	("100223", "Temperature-Humidity Outside", ""),
 	("100333", "Door Lock IoT-MCU", ""),
 	("100444", "TISensorTag GPS Environment", "com.TISensorTagEnvironment"),
 	("100555", "Arduino Dash Button", ""),
