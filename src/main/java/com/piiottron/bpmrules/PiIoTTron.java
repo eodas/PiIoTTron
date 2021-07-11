@@ -20,8 +20,8 @@ import com.piiottron.config.Config;
 import com.piiottron.database.DataManager;
 import com.piiottron.model.Event;
 import com.piiottron.pi4j.Pi4jGPIO;
-import com.piiottron.server.IoTServer;
 
+import com.piiottron.server.IoTServer;
 import com.piiottron.server.IoTCommand;
 
 //import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
