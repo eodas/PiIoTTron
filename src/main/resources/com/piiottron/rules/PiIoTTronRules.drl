@@ -162,3 +162,12 @@ rule "TISensorTag IoT Device Sent Alarm"
 	then
 		System.out.println("TISensorTag Environment " + $event.getName() + " Sent Alarm: " + $alarm);
 end
+
+// 100940 - M5Atom LED Arduino Tron M5Stack - com.M5AtomEnvironment
+rule "M5Atom IoT Device Sent Alarm"
+	ruleflow-group "M5AtomEnvironment"
+	when
+        $event : Event( $eventId : id, $temp : temp, $temp > "75" )
+	then
+		System.out.println("!!!! >>>> M5Atom Environment Raise Temp Alarm " + $event.getName() + " Temperature:" + $temp + " <<<< !!!!");
+end
