@@ -163,11 +163,53 @@ rule "TISensorTag IoT Device Sent Alarm"
 		System.out.println("TISensorTag Environment " + $event.getName() + " Sent Alarm: " + $alarm);
 end
 
+
 // 100940 - M5Atom LED Arduino Tron M5Stack - com.M5AtomEnvironment
 rule "M5Atom IoT Device Sent Alarm"
 	ruleflow-group "M5AtomEnvironment"
 	when
-        $event : Event( $eventId : id, $temp : temp, $temp > "75" )
+        $event : Event( $eventId : id, $temp : temp, $temp > "72" )
 	then
 		System.out.println("!!!! >>>> M5Atom Environment Raise Temp Alarm " + $event.getName() + " Temperature:" + $temp + " <<<< !!!!");
+end
+
+rule "M5Atom IoT Device Event Readings"
+	ruleflow-group "M5AtomEnvironment"
+	when
+        $event : Event( $eventId : id )
+	then
+		String results = "M5Atom LED Device Environment " + $event.getName() + " Device Time " + $event.getDeviceTime() + " " + $event.getEvent();
+		System.out.println(results);
+end
+
+rule "M5Atom IoT Device Gyroscope Readings"
+	ruleflow-group "M5AtomEnvironment"
+	when
+        $event : Event( $eventId : id, $accel_x : accel_x, $accel_y : accel_y, $accel_z : accel_z, $gyro_x : gyro_x, $gyro_y : gyro_y, $gyro_z : gyro_z )
+	then
+		System.out.println($event.getName() + "  accel " + $accel_x + " " + $accel_y + " " + $accel_z + " " + "  gyro " + $gyro_x + " " + $gyro_y + " " + $gyro_z );
+end
+
+rule "M5Atom IoT Device Gyroscope Positive zBias"
+	ruleflow-group "M5AtomEnvironment"
+	when
+        $event : Event( $eventId : id, $gyro_z : gyro_z, $gyro_z > 0 )
+	then
+		System.out.println($event.getName() + " Device <<Face Up>>");
+end
+
+rule "M5Atom IoT Device Gyroscope Negative zBias"
+	ruleflow-group "M5AtomEnvironment"
+	when
+        $event : Event( $eventId : id, $gyro_z : gyro_z, $gyro_z < 0 )
+	then
+		System.out.println($event.getName() + " Device <<Face Down>>");
+end
+
+rule "M5Atom IoT Device is in Motion"
+	ruleflow-group "M5AtomEnvironment"
+	when
+        $event : Event( $eventId : id, $gyro_x : gyro_x, $gyro_y : gyro_y, $gyro_z : gyro_z, gyro_x != 0, gyro_y != 0, gyro_z != 0 )
+	then
+		System.out.println("Device " + $event.getName() + " in Motion");
 end
