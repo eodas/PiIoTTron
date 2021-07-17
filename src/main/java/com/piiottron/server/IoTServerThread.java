@@ -88,8 +88,6 @@ public class IoTServerThread extends Thread {
 						System.err.println("Error: Unknown Device id" + event.getId() + "  IP Address " + ipAddress);
 					}
 					
-					dataManager.insterEvent(event);
-
 					// Set response jBPM Global Variable List
 					// kcontext.getKnowledgeRuntime().setGlobal("response", "");
 					response = jbpmRules.receive(event);
@@ -97,6 +95,9 @@ public class IoTServerThread extends Thread {
 						out.println(response);
 						System.out.println("> TRACE RSP " + response);
 					}
+
+					dataManager.insterEvent(event);
+
 					sendHttpTextResp(200, response);
 				}
 			}

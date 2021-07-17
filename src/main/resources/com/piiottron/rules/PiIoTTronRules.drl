@@ -13,7 +13,8 @@ rule "GPS Device Distance"
 	when
         $event : Event( $eventId : id, $lat : lat, $lon : lon, $altitude : altitude, $distance : distance, $totalDistance : totalDistance )
 	then
-		System.out.println($event.getName() + " GPS Device Distance:" + $distance + " Total:" + $totalDistance + " Altitude:" + $altitude);
+		System.out.println("GPS Device " + $event.getId() + " Distance: " + $distance + " Total: " + $totalDistance + " Altitude: " + $altitude);
+		$event.setTextMessage("GPS Distance: " + $distance + " Total: " + $totalDistance + " Altitude: " + $altitude);
 end
 
 //declare rule to fire when Device speed is over 60
@@ -22,7 +23,8 @@ rule "GPS Device Speed Alert"
 	when
         $event : Event( $eventId : id, $lat : lat, $lon : lon, $altitude : altitude, $speed : speed, $speed > "60" )
 	then
-		System.out.println("!!!! >>>> " + $event.getName() + " GPS Device Speed Over 60.0 Alert lat:" + $lat + " lon:" + $lon + " speed:" + $speed + " <<<< !!!!");
+		System.out.println("GPS Device " + $event.getId() + " Speed Over 60.0 Alert lat: " + $lat + " lon: " + $lon + " speed: " + $speed);
+		$event.setTextMessage("GPS Speed Over 60.0 Alert lat: " + $lat + " lon: " + $lon + " speed: " + $speed);
 end
 
 rule "GPS Device Lat Lon Fix"
@@ -30,7 +32,8 @@ rule "GPS Device Lat Lon Fix"
 	when
         $event : Event( $eventId : id, $lat : lat, $lon : lon, $altitude : altitude )
 	then
-		System.out.println($event.getName() + " GPS Device Lat Lon Fix:" + $lat + " lon:" + $lon + " Altitude:" + $altitude);
+		System.out.println("GPS Device " + $event.getId() + " Lat Lon Fix: " + $lat + " lon: " + $lon + " Altitude: " + $altitude);
+		$event.setTextMessage("GPS Lat Lon Fix: " + $lat + " lon: " + $lon + " Altitude: " + $altitude);
 end
 
 rule "GPS Device Fix Information"
@@ -38,7 +41,8 @@ rule "GPS Device Fix Information"
 	when
         $event : Event( $eventId : id, $serverTime : serverTime, $deviceTime : deviceTime, $fixTime : fixTime, $outdated : outdated, $valid : valid ) 
 	then
-		System.out.println($event.getName() + " GPS Device Fix on " + $deviceTime);
+		System.out.println("GPS Device " + $event.getId() + " Fix on " + $deviceTime);
+		$event.setTextMessage("GPS Device Fix on " + $deviceTime);
 end
 
 rule "GPS Device Address Location"
@@ -46,7 +50,8 @@ rule "GPS Device Address Location"
 	when
         $event : Event( $eventId : id, $address : address, $address != "null" )
 	then
-		System.out.println($event.getName() + " GPS Device location " + $address);
+		System.out.println("GPS Device " + $event.getId() + " location " + $address);
+		$event.setTextMessage("GPS Device location " + $address);
 end
 
 rule "GPS Device Sent Text Message"
@@ -54,7 +59,8 @@ rule "GPS Device Sent Text Message"
 	when
         $event : Event( $eventId : id, $textMessage : textMessage, $textMessage != null )
 	then
-		System.out.println($event.getName() + " GPS Device Text Message: " + $textMessage);
+		System.out.println("GPS Device " + $event.getId() + " Text Message: " + $textMessage);
+		$event.setTextMessage("GPS Device Text Message: " + $textMessage);
 end
 
 rule "GPS Device Sent Alarm"
@@ -62,7 +68,8 @@ rule "GPS Device Sent Alarm"
 	when
         $event : Event( $eventId : id, $alarm : alarm, $alarm != null )
 	then
-		System.out.println($event.getName() + " GPS Device Sent Alarm: " + $alarm);
+		System.out.println("GPS Device " + $event.getId() + " Sent Alarm: " + $alarm);
+		$event.setTextMessage("GPS Sent Alarm: " + $alarm);
 end
 
 //declare rule to fire when Device in Motion
@@ -71,7 +78,8 @@ rule "GPS Device is in Motion"
     when
         $event : Event( $eventId : id, $motion : motion, $motion == true )
     then
-		System.out.println("GPS Device " + $event.getName() + " in Motion");
+		System.out.println("GPS Device " + $event.getId() + " in Motion");
+		$event.setTextMessage("GPS Device in Motion");
 end
 
 
@@ -83,6 +91,7 @@ rule "processID: rule for device ID: 100910 - Pi IoT Tron Device Module IoT-Jarv
 	then
 	//	com.piiottron.model.StateList.getInstance().putState("processID", "com.JarvisPiIoTTron");
 		System.out.println("com.JarvisPiIoTTron - Pi IoT Tron Device Module IoT-Jarvis");
+		$event.setTextMessage("com.JarvisPiIoTTron - Pi IoT Tron Device Module IoT-Jarvis");
 end
 
 rule "Module: rule for device ID: 100910 - Pi IoT Tron Device Module IoT-Jarvis"
@@ -93,6 +102,7 @@ rule "Module: rule for device ID: 100910 - Pi IoT Tron Device Module IoT-Jarvis"
 		$event : Event( $eventId : id, $eventId == "100910" )
     then
 		System.out.println("Jarvis Pi IoT Tron Device Module > " + $event.getTextMessage());
+		$event.setTextMessage("Jarvis Pi IoT Tron Device Module > " + $event.getTextMessage());
 end
 
 
@@ -104,7 +114,7 @@ rule "processID: rule for device ID: 100222 - Pi IoT Tron Device Module IoT-Atom
 	then
 	//	com.piiottron.model.StateList.getInstance().putState("processID", "com.AtomPiIoTTron");
 		System.out.println("com.AtomPiIoTTron");
-		
+		$event.setTextMessage("com.AtomPiIoTTron");
 end
 
 rule "Module: rule for device ID: 100222 - Pi IoT Tron Device Module IoT-Atom"
@@ -115,6 +125,7 @@ rule "Module: rule for device ID: 100222 - Pi IoT Tron Device Module IoT-Atom"
 		$event : Event( $eventId : id, $eventId == "100222" )
     then
 		System.out.println("Atom Pi IoT Tron Device Module > " + $event.getTextMessage());
+		$event.setTextMessage("Atom Pi IoT Tron Device Module > " + $event.getTextMessage());
 end
 
 
@@ -124,9 +135,10 @@ rule "TISensorTag IoT Device Environment Conditions Readings"
 	when
         $event : Event( $eventId : id, $temp : temp, $ir_temp : ir_temp, $humidity : humidity, $mbar : mbar, $light : light )
 	then
-		String results = "TISensorTag Environment " + $event.getName() + " Temp:" + $temp + "  IR_Temp:" 
-						+ $ir_temp + "  Humidity:" + $humidity + "  Mbar:" + $mbar + "  Light:" + $light;
+		String results = "TISensorTag Environment " + $event.getId() + " Temp: " + $temp + "  IR_Temp: " 
+						+ $ir_temp + "  Humidity: " + $humidity + "  Mbar: " + $mbar + "  Light: " + $light;
 		System.out.println(results);
+		$event.setTextMessage(results);
 end
 
 rule "TISensorTag IoT Device Event Readings"
@@ -134,8 +146,9 @@ rule "TISensorTag IoT Device Event Readings"
 	when
         $event : Event( $eventId : id )
 	then
-		String results = "TISensorTag Environment " + $event.getName() + " Device Time " + $event.getDeviceTime() + " " + $event.getEvent();
+		String results = "TISensorTag Environment " + $event.getId() + " Device Time " + $event.getDeviceTime() + " " + $event.getEvent();
 		System.out.println(results);
+		$event.setTextMessage(results);
 end
 
 //declare rule to fire when Temp is over 75
@@ -144,7 +157,8 @@ rule "TISensorTag Temp Raise alarm - Too Warm at Location"
 	when
         $event : Event( $eventId : id, $temp : temp, $temp > "75" )
 	then
-		System.out.println("!!!! >>>> TISensorTag Environment Raise Temp Alarm " + $event.getName() + " Temperature:" + $temp + " <<<< !!!!");
+		System.out.println("TISensorTag Raise Temp Alarm " + $event.getId() + " Temperature: " + $temp);
+		$event.setTextMessage("TISensorTag Raise Alarm Temp: " + $temp + "'");
 end
 
 rule "TISensorTag IoT Device Sent Text Message"
@@ -152,7 +166,8 @@ rule "TISensorTag IoT Device Sent Text Message"
 	when
         $event : Event( $eventId : id, $textMessage : textMessage, $textMessage != null )
 	then
-		System.out.println("TISensorTag Environment " + $event.getName() + " Text Message: " + $textMessage);
+		System.out.println("TISensorTag Environment " + $event.getId() + " Text Message: " + $textMessage);
+		$event.setTextMessage("TISensorTag Text Message: " + $textMessage);
 end
 
 rule "TISensorTag IoT Device Sent Alarm"
@@ -160,7 +175,8 @@ rule "TISensorTag IoT Device Sent Alarm"
 	when
         $event : Event( $eventId : id, $alarm : alarm, $alarm != null )
 	then
-		System.out.println("TISensorTag Environment " + $event.getName() + " Sent Alarm: " + $alarm);
+		System.out.println("TISensorTag Environment " + $event.getId() + " Sent Alarm: " + $alarm);
+		$event.setTextMessage("TISensorTag Sent Alarm: " + $alarm);
 end
 
 
@@ -170,7 +186,8 @@ rule "M5Atom IoT Device Sent Alarm"
 	when
         $event : Event( $eventId : id, $temp : temp, $temp > "72" )
 	then
-		System.out.println("!!!! >>>> M5Atom Environment Raise Temp Alarm " + $event.getName() + " Temperature:" + $temp + " <<<< !!!!");
+		System.out.println("M5Atom Raise Temp Alarm " + $event.getId() + " Temperature: " + $temp);
+		$event.setTextMessage("M5Atom Raise Alarm Temp: " + $temp);
 end
 
 rule "M5Atom IoT Device Event Readings"
@@ -178,8 +195,9 @@ rule "M5Atom IoT Device Event Readings"
 	when
         $event : Event( $eventId : id )
 	then
-		String results = "M5Atom LED Device Environment " + $event.getName() + " Device Time " + $event.getDeviceTime() + " " + $event.getEvent();
+		String results = "M5Atom LED Device Environment " + $event.getId() + " Device Time " + $event.getDeviceTime() + " " + $event.getEvent();
 		System.out.println(results);
+		$event.setTextMessage(results);
 end
 
 rule "M5Atom IoT Device Gyroscope Readings"
@@ -187,7 +205,8 @@ rule "M5Atom IoT Device Gyroscope Readings"
 	when
         $event : Event( $eventId : id, $accel_x : accel_x, $accel_y : accel_y, $accel_z : accel_z, $gyro_x : gyro_x, $gyro_y : gyro_y, $gyro_z : gyro_z )
 	then
-		System.out.println($event.getName() + "  accel " + $accel_x + " " + $accel_y + " " + $accel_z + " " + "  gyro " + $gyro_x + " " + $gyro_y + " " + $gyro_z );
+		System.out.println("M5Atom " + $event.getId() + "  accel " + $accel_x + " " + $accel_y + " " + $accel_z + " " + "  gyro " + $gyro_x + " " + $gyro_y + " " + $gyro_z );
+		$event.setTextMessage("M5Atom accel " + $accel_x + " " + $accel_y + " " + $accel_z + " " + "  gyro " + $gyro_x + " " + $gyro_y + " " + $gyro_z );
 end
 
 rule "M5Atom IoT Device Gyroscope Positive zBias"
@@ -195,7 +214,8 @@ rule "M5Atom IoT Device Gyroscope Positive zBias"
 	when
         $event : Event( $eventId : id, $gyro_z : gyro_z, $gyro_z > 0 )
 	then
-		System.out.println($event.getName() + " Device <<Face Up>>");
+		System.out.println("Device " + $event.getId() + " is <Face Up>");
+		$event.setTextMessage("Device is Face Up");
 end
 
 rule "M5Atom IoT Device Gyroscope Negative zBias"
@@ -203,7 +223,8 @@ rule "M5Atom IoT Device Gyroscope Negative zBias"
 	when
         $event : Event( $eventId : id, $gyro_z : gyro_z, $gyro_z < 0 )
 	then
-		System.out.println($event.getName() + " Device <<Face Down>>");
+		System.out.println("Device " + $event.getId() + " is <Face Down>");
+		$event.setTextMessage("Device is Face Down");
 end
 
 rule "M5Atom IoT Device is in Motion"
@@ -211,5 +232,6 @@ rule "M5Atom IoT Device is in Motion"
 	when
         $event : Event( $eventId : id, $gyro_x : gyro_x, $gyro_y : gyro_y, $gyro_z : gyro_z, gyro_x != 0, gyro_y != 0, gyro_z != 0 )
 	then
-		System.out.println("Device " + $event.getName() + " in Motion");
+		System.out.println("Device " + $event.getId() + " is <In Motion>");
+		$event.setTextMessage("Device is in Motion");
 end
