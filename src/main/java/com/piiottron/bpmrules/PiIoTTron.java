@@ -251,8 +251,8 @@ public class PiIoTTron {
 				System.out.println(e.id + ",  " + e.name + ",  " + e.event + ",  " + e.description + ",  " + e.process
 						+ ",  " + e.protocol + ",  " + e.serverTime + ",  " + e.deviceTime + ",  " + e.fixTime + ",  "
 						+ e.outdated + ",  " + e.valid + ",  " + e.lat + ",  " + e.lon + ",  " + e.altitude + ",  " + e.speed + ",   "
-						+ e.course + ",  " + e.address + ",  " + e.accuracy + ",  " + e.bearing + ",  " + e.network + e.hdop + ",  "
-						+ e.cell + ",  " + e.wifi + ",  " + e.battery + ",  " + e.message + ",  " + e.temp + ",  "
+						+ e.course + ",  " + e.address + ",  " + e.accuracy + ",  " + e.bearing + ",  " + e.network + ",  " + e.satellites + ",  " 
+						+ e.hdop + ",  " + e.cell + ",  " + e.wifi + ",  " + e.battery + ",  " + e.message + ",  " + e.temp + ",  "
 						+ e.ir_temp + ",  " + e.humidity + ",  " + e.mbar + ",  " + e.accel_x + ",  " + e.accel_y + ",  "
 						+ e.accel_z + ",  " + e.gyro_x + ",  " + e.gyro_y + ",  " + e.gyro_z + ",  " + e.magnet_x + ",  "
 						+ e.magnet_y + ",  " + e.magnet_z + ",  " + e.light + ",  " + e.keypress + ",  " + e.alarm + ",  "

@@ -119,10 +119,10 @@ public class DataManager {
 	public boolean insterEvent(Event event) {
 		String insert_Event = "INSERT INTO Event(id, name, events, description, process, protocols, "
 				+ "serverTime, deviceTime, fixTime, outdated, valid, lat, lon, altitude, speed, "
-				+ "course, address, accuracy, bearing, network, hdop, cell, wifi, battery, message, "
+				+ "course, address, accuracy, bearing, network, satellites, hdop, cell, wifi, battery, message, "
 				+ "temps, ir_temp, humidity, mbar, accel_x, accel_y, accel_z, gyro_x, gyro_y, gyro_z, "
 				+ "magnet_x, magnet_y, magnet_z, light, keypress, alarm, distance, totalDistance, agentCount, motion) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
 				+ "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(insert_Event);
@@ -146,31 +146,32 @@ public class DataManager {
 			pstmt.setDouble(18, event.getAccuracy());
 			pstmt.setDouble(19, event.getBearing());
 			pstmt.setString(20, event.getNetwork());
-			pstmt.setDouble(21, event.getHdop());
-			pstmt.setString(22, event.getCell());
-			pstmt.setString(23, event.getWifi());
-			pstmt.setDouble(24, event.getBatteryLevel());
-			pstmt.setString(25, event.getTextMessage());
-			pstmt.setDouble(26, event.getTemp());
-			pstmt.setDouble(27, event.getIr_temp());
-			pstmt.setDouble(28, event.getHumidity());
-			pstmt.setDouble(29, event.getMbar());
-			pstmt.setDouble(30, event.getAccel_x());
-			pstmt.setDouble(31, event.getAccel_y());
-			pstmt.setDouble(32, event.getAccel_z());
-			pstmt.setDouble(33, event.getGyro_x());
-			pstmt.setDouble(34, event.getGyro_y());
-			pstmt.setDouble(35, event.getGyro_z());
-			pstmt.setDouble(36, event.getMagnet_x());
-			pstmt.setDouble(37, event.getMagnet_y());
-			pstmt.setDouble(38, event.getMagnet_z());
-			pstmt.setDouble(39, event.getLight());
-			pstmt.setDouble(40, event.getKeypress());
-			pstmt.setString(41, event.getAlarm());
-			pstmt.setDouble(42, event.getDistance());
-			pstmt.setDouble(43, event.getTotalDistance());
-			pstmt.setDouble(44, event.getAgentCount());
-			pstmt.setString(45, (event.isMotion()) ? "T" : "F");
+			pstmt.setDouble(21, event.getSatellites());
+			pstmt.setDouble(22, event.getHdop());
+			pstmt.setString(23, event.getCell());
+			pstmt.setString(24, event.getWifi());
+			pstmt.setDouble(25, event.getBatteryLevel());
+			pstmt.setString(26, event.getTextMessage());
+			pstmt.setDouble(27, event.getTemp());
+			pstmt.setDouble(28, event.getIr_temp());
+			pstmt.setDouble(29, event.getHumidity());
+			pstmt.setDouble(30, event.getMbar());
+			pstmt.setDouble(31, event.getAccel_x());
+			pstmt.setDouble(32, event.getAccel_y());
+			pstmt.setDouble(33, event.getAccel_z());
+			pstmt.setDouble(34, event.getGyro_x());
+			pstmt.setDouble(35, event.getGyro_y());
+			pstmt.setDouble(36, event.getGyro_z());
+			pstmt.setDouble(37, event.getMagnet_x());
+			pstmt.setDouble(38, event.getMagnet_y());
+			pstmt.setDouble(39, event.getMagnet_z());
+			pstmt.setDouble(40, event.getLight());
+			pstmt.setDouble(41, event.getKeypress());
+			pstmt.setString(42, event.getAlarm());
+			pstmt.setDouble(43, event.getDistance());
+			pstmt.setDouble(44, event.getTotalDistance());
+			pstmt.setDouble(45, event.getAgentCount());
+			pstmt.setString(46, (event.isMotion()) ? "T" : "F");
 			pstmt.executeUpdate();
 			return true;
 		} catch (Exception e) {
@@ -272,7 +273,7 @@ public class DataManager {
 	 */
 	public List<Event> getEventsServerTime(String serverTime) {
 		String select_Event = "SELECT id, name, events, description, process, protocols, serverTime, deviceTime, fixTime, outdated, valid, lat, lon, "
-				+ "altitude, speed, course, address, accuracy, bearing, network, hdop, cell, wifi, battery, message, "
+				+ "altitude, speed, course, address, accuracy, bearing, network, satellites, hdop, cell, wifi, battery, message, "
 				+ "temps, ir_temp, humidity, mbar, accel_x, accel_y, accel_z, gyro_x, gyro_y, gyro_z, magnet_x, magnet_y, magnet_z, "
 				+ "light, keypress, alarm, distance, totalDistance, agentCount, motion FROM Event "
 				+ "WHERE serverTime > ?";
@@ -293,7 +294,7 @@ public class DataManager {
 						rs.getDouble("course"), rs.getString("address"), rs.getDouble("accuracy"), rs.getDouble("bearing"),
 						rs.getString("network"),
 
-						rs.getDouble("hdop"), rs.getString("cell"), rs.getString("wifi"), rs.getDouble("battery"),
+						rs.getDouble("satellites"), rs.getDouble("hdop"), rs.getString("cell"), rs.getString("wifi"), rs.getDouble("battery"),
 						rs.getString("message"),
 
 						rs.getDouble("temps"), rs.getDouble("ir_temp"), rs.getDouble("humidity"), rs.getDouble("mbar"),

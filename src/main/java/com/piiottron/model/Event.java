@@ -50,6 +50,7 @@ public class Event {
 	public double bearing; // position
 	public String network; // position
 	
+	public double satellites;
 	public double hdop;
 	public String cell;
 	public String wifi;
@@ -257,7 +258,7 @@ public class Event {
 
     public Event(String id, String name, String event, String description, String process,
     			 String protocol, String serverTime, String deviceTime, String fixTime, boolean outdated, boolean valid, double lat, double lon,
-    			 double altitude, double speed, double course, String address, double accuracy, double bearing, String network,
+    			 double altitude, double speed, double course, String address, double accuracy, double bearing, String network, double satellites,
     			 double hdop, String cell, String wifi, double battery, String message, double temp, double ir_temp, double humidity, double mbar,
     			 double accel_x, double accel_y, double accel_z, double gyro_x, double gyro_y, double gyro_z, double magnet_x, double magnet_y, double magnet_z,
     			 double light, double keypress, String alarm, double distance, double totalDistance, double agentCount, boolean motion) {
@@ -285,6 +286,7 @@ public class Event {
     	this.bearing = bearing;
     	this.network = network;
     	
+    	this.satellites = satellites;
     	this.hdop = hdop;
     	this.cell = cell;
     	this.wifi = wifi;
@@ -511,6 +513,14 @@ public class Event {
 		this.network = network;
 	}
 	
+	public double getSatellites() {
+		return satellites;
+	}
+
+	public void setSatellites(double satellites) {
+		this.satellites = satellites;
+	}
+
 	public double getHdop() {
 		return hdop;
 	}
@@ -781,6 +791,10 @@ public class Event {
 			case "network":
 				setNetwork(value);
 				break;
+			case "sats":
+			case "satellites":
+				setSatellites(Double.parseDouble(value));
+				break;
 			case "hdop":
 				setHdop(Double.parseDouble(value));
 				break;
@@ -859,7 +873,7 @@ public class Event {
 				setMotion(Boolean.parseBoolean(value));
 				break;
 			default:
-				System.out.println("> Extended Event Token " + key + "=" + value);
+				System.out.println("> Extended Event Token " + key + "=" + value + "|");
 			}
 		} catch (NumberFormatException e) {
 			e.printStackTrace();

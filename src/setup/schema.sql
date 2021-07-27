@@ -62,6 +62,7 @@ CREATE TABLE Event (
 	accuracy REAL,
 	bearing  REAL,
 	network VARCHAR(25),
+	satellites REAL,
 	hdop	REAL,
 	cell	VARCHAR(25),
 	wifi	VARCHAR(25),
