@@ -601,7 +601,7 @@ void arduinoTronSend()
   // client.print("&accuracy=" + accuracy);
   client.print("&batt=" + batt);
 
-  float _tempF = (celsius * 9.0 / 5.0) + 1.0;
+  float _tempF = (celsius * 9.0 / 5.0) + 4.0;
   client.print("&temp=" + String(_tempF));
   client.print("&humidity=" + String(humidity));
 

@@ -17,7 +17,8 @@ INSERT INTO Device(id, name, process) VALUES
   	("100910", "Jarvis Pi IoT Tron", "com.JarvisPiIoTTron"),
   	("100920", "EOSpy IoT GPS Position", "com.GPSPositionTron"),
   	("100930", "IoT-TISensorTag GPS Environment", "com.TISensorTagEnvironment"),
-  	("100940", "M5Atom LED Arduino Tron M5Stack", "com.M5AtomEnvironment");
+  	("100940", "M5Atom LED Arduino Tron M5Stack", "com.M5AtomEnvironment"),
+  	("100950", "Arduion ESP8266 GPS Position", "com.GPSESP8266Position");
 
 INSERT INTO User(login, name) VALUES
     ("1234", "Steven Woodward"),

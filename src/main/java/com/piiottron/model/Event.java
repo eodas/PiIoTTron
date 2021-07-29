@@ -882,11 +882,15 @@ public class Event {
 
 	private String parseDate(String date) {
 		String sdate = "";
-		try {
-			long ldate = Long.parseLong(date);
-			sdate = new java.text.SimpleDateFormat(DateFormat).format(new java.util.Date(ldate * 1000));
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
+		if (date.startsWith("202")) {
+			sdate = date; // raw date string
+		} else {
+			try {
+				long ldate = Long.parseLong(date);
+				sdate = new java.text.SimpleDateFormat(DateFormat).format(new java.util.Date(ldate * 1000));
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
 		}
 		return sdate;
 	}
