@@ -884,6 +884,7 @@ public class Event {
 		String sdate = "";
 		if (date.startsWith("202")) {
 			sdate = date; // raw date string
+			System.out.println("> 202-Extended Raw Date");
 		} else {
 			try {
 				long ldate = Long.parseLong(date);
