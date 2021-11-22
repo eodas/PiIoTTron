@@ -1,0 +1,1 @@
+\curl\bin\curl -X GET "http://localhost:5055/?id=100223&event=allEvents&name=Arduino_Tron_IoT&textMessage=Retract_RV_Awning&temp=69&humidity=53&alarm=Weather_Retract_RV_Awning" -H "accept: application/xml"
