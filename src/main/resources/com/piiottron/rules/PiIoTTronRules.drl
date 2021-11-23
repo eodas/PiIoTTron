@@ -8,6 +8,7 @@ dialect "java"
 
 
 // GPS Device Position ruleflow-group 
+/*
 rule "GPS Device Distance"
 	ruleflow-group "GPSDevicePosition"
 	when
@@ -16,7 +17,7 @@ rule "GPS Device Distance"
 		System.out.println("GPS Device " + $event.getId() + " Distance: " + $distance + " Total: " + $totalDistance + " Altitude: " + $altitude);
 		$event.setTextMessage("GPS Distance: " + $distance + " Total: " + $totalDistance + " Altitude: " + $altitude);
 end
-
+*/
 //declare rule to fire when Device speed is over 60
 rule "GPS Device Speed Alert"
 	ruleflow-group "GPSDevicePosition"
@@ -26,7 +27,7 @@ rule "GPS Device Speed Alert"
 		System.out.println("GPS Device " + $event.getId() + " Speed Over 60.0 Alert lat: " + $lat + " lon: " + $lon + " speed: " + $speed);
 		$event.setTextMessage("GPS Speed Over 60.0 Alert lat: " + $lat + " lon: " + $lon + " speed: " + $speed);
 end
-
+/*
 rule "GPS Device Lat Lon Fix"
 	ruleflow-group "GPSDevicePosition"
 	when
@@ -44,11 +45,11 @@ rule "GPS Device Fix Information"
 		System.out.println("GPS Device " + $event.getId() + " Fix on " + $deviceTime);
 		$event.setTextMessage("GPS Device Fix on " + $deviceTime);
 end
-
+*/
 rule "GPS Device Address Location"
 	ruleflow-group "GPSDevicePosition"
 	when
-        $event : Event( $eventId : id, $address : address, $address != "null" )
+        $event : Event( $eventId : id, $address : address, $address != null )
 	then
 		System.out.println("GPS Device " + $event.getId() + " location " + $address);
 		$event.setTextMessage("GPS Device location " + $address);
