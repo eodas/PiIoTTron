@@ -7,17 +7,16 @@ import com.piiottron.model.Event;
 dialect "java"
 
 
-// GPS Device Position ruleflow-group 
-/*
+// GPS Device Position ruleflow-group
 rule "GPS Device Distance"
 	ruleflow-group "GPSDevicePosition"
 	when
-        $event : Event( $eventId : id, $lat : lat, $lon : lon, $altitude : altitude, $distance : distance, $totalDistance : totalDistance )
+        $event : Event( $eventId : id, $lat : lat, $lon : lon, $altitude : altitude, $distance : distance != 0, $totalDistance : totalDistance )
 	then
 		System.out.println("GPS Device " + $event.getId() + " Distance: " + $distance + " Total: " + $totalDistance + " Altitude: " + $altitude);
 		$event.setTextMessage("GPS Distance: " + $distance + " Total: " + $totalDistance + " Altitude: " + $altitude);
 end
-*/
+
 //declare rule to fire when Device speed is over 60
 rule "GPS Device Speed Alert"
 	ruleflow-group "GPSDevicePosition"
@@ -27,25 +26,25 @@ rule "GPS Device Speed Alert"
 		System.out.println("GPS Device " + $event.getId() + " Speed Over 60.0 Alert lat: " + $lat + " lon: " + $lon + " speed: " + $speed);
 		$event.setTextMessage("GPS Speed Over 60.0 Alert lat: " + $lat + " lon: " + $lon + " speed: " + $speed);
 end
-/*
+
 rule "GPS Device Lat Lon Fix"
 	ruleflow-group "GPSDevicePosition"
 	when
-        $event : Event( $eventId : id, $lat : lat, $lon : lon, $altitude : altitude )
+        $event : Event( $eventId : id, $lat : lat != 0, $lon : lon != 0, $altitude : altitude )
 	then
 		System.out.println("GPS Device " + $event.getId() + " Lat Lon Fix: " + $lat + " lon: " + $lon + " Altitude: " + $altitude);
-		$event.setTextMessage("GPS Lat Lon Fix: " + $lat + " lon: " + $lon + " Altitude: " + $altitude);
+		// $event.setTextMessage("GPS Lat Lon Fix: " + $lat + " lon: " + $lon + " Altitude: " + $altitude);
 end
 
 rule "GPS Device Fix Information"
 	ruleflow-group "GPSDevicePosition"
 	when
-        $event : Event( $eventId : id, $serverTime : serverTime, $deviceTime : deviceTime, $fixTime : fixTime, $outdated : outdated, $valid : valid ) 
+        $event : Event( $eventId : id, $serverTime : serverTime, $deviceTime : deviceTime != 0, $fixTime : fixTime, $outdated : outdated, $valid : valid ) 
 	then
 		System.out.println("GPS Device " + $event.getId() + " Fix on " + $deviceTime);
-		$event.setTextMessage("GPS Device Fix on " + $deviceTime);
+		// $event.setTextMessage("GPS Device Fix on " + $deviceTime);
 end
-*/
+
 rule "GPS Device Address Location"
 	ruleflow-group "GPSDevicePosition"
 	when
