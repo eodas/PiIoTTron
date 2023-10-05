@@ -11,7 +11,7 @@
   <bpmn2:itemDefinition id="__3987D19E-98BA-4157-8465-A49F9ACAEB8C_namespaceInputXItem" structureRef="java.lang.String"/>
   <bpmn2:itemDefinition id="__3987D19E-98BA-4157-8465-A49F9ACAEB8C_modelInputXItem" structureRef="java.lang.String"/>
   <bpmn2:itemDefinition id="__3987D19E-98BA-4157-8465-A49F9ACAEB8C_decisionInputXItem" structureRef="java.lang.String"/>
-  <bpmn2:process id="com.TISensorTagEnvironment" drools:packageName="com.TISensorTagEnvironmentPackage" drools:version="1.0" drools:adHoc="false" name="TISensorTag Environment GPS Position Pi IoT Tron" isExecutable="true" processType="Public">
+  <bpmn2:process id="com.TISensorTagEnvironment" drools:packageName="com.TISensorTagEnvironment" drools:version="1.0" drools:adHoc="false" name="TISensorTag Environment GPS Position Pi IoT Tron" isExecutable="true" processType="Public">
     <bpmn2:property id="id" itemSubjectRef="_idItem" name="id"/>
     <bpmn2:property id="name" itemSubjectRef="_nameItem" name="name"/>
     <bpmn2:property id="event" itemSubjectRef="_eventItem" name="event"/>
