@@ -11,7 +11,7 @@
   <bpmn2:itemDefinition id="__3987D19E-98BA-4157-8465-A49F9ACAEB8C_namespaceInputXItem" structureRef="java.lang.String"/>
   <bpmn2:itemDefinition id="__3987D19E-98BA-4157-8465-A49F9ACAEB8C_modelInputXItem" structureRef="java.lang.String"/>
   <bpmn2:itemDefinition id="__3987D19E-98BA-4157-8465-A49F9ACAEB8C_decisionInputXItem" structureRef="java.lang.String"/>
-  <bpmn2:process id="com.M5AtomEnvironment" drools:packageName="com.M5AtomEnvironmentPackage" drools:version="1.0" drools:adHoc="false" name="M5Atom Pi IoT Tron Environment" isExecutable="true" processType="Public">
+  <bpmn2:process id="com.M5AtomEnvironment" drools:packageName="com.M5AtomEnvironment" drools:version="1.0" drools:adHoc="false" name="M5Atom Pi IoT Tron Environment" isExecutable="true" processType="Public">
     <bpmn2:extensionElements>
       <drools:global identifier="response" type="String"/>
     </bpmn2:extensionElements>
