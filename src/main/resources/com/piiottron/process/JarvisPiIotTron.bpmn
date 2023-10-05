@@ -8,7 +8,7 @@
   <bpmn2:itemDefinition id="_lightItem" structureRef="String"/>
   <bpmn2:itemDefinition id="_keypressItem" structureRef="String"/>
   <bpmn2:itemDefinition id="_alarmItem" structureRef="String"/>
-  <bpmn2:process id="com.JarvisPiIoTTron" drools:packageName="com.JarvisPiIoTTronPackage" drools:version="1.0" drools:adHoc="false" name="Jarvis Pi IoT Tron Device Module" isExecutable="true" processType="Public">
+  <bpmn2:process id="com.JarvisPiIoTTron" drools:packageName="com.JarvisPiIoTTron" drools:version="1.0" drools:adHoc="false" name="Jarvis Pi IoT Tron Device Module" isExecutable="true" processType="Public">
     <bpmn2:property id="id" itemSubjectRef="_idItem" name="id"/>
     <bpmn2:property id="name" itemSubjectRef="_nameItem" name="name"/>
     <bpmn2:property id="event" itemSubjectRef="_eventItem" name="event"/>
